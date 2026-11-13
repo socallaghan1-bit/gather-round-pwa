@@ -1,0 +1,79 @@
+[
+  {
+    "id": "defunct-football-park",
+    "name": "Football Park (AAMI Stadium)",
+    "suburb": "West Lakes",
+    "years_active": "1974\u20132013",
+    "tenants": [
+      "SANFL Grand Finals (1974\u20132013)",
+      "Adelaide Crows (1991\u20132013)",
+      "Port Adelaide Power (1997\u20132013)"
+    ],
+    "coords": "-34.8833,138.4972",
+    "address": "Turner Drive & Brebner Drive, West Lakes SA 5021",
+    "historical_significance": "South Australia's iconic stadium for 40 years. Built by the SANFL to break free from the SACA at Adelaide Oval. Witnessed 40 SANFL Grand Finals and the inaugural AFL matches for both the Crows and Power.",
+    "what_is_there_now": "The massive concrete grandstands were demolished in 2018\u20132019 to make way for the WEST residential community. The oval playing surface remains preserved as the high-performance training base for the Adelaide Football Club, alongside the Mosaic Hotel.",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8833,138.4972"
+  },
+  {
+    "id": "defunct-thebarton-oval",
+    "name": "Thebarton Oval",
+    "suburb": "Torrensville",
+    "years_active": "1922\u20131989 (SANFL home ground)",
+    "tenants": [
+      "West Torrens Eagles (1922\u20131989)",
+      "Woodville-West Torrens (occasional)",
+      "Adelaide Crows AFLW"
+    ],
+    "coords": "-34.9142,138.5639",
+    "address": "1 Meyer Street, Torrensville SA 5031",
+    "historical_significance": "Iconic home of the West Torrens Eagles for 68 seasons prior to the 1991 merger. Known for its vocal suburban terrace crowds, art-deco turnstiles, and brutal western-suburbs clashes.",
+    "what_is_there_now": "The heritage main grandstand remains standing and protected. Today, Thebarton Oval serves as the state-of-the-art training and match-day headquarters for the Adelaide Crows AFLW and community development programs.",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9142,138.5639"
+  },
+  {
+    "id": "defunct-woodville-oval",
+    "name": "Woodville Oval (Maughan Thiem Kia Oval)",
+    "suburb": "Woodville South",
+    "years_active": "1964\u20131990 (Standalone Woodville Warriors)",
+    "tenants": [
+      "Woodville Warriors (1964\u20131990)",
+      "Woodville-West Torrens Eagles (1991\u2013present)"
+    ],
+    "coords": "-34.8878,138.5367",
+    "address": "Oval Avenue, Woodville South SA 5011",
+    "historical_significance": "The standalone green-and-gold fortress where Malcolm Blight forged his legendary playing career, including his 1972 Magarey Medal and 1985 126-goal season. Hosted Woodville's final standalone game in late 1990.",
+    "what_is_there_now": "Active premier SANFL venue and primary home ground for the Woodville-West Torrens Eagles. Heritage pavilion and clubrooms house the combined history of both foundation clubs.",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8878,138.5367"
+  },
+  {
+    "id": "defunct-kensington-oval",
+    "name": "Kensington Oval (Olympic Sports Field)",
+    "suburb": "Kensington",
+    "years_active": "1870s\u20131890s",
+    "tenants": [
+      "Norwood Football Club (early home games)",
+      "Intercolonial football matches"
+    ],
+    "coords": "-34.9250,138.6500",
+    "address": "The Parade & Beulah Road, Kensington SA 5068",
+    "historical_significance": "One of the cradles of Australian rules football in South Australia. Norwood played early home fixtures here in the 1870s and 1880s, and it hosted historic intercolonial matches against visiting Victorian powerhouses before Norwood moved to Adelaide Oval and Norwood Oval.",
+    "what_is_there_now": "Redeveloped in the mid-20th century as the Olympic Sports Field for athletics and soccer, and now a cherished community sports and recreation reserve.",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9250,138.6500"
+  },
+  {
+    "id": "defunct-jubilee-oval",
+    "name": "Jubilee Oval (Demolished 1945)",
+    "suburb": "Adelaide CBD / North Terrace",
+    "years_active": "1895\u20131945",
+    "tenants": [
+      "SAFA / SANFL Finals (1898\u20131904)",
+      "Early University & Intercolonial Matches"
+    ],
+    "coords": "-34.9197,138.6047",
+    "address": "Frome Road & North Terrace, Adelaide SA 5000",
+    "historical_significance": "Constructed for the 1887 Jubilee Exhibition. With a banked cycling velodrome surrounding the oval, it hosted SAFA Grand Finals from 1898 to 1904, drawing crowds up to 15,000 spectators before football relocated permanently to Adelaide Oval.",
+    "what_is_there_now": "Demolished in 1945. The site was incorporated into the University of Adelaide North Terrace campus; the Napier Building, Mathematics Building, and University lawns occupy the original turf.",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9197,138.6047"
+  }
+]

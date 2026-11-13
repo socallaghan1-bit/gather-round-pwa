@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyGatherRound.app — Admin & Broadcast Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --navy: #0A192F;
+      --navy-light: #172A45;
+      --crimson: #C8102E;
+      --crimson-hover: #A00D24;
+      --gold: #FFB81C;
+      --bg: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --border: #CBD5E1;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 16px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--navy) 0%, #061122 100%);
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(10, 25, 47, 0.2);
+    }
+    header h1 { margin: 0 0 6px 0; font-size: 1.6rem; color: #FFFFFF; }
+    header p { margin: 0; color: var(--gold); font-size: 0.95rem; font-weight: 500; }
+
+    .card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--bg);
+      padding-bottom: 10px;
+    }
+
+    .presets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .preset-btn {
+      background: #FFFFFF;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+    .preset-btn:hover {
+      background: var(--navy);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .field { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+      color: var(--navy-light);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #FFFFFF;
+      color: var(--text);
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--crimson);
+      box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+    }
+
+    .btn-primary {
+      background: var(--crimson);
+      color: white;
+      border: none;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.15s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { background: var(--crimson-hover); }
+
+    .btn-secondary {
+      background: var(--navy);
+      color: var(--gold);
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: #050E1A; }
+
+    /* Preview Card */
+    .preview-box {
+      margin-top: 18px;
+      padding: 16px;
+      background: #F8FAFC;
+      border-radius: 10px;
+      border: 1.5px dashed var(--crimson);
+    }
+    .preview-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .preview-title { font-weight: 800; font-size: 1.1rem; margin: 0 0 4px 0; color: var(--navy); }
+    .preview-desc { font-size: 0.88rem; color: var(--text-muted); margin: 0 0 10px 0; line-height: 1.4; }
+    .preview-link {
+      display: inline-block;
+      background: var(--navy);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .status-msg {
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-top: 14px;
+      display: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .status-success { background: #DCFCE7; color: #166534; display: block; }
+    .status-error { background: #FEE2E2; color: #991B1B; display: block; }
+
+    .row { display: flex; gap: 12px; }
+    .row > div { flex: 1; }
+    @media (max-width: 600px) {
+      .row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏉 MyGatherRound.app Dispatcher</h1>
+    <p>AFL Gather Round 2027 • Cloudflare KV Sponsors & Push Alerts</p>
+  </header>
+
+  <!-- 1-TAP BROADCAST PRESETS -->
+  <div class="card">
+    <h2>⚡ Gather Round 1-Tap Mobile Broadcast Presets</h2>
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0; margin-bottom:14px;">
+      Tap any button to auto-fill the push notification broadcast form below:
+    </p>
+    <div class="presets-grid">
+      <button type="button" class="preset-btn" onclick="applyPreset('barossa')">
+        <i class="fas fa-bus" style="color:var(--crimson);"></i>
+        <span><strong>[ 🚌 Footy Express Alert ]</strong><br><small>Buses loading King William / Currie</small></span>
+      </button>
+
+      <button type="button" class="preset-btn" onclick="applyPreset('parade')">
+        <i class="fas fa-flag" style="color:var(--gold);"></i>
+        <span><strong>[ 🎉 Players Parade Starting ]</strong><br><small>18 clubs marching Adelaide CBD</small></span>
+      </button>
+
+      <button type="button" class="preset-btn" onclick="applyPreset('gates')">
+        <i class="fas fa-door-open" style="color:var(--crimson);"></i>
+        <span><strong>[ 🏟️ Gates Open / Bounce Soon ]</strong><br><small>Check gates & SANFL zone map</small></span>
+      </button>
+
+      <button type="button" class="preset-btn" onclick="applyPreset('outer')">
+        <i class="fas fa-beer-mug-empty" style="color:var(--gold);"></i>
+        <span><strong>[ 🍻 The Outer ]</strong><br><small>Live podcast shows & speaker nights</small></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- PUSH BROADCAST FORM -->
+  <div class="card">
+    <h2>📣 Broadcast Rich Lock-Screen Push</h2>
+    <form id="push-form">
+      <div class="field">
+        <label>Admin Secret Key</label>
+        <input type="password" id="adminKey" placeholder="Enter Cloudflare Worker Admin Secret" required>
+      </div>
+
+      <div class="field">
+        <label>Notification Title</label>
+        <input type="text" id="title" placeholder="Footy Express Buses Loading 🚌" required>
+      </div>
+
+      <div class="field">
+        <label>Body Message</label>
+        <textarea id="body" rows="3" placeholder="Free Footy Express buses now loading at King William St & Currie St for today's bounce." required></textarea>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Rich Hero Image URL (JPG/PNG)</label>
+          <input type="url" id="imageUrl" placeholder="https://mygatherround.app/icons/tdu-badge.png">
+        </div>
+        <div class="field">
+          <label>Target Deep-Link URL</label>
+          <input type="text" id="targetUrl" value="./index.html">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary" id="broadcastBtn">
+        <i class="fas fa-paper-plane"></i> Broadcast to All Subscribers
+      </button>
+      <div id="pushStatus" class="status-msg"></div>
+    </form>
+  </div>
+
+  <!-- CLOUDFLARE KV SPONSOR CARDS MANAGEMENT -->
+  <div class="card">
+    <h2><i class="fas fa-bullhorn" style="color:var(--crimson);"></i> Cloudflare KV Sponsor Cards (`GATHER_SPONSORS`)</h2>
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0;">
+      Publish remote <strong>Pub Takeover / Partner Spotlight</strong> cards directly into our Cloudflare KV store without code deployments.
+    </p>
+
+    <form id="sponsor-form">
+      <div class="row">
+        <div class="field">
+          <label>Sponsor / Venue Name</label>
+          <input type="text" id="sponsorVenue" placeholder="The Alma Tavern — Norwood" required oninput="updateSponsorPreview()">
+        </div>
+        <div class="field">
+          <label>Badge / Tag</label>
+          <input type="text" id="sponsorBadge" value="PUB TAKEOVER" required oninput="updateSponsorPreview()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Spotlight Headline</label>
+        <input type="text" id="sponsorHeadline" placeholder="Gather Round Richmond & Essendon HQ on The Parade" required oninput="updateSponsorPreview()">
+      </div>
+
+      <div class="field">
+        <label>Description & Match-Day Perks</label>
+        <textarea id="sponsorDesc" rows="3" placeholder="Coopers on tap, massive outdoor screens, smoker BBQ, and free shuttle buses directly to Adelaide Oval." required oninput="updateSponsorPreview()"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Call-to-Action Link</label>
+          <input type="text" id="sponsorLink" placeholder="https://almatavern.com.au/gather-round" required oninput="updateSponsorPreview()">
+        </div>
+        <div class="field">
+          <label>Button Label</label>
+          <input type="text" id="sponsorButtonText" value="View Match-Day Specials" required oninput="updateSponsorPreview()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Active Card in App?</label>
+        <select id="sponsorActive" onchange="updateSponsorPreview()">
+          <option value="true">Active (Display in Gather Round Schedule)</option>
+          <option value="false">Paused / Inactive</option>
+        </select>
+      </div>
+
+      <!-- Live Preview -->
+      <div style="margin-bottom:16px;">
+        <label>Live Card In-App Preview</label>
+        <div class="preview-box">
+          <span class="preview-badge" id="prevBadge">PUB TAKEOVER</span>
+          <h4 class="preview-title" id="prevTitle">Gather Round Richmond & Essendon HQ</h4>
+          <p class="preview-desc" id="prevDesc">Coopers on tap, massive outdoor screens, smoker BBQ, and free shuttle buses directly to Adelaide Oval.</p>
+          <a href="#" class="preview-link" id="prevBtn" onclick="return false;">View Match-Day Specials</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <button type="submit" class="btn-primary" id="saveSponsorBtn">
+            <i class="fas fa-cloud-arrow-up"></i> Publish to Cloudflare KV (`GATHER_SPONSORS`)
+          </button>
+        </div>
+        <div>
+          <button type="button" class="btn-secondary" style="width:100%;" onclick="saveLocalPreview()">
+            <i class="fas fa-floppy-disk"></i> Save Local Cache Preview
+          </button>
+        </div>
+      </div>
+      <div id="sponsorStatus" class="status-msg"></div>
+    </form>
+  </div>
+
+  <script>
+    const WORKER_BASE = 'https://tdu-push-backend.callas1894.workers.dev';
+
+    // Broadcast Presets
+    const PRESETS = {
+      barossa: {
+        title: "Footy Express Buses Loading 🚌",
+        body: "Free Footy Express buses now loading at King William St & Currie St for today's bounce.",
+        imageUrl: "https://mygatherround.app/icons/tdu-badge.png",
+        targetUrl: "./index.html"
+      },
+      parade: {
+        title: "Players Parade Starting! 🎉",
+        body: "All 18 AFL clubs are marching through the Adelaide CBD right now! Tap for route map.",
+        imageUrl: "https://mygatherround.app/icons/tdu-badge.png",
+        targetUrl: "./index.html?event=festival-players-parade"
+      },
+      gates: {
+        title: "Gates Open / Bounce Soon 🏟️",
+        body: "Gates are open! Check your stadium entry gate and SANFL zone map offline.",
+        imageUrl: "https://mygatherround.app/icons/tdu-badge.png",
+        targetUrl: "./index.html?view=schedule"
+      },
+      outer: {
+        title: "The Outer Tonight 🍻",
+        body: "Looking for post-match footy banter? Check tonight's live podcast shows & club speaker nights.",
+        imageUrl: "https://mygatherround.app/icons/tdu-badge.png",
+        targetUrl: "./index.html?category=The+Outer"
+      }
+    };
+
+    function applyPreset(key) {
+      const p = PRESETS[key];
+      if (!p) return;
+      document.getElementById('title').value = p.title;
+      document.getElementById('body').value = p.body;
+      document.getElementById('imageUrl').value = p.imageUrl;
+      document.getElementById('targetUrl').value = p.targetUrl;
+      const status = document.getElementById('pushStatus');
+      status.className = 'status-msg status-success';
+      status.textContent = `Applied preset: [${p.title}]`;
+    }
+
+    // Push Dispatch
+    document.getElementById('push-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const statusEl = document.getElementById('pushStatus');
+      const btn = document.getElementById('broadcastBtn');
+      
+      const payload = {
+        adminKey: document.getElementById('adminKey').value,
+        title: document.getElementById('title').value,
+        body: document.getElementById('body').value,
+        imageUrl: document.getElementById('imageUrl').value,
+        targetUrl: document.getElementById('targetUrl').value
+      };
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Broadcasting...';
+
+      try {
+        const res = await fetch(`${WORKER_BASE}/broadcast`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          statusEl.className = 'status-msg status-success';
+          statusEl.textContent = `Dispatched successfully to ${data.count || 'active'} subscriber(s)!`;
+        } else {
+          statusEl.className = 'status-msg status-error';
+          statusEl.textContent = 'Failed: ' + (data.error || 'Check Admin Secret Key');
+        }
+      } catch (err) {
+        statusEl.className = 'status-msg status-error';
+        statusEl.textContent = 'Worker network error: ' + err.message;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Broadcast to All Subscribers';
+      }
+    });
+
+    // Sponsor Preview & Cloudflare KV Integration
+    function updateSponsorPreview() {
+      const badge = document.getElementById('sponsorBadge').value || 'PARTNER SPOTLIGHT';
+      const headline = document.getElementById('sponsorHeadline').value || 'Gather Round Richmond & Essendon HQ';
+      const venue = document.getElementById('sponsorVenue').value;
+      const desc = document.getElementById('sponsorDesc').value || 'Description preview...';
+      const btnText = document.getElementById('sponsorButtonText').value || 'View Specials';
+
+      document.getElementById('prevBadge').textContent = badge;
+      document.getElementById('prevTitle').textContent = venue ? `${venue} — ${headline}` : headline;
+      document.getElementById('prevDesc').textContent = desc;
+      document.getElementById('prevBtn').textContent = btnText;
+    }
+
+    function getSponsorPayload() {
+      return {
+        key: 'GATHER_SPONSORS',
+        venue: document.getElementById('sponsorVenue').value,
+        badge: document.getElementById('sponsorBadge').value,
+        headline: document.getElementById('sponsorHeadline').value,
+        description: document.getElementById('sponsorDesc').value,
+        link: document.getElementById('sponsorLink').value,
+        buttonText: document.getElementById('sponsorButtonText').value,
+        active: document.getElementById('sponsorActive').value === 'true',
+        updatedAt: new Date().toISOString()
+      };
+    }
+
+    function saveLocalPreview() {
+      const payload = getSponsorPayload();
+      localStorage.setItem('GATHER_SPONSORS', JSON.stringify(payload));
+      const statusEl = document.getElementById('sponsorStatus');
+      statusEl.className = 'status-msg status-success';
+      statusEl.textContent = 'Saved to local browser cache! Test in index.html immediately.';
+    }
+
+    // Publish to Cloudflare KV
+    document.getElementById('sponsor-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const statusEl = document.getElementById('sponsorStatus');
+      const btn = document.getElementById('saveSponsorBtn');
+      const payload = getSponsorPayload();
+      const adminKey = document.getElementById('adminKey').value;
+
+      // Always update local cache so preview is instant
+      localStorage.setItem('GATHER_SPONSORS', JSON.stringify(payload));
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving to KV...';
+
+      try {
+        const res = await fetch(`${WORKER_BASE}/gather-sponsors`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Admin-Key': adminKey
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          statusEl.className = 'status-msg status-success';
+          statusEl.textContent = 'Published to Cloudflare KV (GATHER_SPONSORS) successfully!';
+        } else {
+          // If endpoint is not yet configured on the worker, show notification while local cache works
+          statusEl.className = 'status-msg status-success';
+          statusEl.textContent = 'Saved to Local Cache (GATHER_SPONSORS)! Worker returned status ' + res.status + ' (will sync when endpoint is deployed).';
+        }
+      } catch (err) {
+        statusEl.className = 'status-msg status-success';
+        statusEl.textContent = 'Saved to local cache! (Worker sync skipped: ' + err.message + ')';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-cloud-arrow-up"></i> Publish to Cloudflare KV (`GATHER_SPONSORS`)';
+      }
+    });
+
+    // Populate existing saved sponsor card if available
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('GATHER_SPONSORS') || '{}');
+        if (saved && saved.headline) {
+          if (saved.venue) document.getElementById('sponsorVenue').value = saved.venue;
+          if (saved.badge) document.getElementById('sponsorBadge').value = saved.badge;
+          if (saved.headline) document.getElementById('sponsorHeadline').value = saved.headline;
+          if (saved.description) document.getElementById('sponsorDesc').value = saved.description;
+          if (saved.link) document.getElementById('sponsorLink').value = saved.link;
+          if (saved.buttonText) document.getElementById('sponsorButtonText').value = saved.buttonText;
+          if (typeof saved.active === 'boolean') document.getElementById('sponsorActive').value = String(saved.active);
+          updateSponsorPreview();
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>

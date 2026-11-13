@@ -1,0 +1,128 @@
+[
+  {
+    "id": "fac-ao-toilet-south",
+    "type": "toilet",
+    "name": "Adelaide Oval South Plaza Public Amenities",
+    "precinct": "Adelaide Oval",
+    "coords": "-34.9172,138.5960",
+    "details": "Full public accessible restrooms, baby change facilities, and ambulant cubicles adjacent to the Riverbank Footbridge landing.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-ao-water-south",
+    "type": "water",
+    "name": "Riverbank Footbridge Chilled Water Station",
+    "precinct": "Adelaide Oval",
+    "coords": "-34.9180,138.5968",
+    "details": "Dual SA Water refill station with bottle filler and fountain on northern landing of the footbridge.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-ao-toilet-north",
+    "type": "toilet",
+    "name": "Pennington Gardens Public Restrooms",
+    "precinct": "Adelaide Oval",
+    "coords": "-34.9135,138.5975",
+    "details": "Permanent City of Adelaide public amenities block in parklands directly north of Oval Gate North.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-ao-water-east",
+    "type": "water",
+    "name": "King William Road / Eastern Gate Water Station",
+    "precinct": "Adelaide Oval",
+    "coords": "-34.9150,138.5985",
+    "details": "SA Water filtered refill tap near Eastern Entrance turnstiles.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-elder-park-toilet",
+    "type": "toilet",
+    "name": "Elder Park Footy Festival Restroom Block",
+    "precinct": "Adelaide Oval / Riverbank",
+    "coords": "-34.9200,138.5990",
+    "details": "Festival hub event restrooms plus permanent Riverbank Rotunda public amenities.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-elder-park-water",
+    "type": "water",
+    "name": "Elder Park Footy Festival Hydration Station",
+    "precinct": "Adelaide Oval / Riverbank",
+    "coords": "-34.9195,138.5985",
+    "details": "SA Water Quench high-flow multiple bottle refill station inside the festival precinct.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-norwood-toilet-gate",
+    "type": "toilet",
+    "name": "Norwood Oval Woods Street Public Amenities",
+    "precinct": "Norwood Parade",
+    "coords": "-34.9215,138.6340",
+    "details": "Public restrooms outside Gate 1 on Woods Street with wheelchair access.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-norwood-water-parade",
+    "type": "water",
+    "name": "The Parade / Woods Street Hydration Tap",
+    "precinct": "Norwood Parade",
+    "coords": "-34.9220,138.6345",
+    "details": "Council public water bottle refill station on the corner of The Parade and Woods St.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-norwood-toilet-webbe",
+    "type": "toilet",
+    "name": "Webbe Street Carpark Restrooms",
+    "precinct": "Norwood Parade",
+    "coords": "-34.9230,138.6360",
+    "details": "City of NPSP public amenities block next to Norwood Town Hall & Cinema complex.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-norwood-water-osmond",
+    "type": "water",
+    "name": "Osmond Terrace Median Water Station",
+    "precinct": "Norwood Parade",
+    "coords": "-34.9225,138.6310",
+    "details": "Filtered drinking water fountain and dog bowl on grassy median strip of Osmond Terrace.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-barossa-toilet-entrance",
+    "type": "toilet",
+    "name": "Barossa Park Recreation Grounds Main Amenities",
+    "precinct": "Barossa Park Lyndoch",
+    "coords": "-34.6040,138.8920",
+    "details": "Main pavilion public restrooms, accessible cubicles, and event-day auxiliary blocks.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-barossa-water-hub",
+    "type": "water",
+    "name": "Lyndoch Village Green & Matchday Water Hub",
+    "precinct": "Barossa Park Lyndoch",
+    "coords": "-34.6050,138.8930",
+    "details": "High-capacity chilled SA Water drinking & bottle station at the entrance to Barossa Park.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-barossa-toilet-tanunda",
+    "type": "toilet",
+    "name": "Tanunda Town Square Public Amenities",
+    "precinct": "Tanunda / Barossa Food Village",
+    "coords": "-34.5245,138.9605",
+    "details": "Public amenities block at Barossa Visitor Centre & Town Square with parent room.",
+    "is_accessible": true
+  },
+  {
+    "id": "fac-barossa-water-tanunda",
+    "type": "water",
+    "name": "Barossa Trail Tanunda Hydration Station",
+    "precinct": "Tanunda / Barossa Food Village",
+    "coords": "-34.5240,138.9610",
+    "details": "Multi-tier water bottle refill station on Murray Street adjacent to the shuttle departure point.",
+    "is_accessible": true
+  }
+]

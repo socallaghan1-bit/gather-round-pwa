@@ -1,0 +1,16 @@
+[
+  {
+    "id": "gatherround-welcome-2027",
+    "title": "Welcome to MyGatherRound.app 2027!",
+    "body": "Explore all 9 AFL matches, interactive SANFL recruiting zones, defunct grounds, and supporter pub hubs across Adelaide and the Barossa. Build your offline weekend itinerary!",
+    "date": "2027-04-08T09:00:00+09:30",
+    "image": "https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=600&auto=format&fit=crop&q=80",
+    "sound": true,
+    "category": "Gather Round",
+    "actions": [
+      { "action": "schedule", "title": "Explore Fixture & Map" },
+      { "action": "dismiss", "title": "Dismiss" }
+    ],
+    "targetUrl": "schedule"
+  }
+]
