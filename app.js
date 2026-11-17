@@ -1965,11 +1965,12 @@ window.unlockVault = function() {
     }
 };
 
-function startShakeListener() {
+async function startShakeListener() {
     const statusBadge = document.getElementById('vault-sensor-status');
     try {
-        if (typeof Shake === 'function') {
-            shakeInstance = new Shake({ threshold: 12, timeout: 800 });
+        const ShakeClass = window.TDUCdn ? await window.TDUCdn.load('shake') : window.Shake;
+        if (typeof ShakeClass === 'function') {
+            shakeInstance = new ShakeClass({ threshold: 12, timeout: 800 });
             shakeInstance.start();
             vaultSensorReady = true;
             if (statusBadge) statusBadge.textContent = 'Ready to Shake 📱';
@@ -1979,7 +1980,7 @@ function startShakeListener() {
             if (statusBadge) statusBadge.textContent = 'Shake not available — use Tap to Shake 🖱️';
         }
     } catch (err) {
-        console.warn('Shake.js init error:', err);
+        console.warn('Shake.js load or init error:', err);
         vaultSensorReady = false;
         if (statusBadge) statusBadge.textContent = 'Shake not available — use Tap to Shake 🖱️';
     }

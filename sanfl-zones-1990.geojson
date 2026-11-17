@@ -1,0 +1,435 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central District",
+        "nickname": "Bulldogs",
+        "era": "Pre-1990 Era",
+        "home_oval": "Elizabeth Oval",
+        "description": "Northern zone.",
+        "famous_players": "John Platten",
+        "trivia": "Country zone pipeline.",
+        "fillColor": "#1C3B57",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.55,
+              -34.75
+            ],
+            [
+              138.8,
+              -34.75
+            ],
+            [
+              138.8,
+              -34.5
+            ],
+            [
+              138.55,
+              -34.5
+            ],
+            [
+              138.55,
+              -34.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Glenelg",
+        "nickname": "Tigers",
+        "era": "Pre-1990 Era",
+        "home_oval": "Glenelg Oval",
+        "description": "Coastal zone.",
+        "famous_players": "Stephen Kernahan",
+        "trivia": "High scoring eras.",
+        "fillColor": "#FFD700",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.5,
+              -34.95
+            ],
+            [
+              138.58,
+              -34.95
+            ],
+            [
+              138.58,
+              -35.05
+            ],
+            [
+              138.5,
+              -35.05
+            ],
+            [
+              138.5,
+              -34.95
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North Adelaide",
+        "nickname": "Roosters",
+        "era": "Pre-1990 Era",
+        "home_oval": "Prospect Oval",
+        "description": "Northern zone.",
+        "famous_players": "Barrie Robran",
+        "trivia": "Skillful play.",
+        "fillColor": "#C8102E",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.56,
+              -34.85
+            ],
+            [
+              138.64,
+              -34.85
+            ],
+            [
+              138.64,
+              -34.91
+            ],
+            [
+              138.56,
+              -34.91
+            ],
+            [
+              138.56,
+              -34.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norwood",
+        "nickname": "Redlegs",
+        "era": "Pre-1990 Era",
+        "home_oval": "Norwood Oval",
+        "description": "Eastern zone.",
+        "famous_players": "Michael Taylor",
+        "trivia": "Rivalry with Port.",
+        "fillColor": "#E31B23",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.62,
+              -34.9
+            ],
+            [
+              138.7,
+              -34.9
+            ],
+            [
+              138.7,
+              -34.95
+            ],
+            [
+              138.62,
+              -34.95
+            ],
+            [
+              138.62,
+              -34.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Port Adelaide",
+        "nickname": "Magpies",
+        "era": "Pre-1990 Era",
+        "home_oval": "Alberton Oval",
+        "description": "West Coast zone.",
+        "famous_players": "Russell Ebert",
+        "trivia": "Powerhouse.",
+        "fillColor": "#0A192F",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.48,
+              -34.82
+            ],
+            [
+              138.55,
+              -34.82
+            ],
+            [
+              138.55,
+              -34.89
+            ],
+            [
+              138.48,
+              -34.89
+            ],
+            [
+              138.48,
+              -34.82
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "South Adelaide",
+        "nickname": "Panthers",
+        "era": "Pre-1990 Era",
+        "home_oval": "Adelaide Oval",
+        "description": "Southern zone.",
+        "famous_players": "Rick Davies",
+        "trivia": "Foundation club.",
+        "fillColor": "#1B365D",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.45,
+              -35.05
+            ],
+            [
+              138.56,
+              -35.05
+            ],
+            [
+              138.56,
+              -35.25
+            ],
+            [
+              138.45,
+              -35.25
+            ],
+            [
+              138.45,
+              -35.05
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sturt",
+        "nickname": "Double Blues",
+        "era": "Pre-1990 Era",
+        "home_oval": "Unley Oval",
+        "description": "Unley zone.",
+        "famous_players": "Paul Bagshaw",
+        "trivia": "Golden era.",
+        "fillColor": "#003366",
+        "strokeColor": "#708090",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.58,
+              -34.94
+            ],
+            [
+              138.65,
+              -34.94
+            ],
+            [
+              138.65,
+              -35.02
+            ],
+            [
+              138.58,
+              -35.02
+            ],
+            [
+              138.58,
+              -34.94
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Adelaide",
+        "nickname": "Bloodhounds",
+        "era": "Pre-1990 Era",
+        "home_oval": "Thebarton Oval",
+        "description": "West Adelaide zone.",
+        "famous_players": "Mark Mickan",
+        "trivia": "1983 premiers.",
+        "fillColor": "#A51C30",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.52,
+              -34.9
+            ],
+            [
+              138.58,
+              -34.9
+            ],
+            [
+              138.58,
+              -34.95
+            ],
+            [
+              138.52,
+              -34.95
+            ],
+            [
+              138.52,
+              -34.9
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West Torrens",
+        "nickname": "Eagles",
+        "era": "Pre-1990 Era (Pre-Merger)",
+        "home_oval": "Thebarton Oval",
+        "description": "Standalone western zone.",
+        "famous_players": "Neville Roberts",
+        "trivia": "Foundation club.",
+        "fillColor": "#1E3A8A",
+        "strokeColor": "#FFD700",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.5,
+              -34.91
+            ],
+            [
+              138.56,
+              -34.91
+            ],
+            [
+              138.56,
+              -34.96
+            ],
+            [
+              138.5,
+              -34.96
+            ],
+            [
+              138.5,
+              -34.91
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woodville",
+        "nickname": "Warriors",
+        "era": "Pre-1990 Era (Pre-Merger)",
+        "home_oval": "Woodville Oval",
+        "description": "Standalone northwestern zone.",
+        "famous_players": "Malcolm Blight",
+        "trivia": "Home of Blight.",
+        "fillColor": "#059669",
+        "strokeColor": "#FFD700",
+        "strokeWeight": 2,
+        "fillOpacity": 0.35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              138.48,
+              -34.87
+            ],
+            [
+              138.54,
+              -34.87
+            ],
+            [
+              138.54,
+              -34.92
+            ],
+            [
+              138.48,
+              -34.92
+            ],
+            [
+              138.48,
+              -34.87
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

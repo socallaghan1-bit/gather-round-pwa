@@ -41,6 +41,10 @@
         chart: {
             scripts: [{ path: 'Chart.js/4.4.1/chart.umd.js', integrity: 'sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==' }],
             resolve: () => window.Chart || null
+        },
+        shake: {
+            scripts: [{ path: 'shake.js/1.2.2/shake.js', integrity: 'sha512-c7v2mEghMrX9YKC1iSb93skFX4CVpTvFJxTiEek0DDQZc2zq/WsnlmeBARTTBr/M3Pzd9RwLZ/6ePHPFRYPldA==' }],
+            resolve: () => window.Shake || null
         }
     };
 
