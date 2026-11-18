@@ -2,7 +2,7 @@
   {
     "id": "russell-ebert",
     "name": "Russell Ebert",
-    "nickname": "Robbie",
+    "nickname": "God",
     "card_number": "FV-01",
     "sanfl_club": "Port Adelaide Magpies",
     "sanfl_stats": "392 SANFL Games \u2022 294 Goals \u2022 4x Magarey Medallist (1971, 1974, 1976, 1980) \u2022 3x SANFL Premierships",
@@ -237,6 +237,51 @@
     "era": "1946\u20131958",
     "bio": "The legendary patriarch who forged Port Adelaide's modern powerhouse identity. Williams authored the famous Port Adelaide Club Creed in 1962 and led the Magpies to nine SANFL premierships as coach, including an Australian record six consecutive flags between 1954 and 1959.",
     "trivia": "Father of AFL premiership coach Mark Williams, SANFL premiership star Anthony Williams, and Stephen Williams. The SANFL State of Origin medal is named the Fos Williams Medal.",
+    "bg_color": "#ADD8E6"
+  },
+  {
+    "id": "brenton-phillips",
+    "name": "Brenton Phillips",
+    "nickname": "Flipper",
+    "card_number": "FV-17",
+    "sanfl_club": "North Adelaide Roosters",
+    "sanfl_stats": "222 SANFL Games • 139 Goals • 1993 Magarey Medallist • 2x North Adelaide B&F",
+    "crossover_club": "Essendon / Brisbane Bears (VFL/AFL)",
+    "crossover_stats": "10 VFL Games (Essendon 1986) • 61 Games, 30 Goals (Brisbane Bears 1987–1991)",
+    "position": "Rover / Centre",
+    "era": "1981–1998",
+    "bio": "Silky-skilled, tireless rover recruited from Gepps Cross who starred across two stints at Prospect Oval. After a brief spell at Windy Hill under Kevin Sheedy, Phillips joined the inaugural Brisbane Bears squad before returning home to claim the 1993 Magarey Medal.",
+    "trivia": "Kicked the very first goal in Brisbane Bears club history in Round 1, 1987, and later coached Sturt to their drought-breaking 2002 SANFL premiership.",
+    "bg_color": "#ADD8E6"
+  },
+  {
+    "id": "wayne-slattery",
+    "name": "Wayne Slattery",
+    "nickname": "Slatts",
+    "card_number": "FV-18",
+    "sanfl_club": "South Adelaide Panthers / North Adelaide Roosters",
+    "sanfl_stats": "189 SANFL Games (170 South, 19 North) • 249 Goals • 1987 SANFL Premiership (North Adelaide)",
+    "crossover_club": "St Kilda Saints (VFL)",
+    "crossover_stats": "11 VFL Games • 12 Goals (1982)",
+    "position": "Half-Forward / Rover",
+    "era": "1977–1988",
+    "bio": "Pacy, elusive forward pocket and rover who burst onto the SANFL scene as a 16-year-old prodigy for South Adelaide. Spent 1982 at Moorabbin with St Kilda before returning to Adelaide and capping his career in North Adelaide's 1987 flag.",
+    "trivia": "Debuted for the Panthers at just 16 years old in 1977 and played in the 1979 SANFL Grand Final. Father of former Essendon defender Tyson Slattery.",
+    "bg_color": "#ADD8E6"
+  },
+  {
+    "id": "tony-antrobus",
+    "name": "Tony Antrobus",
+    "nickname": "The Angry Ant",
+    "card_number": "FV-19",
+    "sanfl_club": "North Adelaide Roosters",
+    "sanfl_stats": "82 SANFL Games • 155 Goals • 1983 Magarey Medallist • North Adelaide Team of the Century",
+    "crossover_club": "Essendon Bombers / St Kilda Saints (VFL/AFL)",
+    "crossover_stats": "22 Games, 26 Goals (Essendon 1987–1990) • 6 Games, 5 Goals (St Kilda 1991)",
+    "position": "Forward Pocket / Rover",
+    "era": "1981–1992",
+    "bio": "Explosive, combative small forward from Ingle Farm who punched well above his 72 kg frame. Judged best afield in each of his first three league appearances, he stormed to the 1983 Magarey Medal at age 21 before crossing to Essendon and St Kilda.",
+    "trivia": "Named in the forward pocket of North Adelaide's official Team of the Century (1901–2000) despite injuries cutting his VFL/AFL career short.",
     "bg_color": "#ADD8E6"
   }
 ]
