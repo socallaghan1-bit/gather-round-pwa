@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gatherround-cache-v2';
+const CACHE_NAME = 'gatherround-cache-v5';
 // CDNJS assets are version-pinned in their URLs, so they live in their own cache that survives app updates.
 const CDN_CACHE_NAME = 'gatherround-cdnjs-v1';
 const CDN_CACHE_MAX_ENTRIES = 60;
@@ -22,8 +22,7 @@ const ASSETS = [
     './manifest.json',
     './icons/tdu-badge.png',
     './animations/success-check.json',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-    'https://cdnjs.cloudflare.com/ajax/libs/shake.js/1.2.2/shake.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
 
 self.addEventListener('install', (event) => {

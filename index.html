@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
     <!-- Manual SPA pageviews sent from app.js -->
     <script>
         window.TDU_GA_MEASUREMENT_ID = 'G-95K2T8ZYW4';
@@ -41,8 +41,30 @@
 <body>
     <header>
         <button class="header-brand" onclick="showView('home')" aria-label="Go to MyGatherRound home">
-            <h1>MyGatherRound.app</h1>
-            <div class="header-subtitle">2027 SA Footy &amp; Heritage Guide</div>
+            <svg class="header-logo-svg" width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Heritage Shield Background -->
+                <path d="M20 2L5 7V19C5 28.5 11.5 36.5 20 38.5C28.5 36.5 35 28.5 35 19V7L20 2Z" fill="#0A192F" stroke="#FFB81C" stroke-width="2"/>
+                <!-- Shield Inner Accent Border -->
+                <path d="M20 5L7.5 9V18.5C7.5 26.5 13 33.7 20 35.5C27 33.7 32.5 26.5 32.5 18.5V9L20 5Z" stroke="#C8102E" stroke-width="1.2" fill="#0E2340"/>
+                <!-- Aussie Rules Sherrin Red Football rotated at -35deg -->
+                <g transform="translate(20, 20) rotate(-35) translate(-20, -20)">
+                    <ellipse cx="20" cy="20" rx="13.5" ry="8" fill="#C8102E" stroke="#FFB81C" stroke-width="1.3"/>
+                    <path d="M6.5 20C10 14 30 14 33.5 20" stroke="#8E0820" stroke-width="1" fill="none"/>
+                    <path d="M6.5 20C10 26 30 26 33.5 20" stroke="#8E0820" stroke-width="1" fill="none"/>
+                    <!-- White Sherrin Lacing Spine -->
+                    <line x1="12" y1="20" x2="28" y2="20" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+                    <!-- White Sherrin Cross Laces -->
+                    <line x1="14" y1="17" x2="14" y2="23" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                    <line x1="17" y1="16.5" x2="17" y2="23.5" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                    <line x1="20" y1="16.2" x2="20" y2="23.8" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                    <line x1="23" y1="16.5" x2="23" y2="23.5" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                    <line x1="26" y1="17" x2="26" y2="23" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                </g>
+            </svg>
+            <div class="header-titles">
+                <h1>MyGatherRound.app</h1>
+                <div class="header-subtitle">2027 SA FOOTY &amp; HERITAGE GUIDE</div>
+            </div>
         </button>
 
         <div class="header-actions">
@@ -432,15 +454,15 @@
     <section id="view-vault" class="view" aria-labelledby="vault-title">
         <div class="home-container">
             <h2 id="vault-title">🏛️ Footy Vault</h2>
-            <p class="vault-subtitle">Shake your phone (or tap below) to reveal a classic SA footy legend.</p>
+            <p class="vault-subtitle">Shake your phone (or tap below) to reveal a classic SA footy cult hero.</p>
 
             <div class="vault-controls">
                 <button id="vault-unlock-btn" class="btn btn-primary vault-unlock-btn" type="button" onclick="unlockVault()" style="display:none;">
-                    <i class="fas fa-lock-open" aria-hidden="true"></i> Unlock the Vault (iOS)
+                    <i class="fas fa-lock-open" aria-hidden="true"></i> 🔓 Unlock Shake Sensor
                 </button>
-                <div id="vault-sensor-status" class="vault-sensor-badge" aria-live="polite">Initializing…</div>
+                <div id="vault-sensor-status" class="vault-sensor-badge" aria-live="polite">⚪ Tap below to unlock motion sensor</div>
                 <button id="vault-tap-btn" class="btn btn-secondary vault-tap-btn" type="button" onclick="triggerVaultShake()">
-                    <i class="fas fa-hand-pointer" aria-hidden="true"></i> Tap to Shake
+                    <i class="fas fa-football" aria-hidden="true"></i> 🏉 Shake / Draw Random Cult Hero
                 </button>
             </div>
 
@@ -458,12 +480,13 @@
     <nav class="bottom-nav" aria-label="Primary navigation">
         <button class="nav-item active" onclick="showView('home')" id="nav-home"><i class="fas fa-home" aria-hidden="true"></i>Home</button>
         <button class="nav-item" onclick="showView('schedule')" id="nav-schedule"><i class="fas fa-calendar-days" aria-hidden="true"></i>Fixture &amp; Map</button>
+        <button class="nav-item" onclick="showView('vault')" id="nav-vault"><i class="fas fa-shield-halved" aria-hidden="true"></i>Footy Vault</button>
         <button class="nav-item" onclick="showView('saved')" id="nav-saved"><span class="badge" id="nav-badge" style="display:none;">0</span><i class="fas fa-star" aria-hidden="true"></i>My Weekend</button>
     </nav>
 
-    <script src="cdn-libs.js?v=2.0"></script>
-    <script src="app.js?v=4.0"></script>
-    <script src="stage-map.js?v=1.0"></script>
-    <script src="push-notifications.js?v=1.0"></script>
+    <script src="cdn-libs.js?v=5.0"></script>
+    <script src="app.js?v=5.0"></script>
+    <script src="stage-map.js?v=5.0"></script>
+    <script src="push-notifications.js?v=5.0"></script>
 </body>
 </html>

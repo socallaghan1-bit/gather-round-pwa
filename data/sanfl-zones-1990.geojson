@@ -1,0 +1,813 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "central-district",
+        "name": "Central District",
+        "nickname": "Bulldogs",
+        "era": "Pre-1990 Era",
+        "home_oval": "Elizabeth Oval",
+        "description": "Northern metropolitan zone and Barossa Valley country pipeline before the introduction of the AFL national draft.",
+        "famous_players": "John Platten, Greg Edwards, Peter Vivian",
+        "trivia": "Central District was South Australia's working-class powerhouse, producing Magarey Medallist John Platten before his move to Hawthorn.",
+        "fillColor": "#002B49",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.56,
+                -34.78
+              ],
+              [
+                138.65,
+                -34.78
+              ],
+              [
+                138.74,
+                -34.74
+              ],
+              [
+                138.78,
+                -34.62
+              ],
+              [
+                138.74,
+                -34.58
+              ],
+              [
+                138.62,
+                -34.64
+              ],
+              [
+                138.56,
+                -34.78
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.6,
+                -34.6
+              ],
+              [
+                139.15,
+                -34.6
+              ],
+              [
+                139.3,
+                -34.25
+              ],
+              [
+                139.05,
+                -33.95
+              ],
+              [
+                138.65,
+                -34.15
+              ],
+              [
+                138.55,
+                -34.45
+              ],
+              [
+                138.6,
+                -34.6
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "glenelg",
+        "name": "Glenelg",
+        "nickname": "Tigers",
+        "era": "Pre-1990 Era",
+        "home_oval": "Glenelg Oval (ACH Group Stadium)",
+        "description": "Brighton and Holdfast Bay coast alongside the prolific South East recruitment zone.",
+        "famous_players": "Stephen Kernahan, Peter Maynard, Stephen Copping, Tony McGuinness",
+        "trivia": "Graham Cornes led Glenelg to back-to-back flags in 1985 and 1986 with a team stacked with South East country recruits.",
+        "fillColor": "#FFB81C",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.5,
+                -35.04
+              ],
+              [
+                138.58,
+                -35.04
+              ],
+              [
+                138.56,
+                -34.96
+              ],
+              [
+                138.51,
+                -34.96
+              ],
+              [
+                138.5,
+                -35.04
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                139.75,
+                -36.65
+              ],
+              [
+                140.98,
+                -36.65
+              ],
+              [
+                140.98,
+                -38.05
+              ],
+              [
+                140.7,
+                -38.05
+              ],
+              [
+                140.35,
+                -37.6
+              ],
+              [
+                139.8,
+                -37.15
+              ],
+              [
+                139.75,
+                -36.65
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "north-adelaide",
+        "name": "North Adelaide",
+        "nickname": "Roosters",
+        "era": "Pre-1990 Era",
+        "home_oval": "Prospect Oval",
+        "description": "Prospect corridor and Spencer Gulf country recruiting grounds.",
+        "famous_players": "Barrie Robran, Darren Jarman, Andrew Jarman, Mick Redden",
+        "trivia": "North Adelaide won the 1987 SANFL Premiership under Michael Nunan, executing an innovative running handball game.",
+        "fillColor": "#C8102E",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.58,
+                -34.91
+              ],
+              [
+                138.64,
+                -34.91
+              ],
+              [
+                138.64,
+                -34.84
+              ],
+              [
+                138.58,
+                -34.84
+              ],
+              [
+                138.58,
+                -34.91
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.8,
+                -33.2
+              ],
+              [
+                138.25,
+                -33.2
+              ],
+              [
+                138.8,
+                -32.5
+              ],
+              [
+                139.5,
+                -29.0
+              ],
+              [
+                139.5,
+                -26.5
+              ],
+              [
+                135.5,
+                -26.5
+              ],
+              [
+                136.0,
+                -30.5
+              ],
+              [
+                137.2,
+                -32.5
+              ],
+              [
+                137.6,
+                -33.1
+              ],
+              [
+                136.8,
+                -33.2
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "norwood",
+        "name": "Norwood",
+        "nickname": "Redlegs",
+        "era": "Pre-1990 Era",
+        "home_oval": "Norwood Oval (The Parade)",
+        "description": "Eastern suburbs and Eyre Peninsula territory.",
+        "famous_players": "Michael Aish, Craig Balme, Garry McIntosh, Neville Roberts",
+        "trivia": "In 1984, Bob Hammond's Norwood Redlegs became the 'History Makers', winning four consecutive finals from fifth to claim the flag.",
+        "fillColor": "#C8102E",
+        "strokeColor": "#002B49",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.62,
+                -34.94
+              ],
+              [
+                138.72,
+                -34.94
+              ],
+              [
+                138.74,
+                -34.86
+              ],
+              [
+                138.63,
+                -34.86
+              ],
+              [
+                138.62,
+                -34.94
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                133.6,
+                -32.15
+              ],
+              [
+                136.1,
+                -32.5
+              ],
+              [
+                136.8,
+                -33.6
+              ],
+              [
+                136.15,
+                -34.75
+              ],
+              [
+                135.65,
+                -34.75
+              ],
+              [
+                134.9,
+                -34.0
+              ],
+              [
+                134.15,
+                -33.0
+              ],
+              [
+                133.6,
+                -32.15
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port-adelaide",
+        "name": "Port Adelaide",
+        "nickname": "Magpies",
+        "era": "Pre-1990 Era",
+        "home_oval": "Alberton Oval",
+        "description": "Historic Alberton/Port Adelaide docks and Western Eyre Peninsula recruitment.",
+        "famous_players": "Russell Ebert, Greg Phillips, Tim Ginever, Stephen Williams",
+        "trivia": "John Cahill led Port Adelaide to premierships in 1988, 1989, and 1990 immediately prior to the birth of the Adelaide Crows.",
+        "fillColor": "#0A192F",
+        "strokeColor": "#008AAB",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.48,
+                -34.88
+              ],
+              [
+                138.54,
+                -34.88
+              ],
+              [
+                138.52,
+                -34.76
+              ],
+              [
+                138.47,
+                -34.77
+              ],
+              [
+                138.48,
+                -34.88
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                131.8,
+                -31.7
+              ],
+              [
+                134.0,
+                -31.7
+              ],
+              [
+                134.0,
+                -32.6
+              ],
+              [
+                133.2,
+                -32.4
+              ],
+              [
+                131.8,
+                -31.7
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "south-adelaide",
+        "name": "South Adelaide",
+        "nickname": "Panthers",
+        "era": "Pre-1990 Era",
+        "home_oval": "Adelaide Oval (Historic match tenant)",
+        "description": "Southern metropolitan and Fleurieu/Kangaroo Island zones.",
+        "famous_players": "Rick Davies, Mark Bickley, David Kappler",
+        "trivia": "Rick Davies kicked 151 goals for South Adelaide in 1983, a legendary individual performance in SANFL history.",
+        "fillColor": "#002B49",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.46,
+                -35.28
+              ],
+              [
+                138.58,
+                -35.28
+              ],
+              [
+                138.56,
+                -35.08
+              ],
+              [
+                138.5,
+                -35.08
+              ],
+              [
+                138.46,
+                -35.28
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.1,
+                -35.65
+              ],
+              [
+                138.9,
+                -35.65
+              ],
+              [
+                139.05,
+                -35.35
+              ],
+              [
+                138.65,
+                -35.3
+              ],
+              [
+                138.25,
+                -35.45
+              ],
+              [
+                138.1,
+                -35.65
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.55,
+                -35.95
+              ],
+              [
+                138.1,
+                -35.75
+              ],
+              [
+                138.1,
+                -35.9
+              ],
+              [
+                137.6,
+                -36.05
+              ],
+              [
+                136.65,
+                -36.05
+              ],
+              [
+                136.55,
+                -35.95
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sturt",
+        "name": "Sturt",
+        "nickname": "Double Blues",
+        "era": "Pre-1990 Era",
+        "home_oval": "Unley Oval",
+        "description": "Unley, Mitcham hills foothills, and Murraylands country zone.",
+        "famous_players": "Paul Bagshaw, Michael Graham, Tony Burgan, Bruce Winter",
+        "trivia": "The Double Blues won five straight SANFL premierships (1966\u20131970) under Jack Oatey, setting a benchmark for team discipline.",
+        "fillColor": "#003366",
+        "strokeColor": "#78A2CC",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.59,
+                -35.02
+              ],
+              [
+                138.66,
+                -35.02
+              ],
+              [
+                138.65,
+                -34.94
+              ],
+              [
+                138.59,
+                -34.94
+              ],
+              [
+                138.59,
+                -35.02
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.68,
+                -35.35
+              ],
+              [
+                139.6,
+                -35.35
+              ],
+              [
+                139.6,
+                -34.85
+              ],
+              [
+                139.1,
+                -34.85
+              ],
+              [
+                138.72,
+                -35.0
+              ],
+              [
+                138.68,
+                -35.35
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "west-adelaide",
+        "name": "West Adelaide",
+        "nickname": "Blood 'n' Tars",
+        "era": "Pre-1990 Era",
+        "home_oval": "Richmond Oval (Hisense Stadium)",
+        "description": "Inner-west Adelaide and Riverland agricultural belt.",
+        "famous_players": "Mark Mickan, Brian Leys, Bruce Lindner, Leon Gross",
+        "trivia": "Neil Kerley's 1983 premiership side was dubbed the 'Kerley's Heroes', toppling Sturt in a famous Grand Final triumph.",
+        "fillColor": "#A51C30",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.54,
+                -34.95
+              ],
+              [
+                138.6,
+                -34.95
+              ],
+              [
+                138.6,
+                -34.91
+              ],
+              [
+                138.54,
+                -34.91
+              ],
+              [
+                138.54,
+                -34.95
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                139.6,
+                -35.45
+              ],
+              [
+                140.98,
+                -35.45
+              ],
+              [
+                140.98,
+                -33.95
+              ],
+              [
+                139.8,
+                -33.95
+              ],
+              [
+                139.6,
+                -34.4
+              ],
+              [
+                139.6,
+                -35.45
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "woodville",
+        "name": "Woodville",
+        "nickname": "Warriors",
+        "era": "Pre-1990 Era (Pre-Merger)",
+        "home_oval": "Woodville Oval (Oval Avenue)",
+        "description": "North of Port Road & Grange Road (Woodville, Cheltenham, Findon, Seaton, Grange) plus Northern Yorke Peninsula (Kadina, Wallaroo, Moonta, Bute).",
+        "famous_players": "Malcolm Blight, Ralph Sewer, Colin Parker, Allen Greer",
+        "trivia": "Home of Australian Football Hall of Fame Legend Malcolm Blight, who kicked 126 goals for the Warriors in 1985 before their 1991 merger.",
+        "fillColor": "#005A36",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.48,
+                -34.9
+              ],
+              [
+                138.55,
+                -34.9
+              ],
+              [
+                138.55,
+                -34.85
+              ],
+              [
+                138.48,
+                -34.85
+              ],
+              [
+                138.48,
+                -34.9
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                137.4,
+                -34.25
+              ],
+              [
+                138.0,
+                -34.25
+              ],
+              [
+                137.95,
+                -33.75
+              ],
+              [
+                137.55,
+                -33.75
+              ],
+              [
+                137.4,
+                -34.0
+              ],
+              [
+                137.4,
+                -34.25
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "west-torrens",
+        "name": "West Torrens",
+        "nickname": "Eagles",
+        "era": "Pre-1990 Era (Pre-Merger)",
+        "home_oval": "Thebarton Oval",
+        "description": "South of Port Road & Grange Road (Thebarton, Torrensville, Mile End, Lockleys, Fulham, West Beach) plus Southern Yorke Peninsula (Maitland, Minlaton, Yorketown, Edithburgh).",
+        "famous_players": "Bob Hank, Lindsay Head, Neville Roberts, Fred Bills",
+        "trivia": "Foundation SANFL club famous for dual Magarey Medallists Bob Hank and Lindsay Head. The Eagles played at Thebarton Oval from 1922 until merging with Woodville.",
+        "fillColor": "#002B49",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.49,
+                -34.95
+              ],
+              [
+                138.57,
+                -34.95
+              ],
+              [
+                138.57,
+                -34.9
+              ],
+              [
+                138.49,
+                -34.9
+              ],
+              [
+                138.49,
+                -34.95
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.9,
+                -35.3
+              ],
+              [
+                137.85,
+                -35.1
+              ],
+              [
+                137.95,
+                -34.25
+              ],
+              [
+                137.4,
+                -34.25
+              ],
+              [
+                137.35,
+                -34.45
+              ],
+              [
+                136.9,
+                -35.05
+              ],
+              [
+                136.9,
+                -35.3
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

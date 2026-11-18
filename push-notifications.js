@@ -229,12 +229,12 @@
             gap: 12px;
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 5px solid #f26522;
+            border-left: 5px solid #FFB81C;
         `;
 
         const imgHtml = imageUrl 
             ? `<img src="${imageUrl}" style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;" />`
-            : `<div style="font-size: 1.6rem; line-height: 1;">🚴</div>`;
+            : `<div style="font-size: 1.6rem; line-height: 1;">🏉</div>`;
 
         toast.innerHTML = `
             ${imgHtml}

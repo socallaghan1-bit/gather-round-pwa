@@ -1433,14 +1433,15 @@ async function applyMapOverlayLayers() {
             try {
                 if (!cachedSanflCurrent) {
                     const res = await fetch('data/sanfl-zones-current.geojson');
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     cachedSanflCurrent = await res.json();
                 }
                 sanflCurrentLayer = window.L.geoJSON(cachedSanflCurrent, {
                     style: (feature) => ({
                         fillColor: feature.properties.fillColor || '#0A192F',
-                        color: feature.properties.strokeColor || '#C8102E',
-                        weight: feature.properties.strokeWeight || 2,
-                        fillOpacity: feature.properties.fillOpacity || 0.35
+                        color: feature.properties.strokeColor || '#FFB81C',
+                        weight: feature.properties.strokeWeight || 2.5,
+                        fillOpacity: feature.properties.fillOpacity || 0.42
                     }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
@@ -1457,14 +1458,21 @@ async function applyMapOverlayLayers() {
                             </div>
                         `;
                         layer.bindPopup(popupContent);
+                        layer.on('mouseover', () => {
+                            if (typeof layer.bringToFront === 'function') layer.bringToFront();
+                        });
                     }
                 });
             } catch (err) {
                 console.warn('Failed to load current SANFL zones', err);
+                showToast('⚠️ Unable to load Current SANFL Recruiting Zones.', { type: 'error' });
             }
         }
         if (sanflCurrentLayer && !scheduleMap.hasLayer(sanflCurrentLayer)) {
             sanflCurrentLayer.addTo(scheduleMap);
+            if (typeof sanflCurrentLayer.bringToFront === 'function') {
+                sanflCurrentLayer.bringToFront();
+            }
         }
     } else if (sanflCurrentLayer && scheduleMap.hasLayer(sanflCurrentLayer)) {
         scheduleMap.removeLayer(sanflCurrentLayer);
@@ -1476,14 +1484,15 @@ async function applyMapOverlayLayers() {
             try {
                 if (!cachedSanfl1990) {
                     const res = await fetch('data/sanfl-zones-1990.geojson');
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     cachedSanfl1990 = await res.json();
                 }
                 sanfl1990Layer = window.L.geoJSON(cachedSanfl1990, {
                     style: (feature) => ({
                         fillColor: feature.properties.fillColor || '#0A192F',
-                        color: feature.properties.strokeColor || '#C8102E',
-                        weight: feature.properties.strokeWeight || 2,
-                        fillOpacity: feature.properties.fillOpacity || 0.35
+                        color: feature.properties.strokeColor || '#FFB81C',
+                        weight: feature.properties.strokeWeight || 2.5,
+                        fillOpacity: feature.properties.fillOpacity || 0.42
                     }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
@@ -1500,14 +1509,21 @@ async function applyMapOverlayLayers() {
                             </div>
                         `;
                         layer.bindPopup(popupContent);
+                        layer.on('mouseover', () => {
+                            if (typeof layer.bringToFront === 'function') layer.bringToFront();
+                        });
                     }
                 });
             } catch (err) {
                 console.warn('Failed to load 1990 SANFL zones', err);
+                showToast('⚠️ Unable to load 1990 SANFL Recruiting Zones.', { type: 'error' });
             }
         }
         if (sanfl1990Layer && !scheduleMap.hasLayer(sanfl1990Layer)) {
             sanfl1990Layer.addTo(scheduleMap);
+            if (typeof sanfl1990Layer.bringToFront === 'function') {
+                sanfl1990Layer.bringToFront();
+            }
         }
     } else if (sanfl1990Layer && scheduleMap.hasLayer(sanfl1990Layer)) {
         scheduleMap.removeLayer(sanfl1990Layer);
@@ -1909,88 +1925,152 @@ async function initApp() {
 // ======================================================================
 let vaultPlayers = [];
 let vaultInitialized = false;
-let shakeInstance = null;
-let vaultSensorReady = false;
+let devicemotionActive = false;
+let lastMotionX = null;
+let lastMotionY = null;
+let lastMotionZ = null;
+let lastShakeTimestamp = 0;
+const SHAKE_DELTA_THRESHOLD = 14;
+const SHAKE_COOLDOWN_MS = 900;
 
 async function loadVaultData() {
     if (vaultPlayers.length > 0) return;
     try {
         const res = await fetch('data/footy-vault.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         vaultPlayers = await res.json();
     } catch (err) {
         console.warn('Failed to load footy-vault.json', err);
+        showToast('⚠️ Could not load Footy Vault bios.', { type: 'error' });
         vaultPlayers = [];
     }
 }
 
+function handleDeviceMotion(event) {
+    const acc = event.accelerationIncludingGravity;
+    if (!acc) return;
+
+    const x = acc.x;
+    const y = acc.y;
+    const z = acc.z;
+
+    if (x === null || y === null || z === null) return;
+
+    const now = Date.now();
+
+    if (lastMotionX !== null && lastMotionY !== null && lastMotionZ !== null) {
+        const deltaX = Math.abs(x - lastMotionX);
+        const deltaY = Math.abs(y - lastMotionY);
+        const deltaZ = Math.abs(z - lastMotionZ);
+
+        const isSignificantMotion = (deltaX > SHAKE_DELTA_THRESHOLD && deltaY > SHAKE_DELTA_THRESHOLD) ||
+                                    (deltaX > SHAKE_DELTA_THRESHOLD && deltaZ > SHAKE_DELTA_THRESHOLD) ||
+                                    (deltaY > SHAKE_DELTA_THRESHOLD && deltaZ > SHAKE_DELTA_THRESHOLD) ||
+                                    (deltaX + deltaY + deltaZ > SHAKE_DELTA_THRESHOLD * 2);
+
+        if (isSignificantMotion && (now - lastShakeTimestamp > SHAKE_COOLDOWN_MS)) {
+            lastShakeTimestamp = now;
+            if (navigator.vibrate) {
+                try { navigator.vibrate(40); } catch (_) {}
+            }
+            if (window.TDUHaptics) window.TDUHaptics.success();
+            revealRandomPlayer();
+        }
+    }
+
+    lastMotionX = x;
+    lastMotionY = y;
+    lastMotionZ = z;
+}
+
+function startNativeShakeSensor() {
+    if (devicemotionActive) return;
+    window.addEventListener('devicemotion', handleDeviceMotion, false);
+    devicemotionActive = true;
+
+    const statusBadge = document.getElementById('vault-sensor-status');
+    if (statusBadge) {
+        statusBadge.textContent = '🟢 Shake Sensor Active — Flick phone to draw!';
+        statusBadge.classList.add('sensor-active');
+    }
+
+    const unlockBtn = document.getElementById('vault-unlock-btn');
+    if (unlockBtn) {
+        unlockBtn.style.display = 'none';
+    }
+}
+
 function initFootyVault() {
-    if (vaultInitialized) return;
-    vaultInitialized = true;
-    loadVaultData();
+    if (!vaultInitialized) {
+        vaultInitialized = true;
+        loadVaultData();
+    }
 
     const unlockBtn = document.getElementById('vault-unlock-btn');
     const statusBadge = document.getElementById('vault-sensor-status');
 
-    // Detect iOS 13+ requiring explicit accelerometer permission
-    const needsIOSPermission = typeof DeviceMotionEvent !== 'undefined' &&
+    // iOS 13+ requires explicit user gesture permission via DeviceMotionEvent.requestPermission
+    const isIOSPermissionRequired = typeof DeviceMotionEvent !== 'undefined' &&
         typeof DeviceMotionEvent.requestPermission === 'function';
 
-    if (needsIOSPermission) {
-        // Show the unlock button for iOS
-        if (unlockBtn) unlockBtn.style.display = '';
-        if (statusBadge) statusBadge.textContent = 'Tap "Unlock" to enable shake 🔒';
+    if (isIOSPermissionRequired) {
+        if (!devicemotionActive) {
+            if (unlockBtn) unlockBtn.style.display = 'inline-flex';
+            if (statusBadge) {
+                statusBadge.textContent = '⚪ Tap below to unlock motion sensor';
+                statusBadge.classList.remove('sensor-active');
+            }
+        } else {
+            if (unlockBtn) unlockBtn.style.display = 'none';
+            if (statusBadge) {
+                statusBadge.textContent = '🟢 Shake Sensor Active — Flick phone to draw!';
+                statusBadge.classList.add('sensor-active');
+            }
+        }
+    } else if (typeof window.DeviceMotionEvent !== 'undefined') {
+        // Android / modern devices supporting devicemotion without explicit permission gate
+        startNativeShakeSensor();
     } else {
-        // Non-iOS: start shake.js directly
         if (unlockBtn) unlockBtn.style.display = 'none';
-        startShakeListener();
+        if (statusBadge) {
+            statusBadge.textContent = '⚪ Tap below to draw!';
+            statusBadge.classList.remove('sensor-active');
+        }
     }
 }
 
 window.unlockVault = function() {
+    // Synchronous execution path required inside click handler for iOS Safari permission grant
     if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission().then(function(state) {
-            if (state === 'granted') {
-                startShakeListener();
-                const unlockBtn = document.getElementById('vault-unlock-btn');
-                if (unlockBtn) unlockBtn.style.display = 'none';
-            } else {
+        DeviceMotionEvent.requestPermission()
+            .then(function(state) {
+                if (state === 'granted') {
+                    startNativeShakeSensor();
+                } else {
+                    const statusBadge = document.getElementById('vault-sensor-status');
+                    if (statusBadge) {
+                        statusBadge.textContent = '⚪ Permission denied — Tap button below!';
+                        statusBadge.classList.remove('sensor-active');
+                    }
+                }
+            })
+            .catch(function(err) {
+                console.warn('DeviceMotionEvent permission error:', err);
                 const statusBadge = document.getElementById('vault-sensor-status');
-                if (statusBadge) statusBadge.textContent = 'Permission denied — use Tap to Shake ❌';
-            }
-        }).catch(function(err) {
-            console.warn('DeviceMotionEvent.requestPermission error:', err);
-            const statusBadge = document.getElementById('vault-sensor-status');
-            if (statusBadge) statusBadge.textContent = 'Permission error — use Tap to Shake ❌';
-        });
+                if (statusBadge) {
+                    statusBadge.textContent = '⚪ Sensor unavailable — Tap button below!';
+                    statusBadge.classList.remove('sensor-active');
+                }
+            });
+    } else {
+        startNativeShakeSensor();
     }
 };
 
-async function startShakeListener() {
-    const statusBadge = document.getElementById('vault-sensor-status');
-    try {
-        const ShakeClass = window.TDUCdn ? await window.TDUCdn.load('shake') : window.Shake;
-        if (typeof ShakeClass === 'function') {
-            shakeInstance = new ShakeClass({ threshold: 12, timeout: 800 });
-            shakeInstance.start();
-            vaultSensorReady = true;
-            if (statusBadge) statusBadge.textContent = 'Ready to Shake 📱';
-            window.addEventListener('shake', handleShakeEvent);
-        } else {
-            vaultSensorReady = false;
-            if (statusBadge) statusBadge.textContent = 'Shake not available — use Tap to Shake 🖱️';
-        }
-    } catch (err) {
-        console.warn('Shake.js load or init error:', err);
-        vaultSensorReady = false;
-        if (statusBadge) statusBadge.textContent = 'Shake not available — use Tap to Shake 🖱️';
-    }
-}
-
-function handleShakeEvent() {
-    revealRandomPlayer();
-}
-
 window.triggerVaultShake = function() {
+    if (navigator.vibrate) {
+        try { navigator.vibrate(40); } catch (_) {}
+    }
     if (window.TDUHaptics) window.TDUHaptics.success();
     revealRandomPlayer();
 };

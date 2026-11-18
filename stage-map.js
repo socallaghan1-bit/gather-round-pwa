@@ -85,7 +85,7 @@
                 radius: 8,
                 color: '#ffffff',
                 weight: 2.5,
-                fillColor: '#f26522',
+                fillColor: '#FFB81C',
                 fillOpacity: 1.0
             }).bindPopup(buildPopupHTML(checkpoint)).addTo(map);
         });

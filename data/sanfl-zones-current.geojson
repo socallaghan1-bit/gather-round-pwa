@@ -1,0 +1,743 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "central-district",
+        "name": "Central District",
+        "nickname": "Bulldogs",
+        "era": "Current SANFL Zone",
+        "home_oval": "X Convenience Oval (Elizabeth)",
+        "description": "Northern Adelaide metropolitan corridor (Elizabeth, Salisbury, Gawler) plus the Barossa Valley and Light regional recruitment zone.",
+        "famous_players": "John Platten, Ian Callinan, Sonny Morey",
+        "trivia": "Central District entered the league in 1964 and created a football heartland in Adelaide's northern industrial suburbs, culminating in 9 flags in 11 years (2000\u20132010).",
+        "fillColor": "#002B49",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.56,
+                -34.78
+              ],
+              [
+                138.65,
+                -34.78
+              ],
+              [
+                138.74,
+                -34.74
+              ],
+              [
+                138.78,
+                -34.62
+              ],
+              [
+                138.74,
+                -34.58
+              ],
+              [
+                138.62,
+                -34.64
+              ],
+              [
+                138.56,
+                -34.78
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.6,
+                -34.6
+              ],
+              [
+                139.15,
+                -34.6
+              ],
+              [
+                139.3,
+                -34.25
+              ],
+              [
+                139.05,
+                -33.95
+              ],
+              [
+                138.65,
+                -34.15
+              ],
+              [
+                138.55,
+                -34.45
+              ],
+              [
+                138.6,
+                -34.6
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "glenelg",
+        "name": "Glenelg",
+        "nickname": "Tigers",
+        "era": "Current SANFL Zone",
+        "home_oval": "Stratarama Stadium (Glenelg)",
+        "description": "South-western coastal metropolitan strip (Brighton, Glenelg, Marion) plus the fertile Limestone Coast & South East (Mount Gambier, Naracoorte, Millicent).",
+        "famous_players": "Stephen Kernahan, Tony McGuinness, John Nicholls, Chris McDermott",
+        "trivia": "The Tigers' country zone in the South East has historically produced some of Australian football's greatest champions, including Carlton captain Stephen Kernahan.",
+        "fillColor": "#FFB81C",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.5,
+                -35.04
+              ],
+              [
+                138.58,
+                -35.04
+              ],
+              [
+                138.56,
+                -34.96
+              ],
+              [
+                138.51,
+                -34.96
+              ],
+              [
+                138.5,
+                -35.04
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                139.75,
+                -36.65
+              ],
+              [
+                140.98,
+                -36.65
+              ],
+              [
+                140.98,
+                -38.05
+              ],
+              [
+                140.7,
+                -38.05
+              ],
+              [
+                140.35,
+                -37.6
+              ],
+              [
+                139.8,
+                -37.15
+              ],
+              [
+                139.75,
+                -36.65
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "north-adelaide",
+        "name": "North Adelaide",
+        "nickname": "Roosters",
+        "era": "Current SANFL Zone",
+        "home_oval": "Prospect Oval",
+        "description": "Inner-northern suburbs (Prospect, Walkerville, Enfield) extending to the Upper Spencer Gulf, Port Pirie, Flinders Ranges, and the Far North (Roxby Downs).",
+        "famous_players": "Barrie Robran, Ken Farmer, Darren Jarman, Andrew Jarman",
+        "trivia": "North Adelaide's sprawling regional country zone reaches deep into the outback. Ken Farmer kicked 1,417 career goals for the Roosters at Prospect.",
+        "fillColor": "#C8102E",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.58,
+                -34.91
+              ],
+              [
+                138.64,
+                -34.91
+              ],
+              [
+                138.64,
+                -34.84
+              ],
+              [
+                138.58,
+                -34.84
+              ],
+              [
+                138.58,
+                -34.91
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.8,
+                -33.2
+              ],
+              [
+                138.25,
+                -33.2
+              ],
+              [
+                138.8,
+                -32.5
+              ],
+              [
+                139.5,
+                -29.0
+              ],
+              [
+                139.5,
+                -26.5
+              ],
+              [
+                135.5,
+                -26.5
+              ],
+              [
+                136.0,
+                -30.5
+              ],
+              [
+                137.2,
+                -32.5
+              ],
+              [
+                137.6,
+                -33.1
+              ],
+              [
+                136.8,
+                -33.2
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "norwood",
+        "name": "Norwood",
+        "nickname": "Redlegs",
+        "era": "Current SANFL Zone",
+        "home_oval": "Coopers Stadium (The Parade)",
+        "description": "Adelaide eastern suburbs (The Parade, Kensington, Burnside, Campbelltown) plus the vast, rugged Eyre Peninsula (Port Lincoln, Ceduna, Kimba).",
+        "famous_players": "Michael Aish, Garry McIntosh, Michael Taylor, Craig Balme",
+        "trivia": "Norwood's Eyre Peninsula pipeline is legendary, producing hardened country footballers that powered the Redlegs to 31 SANFL premierships.",
+        "fillColor": "#C8102E",
+        "strokeColor": "#002B49",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.62,
+                -34.94
+              ],
+              [
+                138.72,
+                -34.94
+              ],
+              [
+                138.74,
+                -34.86
+              ],
+              [
+                138.63,
+                -34.86
+              ],
+              [
+                138.62,
+                -34.94
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                133.6,
+                -32.15
+              ],
+              [
+                136.1,
+                -32.5
+              ],
+              [
+                136.8,
+                -33.6
+              ],
+              [
+                136.15,
+                -34.75
+              ],
+              [
+                135.65,
+                -34.75
+              ],
+              [
+                134.9,
+                -34.0
+              ],
+              [
+                134.15,
+                -33.0
+              ],
+              [
+                133.6,
+                -32.15
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port-adelaide",
+        "name": "Port Adelaide",
+        "nickname": "Magpies",
+        "era": "Current SANFL Zone",
+        "home_oval": "Alberton Oval",
+        "description": "Historic docklands, LeFevre Peninsula, Semaphore, Alberton, and Far West Coast regional recruitment.",
+        "famous_players": "Russell Ebert, Fos Williams, Bob Quinn, Greg Phillips, Tim Ginever",
+        "trivia": "The most successful club in Australian football history with 36 SANFL premierships. Fos Williams established their famous club creed at Alberton in 1962.",
+        "fillColor": "#0A192F",
+        "strokeColor": "#008AAB",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.48,
+                -34.88
+              ],
+              [
+                138.54,
+                -34.88
+              ],
+              [
+                138.52,
+                -34.76
+              ],
+              [
+                138.47,
+                -34.77
+              ],
+              [
+                138.48,
+                -34.88
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                131.8,
+                -31.7
+              ],
+              [
+                134.0,
+                -31.7
+              ],
+              [
+                134.0,
+                -32.6
+              ],
+              [
+                133.2,
+                -32.4
+              ],
+              [
+                131.8,
+                -31.7
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "south-adelaide",
+        "name": "South Adelaide",
+        "nickname": "Panthers",
+        "era": "Current SANFL Zone",
+        "home_oval": "Flinders University Stadium (Noarlunga)",
+        "description": "Outer southern metropolitan corridor (Noarlunga, Christies Beach, Morphett Vale, Aldinga), Fleurieu Peninsula, and Kangaroo Island.",
+        "famous_players": "Rick Davies, Mark Bickley, Craig McRae, Peter Darley",
+        "trivia": "Foundation SANFL club. Both 1997/98 Crows premiership captain Mark Bickley and Collingwood premiership coach Craig McRae hail from South Adelaide's southern zone.",
+        "fillColor": "#002B49",
+        "strokeColor": "#FFFFFF",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.46,
+                -35.28
+              ],
+              [
+                138.58,
+                -35.28
+              ],
+              [
+                138.56,
+                -35.08
+              ],
+              [
+                138.5,
+                -35.08
+              ],
+              [
+                138.46,
+                -35.28
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.1,
+                -35.65
+              ],
+              [
+                138.9,
+                -35.65
+              ],
+              [
+                139.05,
+                -35.35
+              ],
+              [
+                138.65,
+                -35.3
+              ],
+              [
+                138.25,
+                -35.45
+              ],
+              [
+                138.1,
+                -35.65
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.55,
+                -35.95
+              ],
+              [
+                138.1,
+                -35.75
+              ],
+              [
+                138.1,
+                -35.9
+              ],
+              [
+                137.6,
+                -36.05
+              ],
+              [
+                136.65,
+                -36.05
+              ],
+              [
+                136.55,
+                -35.95
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sturt",
+        "name": "Sturt",
+        "nickname": "Double Blues",
+        "era": "Current SANFL Zone",
+        "home_oval": "Thomas Farms Oval (Unley)",
+        "description": "Affluent inner-south (Unley, Mitcham, Belair, Blackwood) expanding through the Adelaide Hills and Murraylands (Mount Barker, Murray Bridge).",
+        "famous_players": "Paul Bagshaw, Jack Oatey, Rick Davies, John Halbert, Tony Burgan",
+        "trivia": "Master coach Jack Oatey revolutionized modern Australian football at Unley Oval with precision handball and checkside kicking in the 1960s and 1970s.",
+        "fillColor": "#003366",
+        "strokeColor": "#78A2CC",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.59,
+                -35.02
+              ],
+              [
+                138.66,
+                -35.02
+              ],
+              [
+                138.65,
+                -34.94
+              ],
+              [
+                138.59,
+                -34.94
+              ],
+              [
+                138.59,
+                -35.02
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                138.68,
+                -35.35
+              ],
+              [
+                139.6,
+                -35.35
+              ],
+              [
+                139.6,
+                -34.85
+              ],
+              [
+                139.1,
+                -34.85
+              ],
+              [
+                138.72,
+                -35.0
+              ],
+              [
+                138.68,
+                -35.35
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "west-adelaide",
+        "name": "West Adelaide",
+        "nickname": "Blood 'n' Tars",
+        "era": "Current SANFL Zone",
+        "home_oval": "Hisense Stadium (Richmond Oval)",
+        "description": "Western inner-suburbs (Richmond, Mile End, Hilton, Keswick) and the sprawling Riverland & Mallee (Renmark, Berri, Loxton, Waikerie).",
+        "famous_players": "Neil Kerley, Mark Mickan, Brian Leys, Bruce Lindner",
+        "trivia": "Neil Kerley famously captained-coached the Bloods to the 1961 flag and coached them to the unforgettable 1983 premiership against Sturt at Football Park.",
+        "fillColor": "#A51C30",
+        "strokeColor": "#0A192F",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.54,
+                -34.95
+              ],
+              [
+                138.6,
+                -34.95
+              ],
+              [
+                138.6,
+                -34.91
+              ],
+              [
+                138.54,
+                -34.91
+              ],
+              [
+                138.54,
+                -34.95
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                139.6,
+                -35.45
+              ],
+              [
+                140.98,
+                -35.45
+              ],
+              [
+                140.98,
+                -33.95
+              ],
+              [
+                139.8,
+                -33.95
+              ],
+              [
+                139.6,
+                -34.4
+              ],
+              [
+                139.6,
+                -35.45
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wwt-eagles",
+        "name": "Woodville-West Torrens",
+        "nickname": "Eagles",
+        "era": "Current SANFL Zone",
+        "home_oval": "Maughan Thiem Kia Oval (Woodville)",
+        "description": "Unified western coastal territory (Woodville, West Lakes, Grange, Henley Beach) plus the entire Yorke Peninsula.",
+        "famous_players": "Malcolm Blight, Bob Hank, Lindsay Head, Andrew McLeod, Matthew Pavlich",
+        "trivia": "Formed in 1991 by the merger of the Woodville Warriors and West Torrens Eagles. The merged club has claimed five SANFL premierships since inception.",
+        "fillColor": "#005A36",
+        "strokeColor": "#FFB81C",
+        "strokeWeight": 2.5,
+        "fillOpacity": 0.42
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                138.48,
+                -34.93
+              ],
+              [
+                138.57,
+                -34.93
+              ],
+              [
+                138.55,
+                -34.85
+              ],
+              [
+                138.48,
+                -34.85
+              ],
+              [
+                138.48,
+                -34.93
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                136.9,
+                -35.3
+              ],
+              [
+                137.85,
+                -35.1
+              ],
+              [
+                138.0,
+                -34.2
+              ],
+              [
+                137.7,
+                -33.8
+              ],
+              [
+                137.45,
+                -33.85
+              ],
+              [
+                137.35,
+                -34.35
+              ],
+              [
+                136.9,
+                -35.05
+              ],
+              [
+                136.9,
+                -35.3
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
