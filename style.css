@@ -2361,6 +2361,7 @@ header {
    FOOTY VAULT — Shake-to-Reveal Classic SA Player Bios
    ====================================================================== */
 .vault-card {
+    grid-column: span 2;
     background: linear-gradient(135deg, #0A192F 0%, #1a2d4a 100%);
     color: #FFB81C;
     border: 2px solid #FFB81C;
