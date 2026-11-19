@@ -8,7 +8,7 @@
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0A192F">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3082/3082349.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -32,9 +32,10 @@
         }
 
         // Web Push Config
+        window.VAPID_PUBLIC_KEY = 'BH3LyaH9Mmp3P5v2Aj8zsNks2gdPat467Py3-vCVW6Ftcm-G1V52Nr8B0gOdq9ZPKsr3PaxFYC1iHn3xDRe8W2I';
         window.TDU_PUSH_CONFIG = {
-            vapidPublicKey: 'BH3LyaH9Mmp3P5v2Aj8zsNks2gdPat467Py3-vCVW6Ftcm-G1V52Nr8B0gOdq9ZPKsr3PaxFYC1iHn3xDRe8W2I',
-            subscriptionUrl: 'https://tdu-push-backend.callas1894.workers.dev/subscribe'
+            vapidPublicKey: window.VAPID_PUBLIC_KEY,
+            subscriptionUrl: 'https://gr-push-backend.mytdu-push.workers.dev/subscribe'
         };
     </script>
 </head>
@@ -175,10 +176,10 @@
             <h2 id="settings-title">Settings</h2>
             <div id="push-panel" class="guide-panel">
                 <div class="settings-row">
-                    <span id="notifications-label">Match &amp; Transit Push Alerts</span>
+                    <span id="notifications-label">Gather Round Banter &amp; Local Alerts</span>
                     <button id="push-toggle-btn" class="settings-switch" type="button" role="switch" aria-labelledby="notifications-label" aria-checked="false" onclick="togglePushAlerts()">Off</button>
                 </div>
-                <p class="guide-intro">Get live Footy Express bus loading alerts, parade starts, and stadium gate reminders. No login required.</p>
+                <p class="guide-intro">Get cheeky footy memes, local pub &amp; pie floater tips, and occasional stadium reminders. No login required.</p>
                 <div class="push-actions">
                     <div id="push-success-animation" class="push-success-animation" aria-hidden="true" hidden></div>
                 </div>
@@ -199,7 +200,7 @@
                         <h4>🥧 Buy Me a Pie Floater</h4>
                         <p>Support independent offline SANFL boundary maps, defunct ground research, and server costs for SA Gather Round 2027.</p>
                     </div>
-                    <a href="https://buymeacoffee.com/mygatherround" target="_blank" rel="noopener" class="btn btn-bidon btn-pie-btn">
+                    <a href="https://buymeacoffee.com/mytdu" target="_blank" rel="noopener noreferrer" class="btn btn-bidon btn-pie-btn">
                         <i class="fas fa-heart"></i> Buy a Pie Floater ($5)
                     </a>
                 </div>
@@ -430,7 +431,7 @@
                     <h4>Back MyGatherRound.app</h4>
                     <p>Keep this guide 100% independent, free of gambling ads, and offline-ready for every footy fan visiting South Australia.</p>
                 </div>
-                <a href="https://buymeacoffee.com/mygatherround" target="_blank" rel="noopener" class="btn btn-bidon btn-pie-btn">
+                <a href="https://buymeacoffee.com/mytdu" target="_blank" rel="noopener noreferrer" class="btn btn-bidon btn-pie-btn">
                     <i class="fas fa-heart"></i> Buy a Pie Floater ($5)
                 </a>
             </div>

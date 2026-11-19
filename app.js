@@ -244,6 +244,7 @@ const SANFL_GROUNDS = [
         details: "State-of-the-art training and match-day headquarters for the Adelaide Crows AFLW and community development programs, featuring the major Thebarton Oval precinct redevelopment (https://www.afc.com.au/news/2151082/thebarton-oval-precinct-taking-shape-with-major-oval-milestone).",
         color: "#002B5C"
     }
+];
 
 const VIEW_ANALYTICS_CONFIG = {
     home: {
@@ -958,45 +959,78 @@ window.resetRecommendationFlow = function() {
     renderRecommendationFlow();
 };
 
-// Data Fetching & Remote KV Sponsor Integration
-async function fetchRemoteSponsors() {
+// Data Fetching & Remote Sponsor Integration
+const PUSH_BACKEND_BASE = 'https://gr-push-backend.mytdu-push.workers.dev';
+
+function getSafeSponsorUrl(value) {
     try {
-        const res = await fetch('https://tdu-push-backend.callas1894.workers.dev/gather-sponsors');
-        if (res.ok) {
-            const data = await res.json();
-            if (data && data.headline) {
-                localStorage.setItem('GATHER_SPONSORS', JSON.stringify(data));
-                renderSchedule();
-            }
-        }
-    } catch (e) {
-        // Offline: uses cached GATHER_SPONSORS or fallback card
+        const url = new URL(String(value || '').trim());
+        return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : '';
+    } catch (error) {
+        return '';
     }
 }
 
-function getSponsorCardHTML() {
-    let customSponsor = null;
+function normalizeSponsor(payload) {
+    const source = payload && (payload.sponsor || payload.data || payload);
+    if (!source || typeof source !== 'object' || source.active === false || !String(source.headline || '').trim()) {
+        return null;
+    }
+    return {
+        venue: String(source.venue || source.partner || '').trim(),
+        badge: String(source.badge || 'SPONSORED').trim() || 'SPONSORED',
+        headline: String(source.headline || '').trim(),
+        tagline: String(source.tagline || source.description || source.summary || '').trim(),
+        url: getSafeSponsorUrl(source.url || source.link),
+        buttonText: String(source.buttonText || source.button_text || 'View Partner Offer').trim() || 'View Partner Offer',
+        active: source.active !== false,
+        updatedAt: source.updatedAt || source.updated_at || ''
+    };
+}
+
+function getStoredSponsor() {
     try {
-        const stored = localStorage.getItem('GATHER_SPONSORS');
-        if (stored) {
-            const parsed = JSON.parse(stored);
-            if (parsed && parsed.headline && parsed.active !== false) {
-                customSponsor = parsed;
-            }
-        }
-    } catch (e) {}
+        return normalizeSponsor(JSON.parse(localStorage.getItem('GATHER_SPONSORS') || 'null'));
+    } catch (error) {
+        console.warn('Could not read cached sponsor spotlight:', error);
+        return null;
+    }
+}
+
+function cacheSponsor(sponsor) {
+    if (sponsor) {
+        localStorage.setItem('GATHER_SPONSORS', JSON.stringify(sponsor));
+    } else {
+        localStorage.removeItem('GATHER_SPONSORS');
+    }
+}
+
+async function fetchRemoteSponsors() {
+    try {
+        const res = await fetch(`${PUSH_BACKEND_BASE}/sponsor`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`Sponsor backend responded ${res.status}`);
+        const data = res.status === 204 ? null : await res.json();
+        cacheSponsor(normalizeSponsor(data));
+    } catch (error) {
+        console.warn('Could not refresh sponsor spotlight; using cached data:', error);
+    }
+    renderFeaturedEvents();
+    renderSchedule();
+}
+
+function getSponsorCardHTML() {
+    const customSponsor = getStoredSponsor();
 
     if (customSponsor) {
-        const badge = customSponsor.badge || 'PARTNER SPOTLIGHT';
         const venue = customSponsor.venue ? `${escapeHTML(customSponsor.venue)} — ` : '';
         const headline = `${venue}${escapeHTML(customSponsor.headline)}`;
-        const desc = escapeHTML(customSponsor.description || '');
-        const link = escapeHTML(customSponsor.link || 'mailto:callas1894@gmail.com?subject=MyGatherRound%20Partner%20Inquiry');
-        const btnText = escapeHTML(customSponsor.buttonText || 'View Match-Day Specials');
+        const desc = escapeHTML(customSponsor.tagline);
+        const link = escapeHTML(customSponsor.url || 'mailto:callas1894@gmail.com?subject=MyGatherRound%20Partner%20Inquiry');
+        const btnText = escapeHTML(customSponsor.buttonText);
         return `
-            <div class="card event-card sponsor-showcase-card">
+            <div class="card event-card sponsor-showcase-card sponsored-card">
                 <div class="event-badges">
-                    <span class="tag sponsor-tag"><i class="fas fa-bullhorn"></i> ${escapeHTML(badge)}</span>
+                    <span class="tag sponsor-tag"><i class="fas fa-bullhorn"></i> Sponsored</span>
                 </div>
                 <h3 class="event-title">${headline}</h3>
                 <p class="event-desc">${desc}</p>
@@ -1009,20 +1043,7 @@ function getSponsorCardHTML() {
         `;
     }
 
-    return `
-        <div class="card event-card sponsor-showcase-card">
-            <div class="event-badges">
-                <span class="tag sponsor-tag"><i class="fas fa-bullhorn"></i> PARTNER SPOTLIGHT</span>
-            </div>
-            <h3 class="event-title">Spotlight Your Venue or Brand</h3>
-            <p class="event-desc">Put your hotel, brewery, or matchday event in front of 200,000+ Gather Round footy fans across South Australia.</p>
-            <div class="card-actions">
-                <a href="mailto:callas1894@gmail.com?subject=MyGatherRound%20Partner%20Inquiry" class="btn btn-outline-primary">
-                    <i class="far fa-envelope"></i> Inquire for Placements
-                </a>
-            </div>
-        </div>
-    `;
+    return '';
 }
 
 // Coordinate parsing helper
@@ -1376,7 +1397,8 @@ function renderFeaturedEvents() {
     const container = document.getElementById('featured-events');
     if (!container) return;
     const featured = allEvents.filter((e) => e.category === 'AFL Match').slice(0, 3);
-    container.innerHTML = featured.map((ev) => `
+    const sponsor = getStoredSponsor();
+    const matchCards = featured.slice(0, sponsor ? 2 : 3).map((ev) => `
         <div class="card event-card">
             <span class="tag" style="background:var(--crimson); color:white;">AFL MATCH</span>
             <h4 class="event-title" style="margin:6px 0 4px 0;">${escapeHTML(ev.title)}</h4>
@@ -1389,6 +1411,19 @@ function renderFeaturedEvents() {
             </button>
         </div>
     `).join('');
+    const sponsorCard = sponsor ? `
+        <div class="card event-card sponsor-showcase-card sponsored-card">
+            <span class="tag sponsor-tag"><i class="fas fa-bullhorn" aria-hidden="true"></i> Sponsored</span>
+            <h4 class="event-title" style="margin:6px 0 4px 0;">${escapeHTML(sponsor.venue ? `${sponsor.venue} — ` : '')}${escapeHTML(sponsor.headline)}</h4>
+            ${sponsor.tagline ? `<p class="event-desc">${escapeHTML(sponsor.tagline)}</p>` : ''}
+            ${sponsor.url ? `
+                <a href="${escapeHTML(sponsor.url)}" target="_blank" rel="noopener" class="btn btn-sm btn-primary" style="margin-top:10px;">
+                    ${escapeHTML(sponsor.buttonText)}
+                </a>
+            ` : ''}
+        </div>
+    ` : '';
+    container.innerHTML = matchCards + sponsorCard;
 }
 
 // ==========================================================================

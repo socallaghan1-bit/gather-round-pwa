@@ -147,7 +147,7 @@ def run_tests():
     assert manifest["theme_color"] == "#0A192F"
 
     sw = open(os.path.join(root, "service-worker.js"), "r", encoding="utf-8").read()
-    assert "gatherround-cache-v7" in sw, "service-worker CACHE_NAME should be gatherround-cache-v7"
+    assert "gatherround-cache-v11" in sw, "service-worker CACHE_NAME should be gatherround-cache-v11"
     assert "defunct-grounds.json" in sw
     assert "heritage.json" in sw
     assert "facilities.json" in sw
@@ -156,7 +156,10 @@ def run_tests():
 
     html = open(os.path.join(root, "index.html"), "r", encoding="utf-8").read()
     assert "MyGatherRound.app" in html
-    assert "buymeacoffee.com/mygatherround" in html
+    assert "gr-push-backend.mytdu-push.workers.dev" in html
+    assert "VAPID_PUBLIC_KEY" in html
+    assert "BH3LyaH9Mmp3P5v2Aj8zsNks2gdPat467Py3-vCVW6Ftcm-G1V52Nr8B0gOdq9ZPKsr3PaxFYC1iHn3xDRe8W2I" in html
+    assert "buymeacoffee.com/mytdu" in html
     assert "callas1894@gmail.com?subject=MyGatherRound" in html
     assert "🥧 Buy Me a Pie Floater" in html
     assert 'class="layer-pill active" id="layer-toggle-stadiums"' not in html, "Stadiums & Hubs pill should default to inactive"
@@ -168,6 +171,9 @@ def run_tests():
     app_js = open(os.path.join(root, "app.js"), "r", encoding="utf-8").read()
     assert "stadiums: false" in app_js, "activeMapLayers.stadiums should default to false"
     assert "'sanfl-grounds': false" in app_js, "activeMapLayers['sanfl-grounds'] should default to false"
+    assert "gr-push-backend.mytdu-push.workers.dev" in app_js
+    assert "renderFeaturedEvents();" in app_js
+    assert "Sponsored" in app_js
     for ground_name in (
         "Glenelg Oval", "Norwood Oval", "Prospect Oval", "Unley Oval",
         "Richmond Oval", "Woodville Oval", "Alberton Oval", "Elizabeth Oval", "Noarlunga Oval", "Thebarton Oval"
@@ -183,10 +189,10 @@ def run_tests():
 
     admin = open(os.path.join(root, "admin.html"), "r", encoding="utf-8").read()
     assert "GATHER_SPONSORS" in admin
-    assert "Barossa / Footy Express Alert" in admin or "Footy Express Alert" in admin
-    assert "Players Parade Starting" in admin
-    assert "Gates Open / Bounce Soon" in admin
-    assert "The Outer" in admin
+    assert "gr-push-backend.mytdu-push.workers.dev" in admin
+    assert "Tour Down Under" not in admin
+    assert "preset-btn" not in admin
+    assert "resetSponsorDefault" in admin
 
     print("========================================")
     print("ALL TESTS PASSED! READY FOR GATHER ROUND 2027!")

@@ -41,7 +41,7 @@ Explore all 9 confirmed AFL matches, interactive SANFL recruiting territory over
   - `[ 🍻 The Outer ]`
 
 ### 5. Community & Support
-- **Support CTA**: **"🥧 Buy Me a Pie Floater"** linking to `https://buymeacoffee.com/mygatherround`.
+- **Support CTA**: **"🥧 Buy Me a Pie Floater"** linking to `https://buymeacoffee.com/mytdu`.
 - **Partner Inquiries**: `callas1894@gmail.com?subject=MyGatherRound Partner Inquiry`.
 
 ---

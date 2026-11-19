@@ -286,8 +286,8 @@
             const isAppleMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
             const isStandalone = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
             setStatus(isAppleMobile && !isStandalone
-                ? 'On iPhone or iPad, add TDU 2027 to your Home Screen first (iOS 16.4+), then enable alerts here.'
-                : 'Race alerts are not supported in this browser.');
+                ? 'On iPhone or iPad, add MyGatherRound 2027 to your Home Screen first (iOS 16.4+), then enable alerts here.'
+                : 'Gather Round alerts are not supported in this browser.');
             updateControls({ disabled: true });
             return;
         }

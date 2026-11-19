@@ -76,5 +76,5 @@ test('Date filters in index.html match Gather Round 2027 dates', () => {
         assert.ok(html.includes(`applyDayFilter('${d}', this)`), `index.html should have filter for ${d}`);
     });
     assert.ok(html.includes('MyGatherRound.app'), 'index.html should feature mygatherround.app');
-    assert.ok(html.includes('buymeacoffee.com/mygatherround'), 'Support link should point to mygatherround');
+    assert.ok(html.includes('buymeacoffee.com/mytdu'), 'Support link should point to mytdu');
 });
