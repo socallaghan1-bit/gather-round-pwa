@@ -176,6 +176,7 @@ def run_tests():
         assert f'name: "{ground_name}"' in app_js, f"Missing active SANFL ground '{ground_name}' in app.js"
     assert "syncCategoryFilterPills" in app_js, "app.js should dynamically sync empty category pills"
     assert "hasActiveEventMapFilter" in app_js, "app.js should gate default event markers until filter or Show on Map"
+    assert "ANd9GcR110NNUAGbDufewTJHMdkyzYBLfDn3o0Mo7x2dl3JhBQ" in app_js, "app.js should contain Port Adelaide custom icon URL"
 
     admin = open(os.path.join(root, "admin.html"), "r", encoding="utf-8").read()
     assert "GATHER_SPONSORS" in admin

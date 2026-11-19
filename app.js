@@ -1751,9 +1751,13 @@ async function applyMapOverlayLayers() {
             sanflGroundsLayer = window.L.layerGroup();
             SANFL_GROUNDS.forEach((ground) => {
                 const iconColorStyle = ground.iconColor ? `color: ${ground.iconColor};` : '';
+                const isPortAdelaide = ground.id === 'sanfl-ground-alberton' || ground.club === 'Port Adelaide Magpies';
+                const innerHtml = isPortAdelaide
+                    ? `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR110NNUAGbDufewTJHMdkyzYBLfDn3o0Mo7x2dl3JhBQ&s=10" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Port Adelaide" />`
+                    : `<i class="fas fa-football" style="${iconColorStyle}"></i>`;
                 const customIcon = window.L.divIcon({
                     className: 'custom-map-marker',
-                    html: `<div class="marker-pin" style="background-color: ${ground.color};"><i class="fas fa-football" style="${iconColorStyle}"></i></div>`,
+                    html: `<div class="marker-pin" style="background-color: ${ground.color};">${innerHtml}</div>`,
                     iconSize: [30, 30],
                     iconAnchor: [15, 30],
                     popupAnchor: [0, -28]
