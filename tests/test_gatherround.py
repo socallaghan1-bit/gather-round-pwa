@@ -13,10 +13,10 @@ def run_tests():
     print("RUNNING MYGATHERROUND.APP TEST SUITE")
     print("========================================")
 
-    # 1. Test events.json
+    # 1. Test events.json (ONLY the 9 confirmed 2027 AFL Gather Round matches)
     events = load_json("events.json")
     print(f"Loaded {len(events)} events from events.json")
-    assert len(events) >= 20, f"Expected at least 20 events, got {len(events)}"
+    assert len(events) == 9, f"Expected exactly 9 confirmed AFL matches, got {len(events)}"
 
     # 9 Confirmed Matches
     matches = [e for e in events if e.get("category") == "AFL Match" or e.get("type") == "AFL Match"]
@@ -45,11 +45,12 @@ def run_tests():
         assert len(m["clubs"]) == 2, f"Match {mid} should list 2 clubs"
         print(f"  [PASS] {title} ({m['time_display']}) @ {m['venue']}")
 
-    # 2. Categories
+    # 2. Categories (no unconfirmed placeholder categories remain)
     categories = set(e["category"] for e in events)
-    expected_categories = {"AFL Match", "Parade & Festival", "Kids & Clinics", "Supporter Pubs", "The Outer"}
-    assert expected_categories.issubset(categories), f"Missing categories: {expected_categories - categories}"
-    print(f"  [PASS] Curated categories verified: {categories}")
+    assert categories == {"AFL Match"}, f"Expected only 'AFL Match' category, got {categories}"
+    removed_categories = {"Parade & Festival", "Kids & Clinics", "Supporter Pubs", "The Outer"}
+    assert categories.isdisjoint(removed_categories), f"Unconfirmed categories still present: {categories & removed_categories}"
+    print(f"  [PASS] Confirmed-only category verified: {categories}")
 
     # 3. 18 Clubs Presence
     all_clubs = [
@@ -131,6 +132,14 @@ def run_tests():
     assert "buymeacoffee.com/mygatherround" in html
     assert "callas1894@gmail.com?subject=MyGatherRound" in html
     assert "🥧 Buy Me a Pie Floater" in html
+    assert 'class="layer-pill active" id="layer-toggle-stadiums"' not in html, "Stadiums & Hubs pill should default to inactive"
+    for empty_cat in ("Kids & Clinics", "Supporter Pubs", "The Outer", "Parade"):
+        assert f'data-category="{empty_cat}" hidden' in html, f"Empty category pill '{empty_cat}' should be hidden by default"
+
+    app_js = open(os.path.join(root, "app.js"), "r", encoding="utf-8").read()
+    assert "stadiums: false" in app_js, "activeMapLayers.stadiums should default to false"
+    assert "syncCategoryFilterPills" in app_js, "app.js should dynamically sync empty category pills"
+    assert "hasActiveEventMapFilter" in app_js, "app.js should gate default event markers until filter or Show on Map"
 
     admin = open(os.path.join(root, "admin.html"), "r", encoding="utf-8").read()
     assert "GATHER_SPONSORS" in admin

@@ -32,10 +32,11 @@ let heritageLayer = null;
 let toiletsLayer = null;
 let waterLayer = null;
 let isMobileScheduleMapActive = false;
+let selectedMapEventId = null;
 
-// Active Overlay Layers State (Stadiums & Hubs default ON)
+// Active Overlay Layers State (all layers default OFF on initial load)
 let activeMapLayers = {
-    stadiums: true,
+    stadiums: false,
     'sanfl-current': false,
     'sanfl-1990': false,
     defunct: false,
@@ -736,6 +737,15 @@ function getRecommendationResult(intent, option) {
     };
 }
 
+function intentHasEvents(intentId) {
+    if (intentId === 'matches') return allEvents.some((e) => e.category === 'AFL Match' || e.type === 'AFL Match');
+    if (intentId === 'pubs') return allEvents.some((e) => e.category === 'Supporter Pubs');
+    if (intentId === 'kids') return allEvents.some((e) => e.category === 'Kids & Clinics');
+    if (intentId === 'outer') return allEvents.some((e) => e.category === 'The Outer');
+    if (intentId === 'parade') return allEvents.some((e) => e.category === 'Parade & Festival');
+    return true;
+}
+
 function renderRecommendationFlow() {
     const flow = document.getElementById('recommendation-flow');
     const launchBtn = document.getElementById('recommendation-launch-btn');
@@ -749,11 +759,21 @@ function renderRecommendationFlow() {
     launchBtn.setAttribute('aria-expanded', recommendationState.isOpen ? 'true' : 'false');
     flow.hidden = !recommendationState.isOpen;
 
-    intentButtons.innerHTML = INTENT_BUTTONS.map((btn) => `
-        <button type="button" class="choice-btn ${recommendationState.intent === btn.id ? 'active' : ''}" onclick="selectRecommendationIntent('${btn.id}')">
-            ${btn.label}
-        </button>
-    `).join('');
+    intentButtons.innerHTML = INTENT_BUTTONS.map((btn) => {
+        const available = intentHasEvents(btn.id);
+        if (!available) {
+            return `
+                <button type="button" class="choice-btn btn-disabled" disabled aria-disabled="true" title="Coming Soon">
+                    ${btn.label} <span style="font-size:0.72rem; font-weight:600; opacity:0.8;">(Coming Soon)</span>
+                </button>
+            `;
+        }
+        return `
+            <button type="button" class="choice-btn ${recommendationState.intent === btn.id ? 'active' : ''}" onclick="selectRecommendationIntent('${btn.id}')">
+                ${btn.label}
+            </button>
+        `;
+    }).join('');
 
     const options = RECOMMENDATION_OPTIONS[recommendationState.intent] || [];
     stepTwo.hidden = !recommendationState.intent;
@@ -1170,9 +1190,31 @@ window.toggleSave = function(id, btnElement) {
 };
 
 // Filter controllers
+function syncCategoryFilterPills() {
+    const pills = document.querySelectorAll('#luma-category-filters .luma-pill');
+    pills.forEach((pill) => {
+        const category = pill.getAttribute('data-category');
+        if (!category || category === 'All' || category === 'My Weekend') {
+            pill.hidden = false;
+            pill.style.display = '';
+            return;
+        }
+        const hasEvents = allEvents.some((event) => matchesCategoryFilter(event, category));
+        pill.hidden = !hasEvents;
+        pill.style.display = hasEvents ? '' : 'none';
+        if (!hasEvents && currentLumaFilter === category) {
+            currentLumaFilter = 'All';
+            pills.forEach((b) => b.classList.remove('active'));
+            const allPill = document.querySelector('#luma-category-filters .luma-pill[data-category="All"]');
+            if (allPill) allPill.classList.add('active');
+        }
+    });
+}
+
 window.applyClubFilter = function(club, btn) {
     if (btn && club !== currentClubFilter && window.TDUHaptics) window.TDUHaptics.navigation();
     currentClubFilter = club;
+    selectedMapEventId = null;
     document.querySelectorAll('#club-filters .club-pill').forEach((b) => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderSchedule();
@@ -1183,6 +1225,7 @@ window.applyClubFilter = function(club, btn) {
 window.applyLumaCategory = function(category, btn) {
     if (btn && category !== currentLumaFilter && window.TDUHaptics) window.TDUHaptics.navigation();
     currentLumaFilter = category;
+    selectedMapEventId = null;
     document.querySelectorAll('#luma-category-filters .luma-pill').forEach((b) => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderSchedule();
@@ -1193,6 +1236,7 @@ window.applyLumaCategory = function(category, btn) {
 window.applyDayFilter = function(day, btn) {
     if (btn && day !== currentDayFilter && window.TDUHaptics) window.TDUHaptics.navigation();
     currentDayFilter = day;
+    selectedMapEventId = null;
     document.querySelectorAll('#day-filters .filter-btn').forEach((b) => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderSchedule();
@@ -1210,6 +1254,7 @@ window.handleScheduleSearch = function(query) {
 
 window.clearScheduleSearch = function() {
     currentSearchQuery = '';
+    selectedMapEventId = null;
     const input = document.getElementById('schedule-search-input');
     if (input) input.value = '';
     const clearBtn = document.getElementById('schedule-search-clear');
@@ -1312,11 +1357,31 @@ async function initScheduleMap() {
     updateScheduleMapMarkers();
 }
 
+function hasActiveEventMapFilter() {
+    return currentClubFilter !== 'All' || currentDayFilter !== 'All';
+}
+
 function updateScheduleMapMarkers() {
     if (!scheduleMap || !scheduleMarkersLayer || !window.L) return;
     scheduleMarkersLayer.clearLayers();
 
-    const events = getFilteredScheduleEvents();
+    const filterActive = hasActiveEventMapFilter();
+    if (!filterActive && !selectedMapEventId) {
+        return;
+    }
+
+    let events = [];
+    if (filterActive) {
+        events = getFilteredScheduleEvents();
+        if (selectedMapEventId && !events.some((ev) => String(ev.id) === selectedMapEventId)) {
+            const selectedEv = allEvents.find((ev) => String(ev.id) === selectedMapEventId);
+            if (selectedEv) events = events.concat(selectedEv);
+        }
+    } else if (selectedMapEventId) {
+        const selectedEv = allEvents.find((ev) => String(ev.id) === selectedMapEventId);
+        if (selectedEv) events = [selectedEv];
+    }
+
     const bounds = [];
 
     events.forEach((event, idx) => {
@@ -1344,7 +1409,7 @@ function updateScheduleMapMarkers() {
         }
     });
 
-    if (bounds.length > 0 && currentDayFilter !== 'All') {
+    if (bounds.length > 0 && filterActive && !selectedMapEventId) {
         scheduleMap.fitBounds(window.L.latLngBounds(bounds), { padding: [35, 35], maxZoom: 13 });
     }
 }
@@ -1390,7 +1455,7 @@ function updateLayerButtonUI(layerKey, isActive) {
 async function applyMapOverlayLayers() {
     if (!scheduleMap || !window.L) return;
 
-    // 1. Stadiums & Footy Express Hubs (Default ON)
+    // 1. Stadiums & Footy Express Hubs (Default OFF)
     if (activeMapLayers.stadiums) {
         if (!stadiumsLayer) {
             stadiumsLayer = window.L.layerGroup();
@@ -1739,13 +1804,15 @@ window.panMapToEvent = async function(eventId) {
         return;
     }
 
+    selectedMapEventId = String(event.id);
+
     if (currentViewName !== 'schedule') showView('schedule');
     if (window.innerWidth < 900 && !isMobileScheduleMapActive) {
         toggleMobileScheduleView();
     }
 
     await initScheduleMap();
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, 250));
 
     if (scheduleMap) {
         scheduleMap.invalidateSize();
@@ -1890,6 +1957,10 @@ async function initApp() {
         console.error('Failed to load events.json', err);
     }
 
+    syncCategoryFilterPills();
+    Object.keys(activeMapLayers).forEach((key) => {
+        updateLayerButtonUI(key, activeMapLayers[key]);
+    });
     renderSchedule();
     renderFeaturedEvents();
     updateSavedBadge();

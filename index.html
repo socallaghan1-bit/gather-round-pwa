@@ -269,13 +269,13 @@
                     <!-- CATEGORY FILTER PILLS -->
                     <div class="filter-label">Category</div>
                     <div class="filters luma-pills" id="luma-category-filters" role="tablist" aria-label="Category filter">
-                        <button class="luma-pill active" onclick="applyLumaCategory('All', this)">🏉 All</button>
-                        <button class="luma-pill" onclick="applyLumaCategory('Matches', this)">🏟️ Matches</button>
-                        <button class="luma-pill" onclick="applyLumaCategory('Kids & Clinics', this)">👶 Kids &amp; Clinics</button>
-                        <button class="luma-pill" onclick="applyLumaCategory('Supporter Pubs', this)">🍻 Supporter Pubs</button>
-                        <button class="luma-pill" onclick="applyLumaCategory('The Outer', this)">📢 The Outer</button>
-                        <button class="luma-pill" onclick="applyLumaCategory('Parade', this)">🎉 Parade &amp; Fest</button>
-                        <button class="luma-pill star-pill" onclick="applyLumaCategory('My Weekend', this)">⭐ My Weekend</button>
+                        <button class="luma-pill active" data-category="All" onclick="applyLumaCategory('All', this)">🏉 All</button>
+                        <button class="luma-pill" data-category="Matches" onclick="applyLumaCategory('Matches', this)">🏟️ Matches</button>
+                        <button class="luma-pill" data-category="Kids & Clinics" hidden style="display:none;" onclick="applyLumaCategory('Kids & Clinics', this)">👶 Kids &amp; Clinics</button>
+                        <button class="luma-pill" data-category="Supporter Pubs" hidden style="display:none;" onclick="applyLumaCategory('Supporter Pubs', this)">🍻 Supporter Pubs</button>
+                        <button class="luma-pill" data-category="The Outer" hidden style="display:none;" onclick="applyLumaCategory('The Outer', this)">📢 The Outer</button>
+                        <button class="luma-pill" data-category="Parade" hidden style="display:none;" onclick="applyLumaCategory('Parade', this)">🎉 Parade &amp; Fest</button>
+                        <button class="luma-pill star-pill" data-category="My Weekend" onclick="applyLumaCategory('My Weekend', this)">⭐ My Weekend</button>
                     </div>
 
                     <!-- DATE FILTER PILLS -->
@@ -303,7 +303,7 @@
 
                 <!-- MAP TOGGLEABLE OVERLAY LAYERS -->
                 <div class="map-layer-toggles" role="toolbar" aria-label="Footy Map Layers">
-                    <button type="button" class="layer-pill active" id="layer-toggle-stadiums" onclick="toggleMapLayer('stadiums')">
+                    <button type="button" class="layer-pill" id="layer-toggle-stadiums" onclick="toggleMapLayer('stadiums')">
                         🏟️ Stadiums &amp; Hubs
                     </button>
                     <button type="button" class="layer-pill" id="layer-toggle-sanfl-current" onclick="toggleMapLayer('sanfl-current')">

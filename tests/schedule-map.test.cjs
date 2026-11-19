@@ -28,13 +28,12 @@ test('Gather Round 2027 contains all 9 confirmed AFL matches', () => {
     });
 });
 
-test('Events include all curated side-event categories', () => {
+test('Events contain only confirmed AFL Match entries and no speculative side-events', () => {
+    assert.equal(events.length, 9, 'events.json should only contain the 9 confirmed matches');
     const categories = new Set(events.map((e) => e.category));
-    assert.ok(categories.has('AFL Match'));
-    assert.ok(categories.has('Parade & Festival'));
-    assert.ok(categories.has('Kids & Clinics'));
-    assert.ok(categories.has('Supporter Pubs'));
-    assert.ok(categories.has('The Outer'));
+    assert.deepEqual([...categories], ['AFL Match']);
+    assert.ok(!categories.has('Kids & Clinics'));
+    assert.ok(!categories.has('Supporter Pubs'));
 });
 
 test('All events have valid South Australia geographic coordinates', () => {
