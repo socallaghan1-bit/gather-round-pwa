@@ -1752,8 +1752,23 @@ async function applyMapOverlayLayers() {
             SANFL_GROUNDS.forEach((ground) => {
                 const iconColorStyle = ground.iconColor ? `color: ${ground.iconColor};` : '';
                 const isPortAdelaide = ground.id === 'sanfl-ground-alberton' || ground.club === 'Port Adelaide Magpies';
+                const isSturt = ground.id === 'sanfl-ground-unley' || ground.club === 'Sturt Double Blues';
+                const isNorwood = ground.id === 'sanfl-ground-norwood' || ground.club === 'Norwood Redlegs';
+                const isCentralDistrict = ground.id === 'sanfl-ground-elizabeth' || ground.club === 'Central District Bulldogs';
+                const isNorthAdelaide = ground.id === 'sanfl-ground-prospect' || ground.club === 'North Adelaide Roosters';
+                const isWestAdelaide = ground.id === 'sanfl-ground-richmond' || ground.club === 'West Adelaide Bloods';
                 const innerHtml = isPortAdelaide
                     ? `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR110NNUAGbDufewTJHMdkyzYBLfDn3o0Mo7x2dl3JhBQ&s=10" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Port Adelaide" />`
+                    : isSturt
+                    ? `<img src="icons/grounds/sturt.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Sturt" />`
+                    : isNorwood
+                    ? `<img src="icons/grounds/norwood.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Norwood" />`
+                    : isCentralDistrict
+                    ? `<img src="icons/grounds/central-district.jpg" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Central District" />`
+                    : isNorthAdelaide
+                    ? `<img src="icons/grounds/north-adelaide.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="North Adelaide" />`
+                    : isWestAdelaide
+                    ? `<img src="icons/grounds/west-adelaide.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="West Adelaide" />`
                     : `<i class="fas fa-football" style="${iconColorStyle}"></i>`;
                 const customIcon = window.L.divIcon({
                     className: 'custom-map-marker',
