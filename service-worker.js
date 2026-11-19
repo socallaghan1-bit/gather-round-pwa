@@ -20,7 +20,14 @@ const ASSETS = [
     './data/sanfl-zones-1990.geojson',
     './data/footy-vault.json',
     './manifest.json',
-    './icons/tdu-badge.png',
+    './icons/grounds/sturt.png',
+    './icons/grounds/norwood.png',
+    './icons/grounds/central-district.jpg',
+    './icons/grounds/north-adelaide.png',
+    './icons/grounds/west-adelaide.png',
+    './icons/grounds/glenelg.png',
+    './icons/grounds/south-adelaide.png',
+    './icons/grounds/woodville-west-torrens.png',
     './animations/success-check.json',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];

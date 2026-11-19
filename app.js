@@ -1757,6 +1757,9 @@ async function applyMapOverlayLayers() {
                 const isCentralDistrict = ground.id === 'sanfl-ground-elizabeth' || ground.club === 'Central District Bulldogs';
                 const isNorthAdelaide = ground.id === 'sanfl-ground-prospect' || ground.club === 'North Adelaide Roosters';
                 const isWestAdelaide = ground.id === 'sanfl-ground-richmond' || ground.club === 'West Adelaide Bloods';
+                const isGlenelg = ground.id === 'sanfl-ground-glenelg' || ground.club === 'Glenelg Tigers';
+                const isSouthAdelaide = ground.id === 'sanfl-ground-noarlunga' || ground.club === 'South Adelaide Panthers';
+                const isWoodvilleWestTorrens = ground.id === 'sanfl-ground-woodville' || ground.club === 'Woodville-West Torrens Eagles';
                 const innerHtml = isPortAdelaide
                     ? `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR110NNUAGbDufewTJHMdkyzYBLfDn3o0Mo7x2dl3JhBQ&s=10" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Port Adelaide" />`
                     : isSturt
@@ -1769,6 +1772,12 @@ async function applyMapOverlayLayers() {
                     ? `<img src="icons/grounds/north-adelaide.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="North Adelaide" />`
                     : isWestAdelaide
                     ? `<img src="icons/grounds/west-adelaide.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="West Adelaide" />`
+                    : isGlenelg
+                    ? `<img src="icons/grounds/glenelg.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Glenelg" />`
+                    : isSouthAdelaide
+                    ? `<img src="icons/grounds/south-adelaide.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="South Adelaide" />`
+                    : isWoodvilleWestTorrens
+                    ? `<img src="icons/grounds/woodville-west-torrens.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Woodville-West Torrens" />`
                     : `<i class="fas fa-football" style="${iconColorStyle}"></i>`;
                 const customIcon = window.L.divIcon({
                     className: 'custom-map-marker',
