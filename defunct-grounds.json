@@ -3,25 +3,25 @@
     "id": "defunct-football-park",
     "name": "Football Park (AAMI Stadium)",
     "suburb": "West Lakes",
-    "years_active": "1974\u20132013",
+    "years_active": "1974–2013",
     "tenants": [
-      "SANFL Grand Finals (1974\u20132013)",
-      "Adelaide Crows (1991\u20132013)",
-      "Port Adelaide Power (1997\u20132013)"
+      "SANFL Grand Finals (1974–2013)",
+      "Adelaide Crows (1991–2013)",
+      "Port Adelaide Power (1997–2013)"
     ],
     "coords": "-34.8833,138.4972",
     "address": "Turner Drive & Brebner Drive, West Lakes SA 5021",
     "historical_significance": "South Australia's iconic stadium for 40 years. Built by the SANFL to break free from the SACA at Adelaide Oval. Witnessed 40 SANFL Grand Finals and the inaugural AFL matches for both the Crows and Power.",
-    "what_is_there_now": "The massive concrete grandstands were demolished in 2018\u20132019 to make way for the WEST residential community. The oval playing surface remains preserved as the high-performance training base for the Adelaide Football Club, alongside the Mosaic Hotel.",
+    "what_is_there_now": "The massive concrete grandstands were demolished in 2018–2019 to make way for the WEST residential community. The oval playing surface remains preserved as the high-performance training base for the Adelaide Football Club, alongside the Mosaic Hotel.",
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8833,138.4972"
   },
   {
     "id": "defunct-thebarton-oval",
     "name": "Thebarton Oval",
     "suburb": "Torrensville",
-    "years_active": "1922\u20131989 (SANFL home ground)",
+    "years_active": "1922–1989 (SANFL home ground)",
     "tenants": [
-      "West Torrens Eagles (1922\u20131989)",
+      "West Torrens Eagles (1922–1989)",
       "Woodville-West Torrens (occasional)",
       "Adelaide Crows AFLW"
     ],
@@ -32,25 +32,10 @@
     "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9142,138.5639"
   },
   {
-    "id": "defunct-woodville-oval",
-    "name": "Woodville Oval (Maughan Thiem Kia Oval)",
-    "suburb": "Woodville South",
-    "years_active": "1964\u20131990 (Standalone Woodville Warriors)",
-    "tenants": [
-      "Woodville Warriors (1964\u20131990)",
-      "Woodville-West Torrens Eagles (1991\u2013present)"
-    ],
-    "coords": "-34.8878,138.5367",
-    "address": "Oval Avenue, Woodville South SA 5011",
-    "historical_significance": "The standalone green-and-gold fortress where Malcolm Blight forged his legendary playing career, including his 1972 Magarey Medal and 1985 126-goal season. Hosted Woodville's final standalone game in late 1990.",
-    "what_is_there_now": "Active premier SANFL venue and primary home ground for the Woodville-West Torrens Eagles. Heritage pavilion and clubrooms house the combined history of both foundation clubs.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8878,138.5367"
-  },
-  {
     "id": "defunct-kensington-oval",
     "name": "Kensington Oval (Olympic Sports Field)",
     "suburb": "Kensington",
-    "years_active": "1870s\u20131890s",
+    "years_active": "1870s–1890s",
     "tenants": [
       "Norwood Football Club (early home games)",
       "Intercolonial football matches"
@@ -65,9 +50,9 @@
     "id": "defunct-jubilee-oval",
     "name": "Jubilee Oval (Demolished 1945)",
     "suburb": "Adelaide CBD / North Terrace",
-    "years_active": "1895\u20131945",
+    "years_active": "1895–1945",
     "tenants": [
-      "SAFA / SANFL Finals (1898\u20131904)",
+      "SAFA / SANFL Finals (1898–1904)",
       "Early University & Intercolonial Matches"
     ],
     "coords": "-34.9197,138.6047",

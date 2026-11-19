@@ -70,7 +70,6 @@ def run_tests():
     print(f"Loaded {len(defunct)} defunct grounds")
     assert any("football-park" in g["id"] for g in defunct), "Missing Football Park (AAMI Stadium)"
     assert any("thebarton" in g["id"] for g in defunct), "Missing Thebarton Oval"
-    assert any("woodville" in g["id"] for g in defunct), "Missing Woodville Oval"
     assert any("kensington" in g["id"] for g in defunct), "Missing Kensington Oval"
     assert any("jubilee" in g["id"] for g in defunct), "Missing Jubilee Oval"
     for g in defunct:
@@ -148,7 +147,7 @@ def run_tests():
     assert manifest["theme_color"] == "#0A192F"
 
     sw = open(os.path.join(root, "service-worker.js"), "r", encoding="utf-8").read()
-    assert "gatherround-cache-v6" in sw, "service-worker CACHE_NAME should be gatherround-cache-v6"
+    assert "gatherround-cache-v7" in sw, "service-worker CACHE_NAME should be gatherround-cache-v7"
     assert "defunct-grounds.json" in sw
     assert "heritage.json" in sw
     assert "facilities.json" in sw

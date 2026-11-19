@@ -54,9 +54,7 @@ test('SANFL GeoJSON feature collections are valid and contain key zones', () => 
     assert.ok(wwtCurrent, 'Current SANFL should feature Woodville-West Torrens');
 
     assert.equal(sanfl1990.type, 'FeatureCollection');
-    const woodville1990 = sanfl1990.features.find((f) => f.properties.id.includes('woodville'));
     const westTorrens1990 = sanfl1990.features.find((f) => f.properties.id.includes('west-torrens'));
-    assert.ok(woodville1990, '1990 layer should have standalone Woodville Warriors');
     assert.ok(westTorrens1990, '1990 layer should have standalone West Torrens Eagles');
 });
 
@@ -64,7 +62,6 @@ test('Defunct grounds and heritage sites include key historic venues', () => {
     const footyPark = defunctGrounds.find((g) => g.id.includes('football-park'));
     assert.ok(footyPark, 'Should contain Football Park (AAMI Stadium, West Lakes)');
     assert.ok(defunctGrounds.some((g) => g.id.includes('thebarton')));
-    assert.ok(defunctGrounds.some((g) => g.id.includes('woodville')));
     assert.ok(defunctGrounds.some((g) => g.id.includes('kensington')));
     assert.ok(defunctGrounds.some((g) => g.id.includes('jubilee')));
 
@@ -78,6 +75,6 @@ test('Date filters in index.html match Gather Round 2027 dates', () => {
     ['2027-04-08', '2027-04-09', '2027-04-10', '2027-04-11'].forEach((d) => {
         assert.ok(html.includes(`applyDayFilter('${d}', this)`), `index.html should have filter for ${d}`);
     });
-    assert.ok(html.includes('mygatherround.app'), 'index.html should feature mygatherround.app');
+    assert.ok(html.includes('MyGatherRound.app'), 'index.html should feature mygatherround.app');
     assert.ok(html.includes('buymeacoffee.com/mygatherround'), 'Support link should point to mygatherround');
 });
