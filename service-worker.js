@@ -28,6 +28,7 @@ const ASSETS = [
     './icons/grounds/glenelg.png',
     './icons/grounds/south-adelaide.png',
     './icons/grounds/woodville-west-torrens.png',
+    './icons/grounds/adelaide-crows.jpg',
     './animations/success-check.json',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];

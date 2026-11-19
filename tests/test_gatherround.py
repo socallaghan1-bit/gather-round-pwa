@@ -170,7 +170,7 @@ def run_tests():
     assert "'sanfl-grounds': false" in app_js, "activeMapLayers['sanfl-grounds'] should default to false"
     for ground_name in (
         "Glenelg Oval", "Norwood Oval", "Prospect Oval", "Unley Oval",
-        "Richmond Oval", "Woodville Oval", "Alberton Oval", "Elizabeth Oval", "Noarlunga Oval"
+        "Richmond Oval", "Woodville Oval", "Alberton Oval", "Elizabeth Oval", "Noarlunga Oval", "Thebarton Oval"
     ):
         assert f'name: "{ground_name}"' in app_js, f"Missing active SANFL ground '{ground_name}' in app.js"
     assert "syncCategoryFilterPills" in app_js, "app.js should dynamically sync empty category pills"
@@ -179,6 +179,7 @@ def run_tests():
     assert "icons/grounds/glenelg.png" in app_js, "app.js should reference Glenelg ground icon"
     assert "icons/grounds/south-adelaide.png" in app_js, "app.js should reference South Adelaide ground icon"
     assert "icons/grounds/woodville-west-torrens.png" in app_js, "app.js should reference Woodville-West Torrens ground icon"
+    assert "icons/grounds/adelaide-crows.jpg" in app_js, "app.js should reference Adelaide Crows ground icon"
 
     admin = open(os.path.join(root, "admin.html"), "r", encoding="utf-8").read()
     assert "GATHER_SPONSORS" in admin

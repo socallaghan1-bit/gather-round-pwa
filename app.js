@@ -233,8 +233,17 @@ const SANFL_GROUNDS = [
         address: "1 Lovelock Drive, Noarlunga Downs SA 5168",
         details: "Southern suburbs home ground of the foundation South Adelaide Panthers since 1995, overlooking the Onkaparinga hills and southern coast.",
         color: "#0B132B"
+    },
+    {
+        id: "sanfl-ground-thebarton",
+        name: "Thebarton Oval",
+        venue_alias: "Thebarton Oval Precinct",
+        club: "Adelaide Crows",
+        coords: [-34.9178, 138.5736],
+        address: "1 Meyer Street, Torrensville SA 5031",
+        details: "State-of-the-art training and match-day headquarters for the Adelaide Crows AFLW and community development programs, featuring the major Thebarton Oval precinct redevelopment (https://www.afc.com.au/news/2151082/thebarton-oval-precinct-taking-shape-with-major-oval-milestone).",
+        color: "#002B5C"
     }
-];
 
 const VIEW_ANALYTICS_CONFIG = {
     home: {
@@ -1751,6 +1760,7 @@ async function applyMapOverlayLayers() {
             sanflGroundsLayer = window.L.layerGroup();
             SANFL_GROUNDS.forEach((ground) => {
                 const iconColorStyle = ground.iconColor ? `color: ${ground.iconColor};` : '';
+                const isAdelaideCrows = ground.id === 'sanfl-ground-thebarton' || ground.club === 'Adelaide Crows';
                 const isPortAdelaide = ground.id === 'sanfl-ground-alberton' || ground.club === 'Port Adelaide Magpies';
                 const isSturt = ground.id === 'sanfl-ground-unley' || ground.club === 'Sturt Double Blues';
                 const isNorwood = ground.id === 'sanfl-ground-norwood' || ground.club === 'Norwood Redlegs';
@@ -1760,7 +1770,9 @@ async function applyMapOverlayLayers() {
                 const isGlenelg = ground.id === 'sanfl-ground-glenelg' || ground.club === 'Glenelg Tigers';
                 const isSouthAdelaide = ground.id === 'sanfl-ground-noarlunga' || ground.club === 'South Adelaide Panthers';
                 const isWoodvilleWestTorrens = ground.id === 'sanfl-ground-woodville' || ground.club === 'Woodville-West Torrens Eagles';
-                const innerHtml = isPortAdelaide
+                const innerHtml = isAdelaideCrows
+                    ? `<img src="icons/grounds/adelaide-crows.jpg" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Adelaide Crows" />`
+                    : isPortAdelaide
                     ? `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR110NNUAGbDufewTJHMdkyzYBLfDn3o0Mo7x2dl3JhBQ&s=10" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Port Adelaide" />`
                     : isSturt
                     ? `<img src="icons/grounds/sturt.png" style="transform: rotate(45deg); width: 0.82rem; height: 0.82rem; object-fit: contain;" alt="Sturt" />`
