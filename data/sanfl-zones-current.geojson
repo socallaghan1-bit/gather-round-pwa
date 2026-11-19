@@ -12,10 +12,10 @@
         "description": "Northern Adelaide metropolitan corridor (Elizabeth, Salisbury, Gawler) plus the Barossa Valley and Light regional recruitment zone.",
         "famous_players": "John Platten, Ian Callinan, Sonny Morey",
         "trivia": "Central District entered the league in 1964 and created a football heartland in Adelaide's northern industrial suburbs, culminating in 9 flags in 11 years (2000\u20132010).",
-        "fillColor": "#002B49",
-        "strokeColor": "#FFB81C",
+        "fillColor": "#0047AB",
+        "strokeColor": "#E31837",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "Polygon",
@@ -13451,7 +13451,7 @@
         "fillColor": "#FFB81C",
         "strokeColor": "#0A192F",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -38630,10 +38630,10 @@
         "description": "Inner-northern suburbs (Prospect, Walkerville, Enfield) extending to the Upper Spencer Gulf, Port Pirie, Flinders Ranges, and the Far North (Roxby Downs).",
         "famous_players": "Barrie Robran, Ken Farmer, Darren Jarman, Andrew Jarman",
         "trivia": "North Adelaide's sprawling regional country zone reaches deep into the outback. Ken Farmer kicked 1,417 career goals for the Roosters at Prospect.",
-        "fillColor": "#C8102E",
+        "fillColor": "#FF2A2A",
         "strokeColor": "#FFFFFF",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -64184,10 +64184,10 @@
         "description": "Adelaide eastern suburbs (The Parade, Kensington, Burnside, Campbelltown) plus the vast, rugged Eyre Peninsula (Port Lincoln, Ceduna, Kimba).",
         "famous_players": "Michael Aish, Garry McIntosh, Michael Taylor, Craig Balme",
         "trivia": "Norwood's Eyre Peninsula pipeline is legendary, producing hardened country footballers that powered the Redlegs to 31 SANFL premierships.",
-        "fillColor": "#C8102E",
-        "strokeColor": "#002B49",
+        "fillColor": "#4A0E2E",
+        "strokeColor": "#002B5C",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -147908,12 +147908,12 @@
         "era": "Current SANFL Zone",
         "home_oval": "Flinders University Stadium (Noarlunga)",
         "description": "Outer southern metropolitan corridor (Noarlunga, Christies Beach, Morphett Vale, Aldinga), Fleurieu Peninsula, and Kangaroo Island.",
-        "famous_players": "Rick Davies, Mark Bickley, Craig McRae, Peter Darley",
+        "famous_players": "Peter Darley, Mark Bickley, Craig McRae",
         "trivia": "Foundation SANFL club. Both 1997/98 Crows premiership captain Mark Bickley and Collingwood premiership coach Craig McRae hail from South Adelaide's southern zone.",
-        "fillColor": "#002B49",
+        "fillColor": "#0B132B",
         "strokeColor": "#FFFFFF",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -188704,10 +188704,10 @@
         "description": "Affluent inner-south (Unley, Mitcham, Belair, Blackwood) expanding through the Adelaide Hills and Murraylands (Mount Barker, Murray Bridge).",
         "famous_players": "Paul Bagshaw, Jack Oatey, Rick Davies, John Halbert, Tony Burgan",
         "trivia": "Master coach Jack Oatey revolutionized modern Australian football at Unley Oval with precision handball and checkside kicking in the 1960s and 1970s.",
-        "fillColor": "#003366",
-        "strokeColor": "#78A2CC",
+        "fillColor": "#38BDF8",
+        "strokeColor": "#002B5C",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "Polygon",
@@ -203358,16 +203358,16 @@
       "properties": {
         "id": "west-adelaide",
         "name": "West Adelaide",
-        "nickname": "Blood 'n' Tars",
+        "nickname": "Bloods",
         "era": "Current SANFL Zone",
         "home_oval": "Hisense Stadium (Richmond Oval)",
         "description": "Western inner-suburbs (Richmond, Mile End, Hilton, Keswick) and the sprawling Riverland & Mallee (Renmark, Berri, Loxton, Waikerie).",
         "famous_players": "Neil Kerley, Mark Mickan, Brian Leys, Bruce Lindner",
         "trivia": "Neil Kerley famously captained-coached the Bloods to the 1961 flag and coached them to the unforgettable 1983 premiership against Sturt at Football Park.",
-        "fillColor": "#A51C30",
-        "strokeColor": "#0A192F",
+        "fillColor": "#800000",
+        "strokeColor": "#000000",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -220161,7 +220161,7 @@
         "fillColor": "#005A36",
         "strokeColor": "#FFB81C",
         "strokeWeight": 2.5,
-        "fillOpacity": 0.42
+        "fillOpacity": 0.45
       },
       "geometry": {
         "type": "MultiPolygon",

@@ -1,101 +1,26 @@
 [
   {
-    "id": "heritage-christies-beach",
-    "name": "Christies Beach Oval (Bice Oval)",
-    "suburb": "Christies Beach",
-    "category": "Grassroots Roots",
-    "coords": "-35.1389,138.4778",
-    "address": "Dyke Road & Bice Oval, Christies Beach SA 5165",
-    "title": "Junior Footy Roots of Craig McRae",
-    "description": "The junior grassroots proving ground where 3-time Brisbane Lions premiership player and Collingwood premiership coach Craig 'Fly' McRae first learned the craft before joining South Adelaide. Also nurtured Crows inaugural defender Nigel Smart and numerous southern suburbs stalwarts.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-35.1389,138.4778"
+    "id": "heritage-herbig-family-tree",
+    "name": "The Herbig Family Tree",
+    "suburb": "Springton",
+    "category": "Footy Roots & Folklore",
+    "coords": "-34.6961,139.0936",
+    "address": "Main Street, Springton SA 5235",
+    "title": "The Goodwin Tree (Herbig Family Tree)",
+    "description": "A massive hollowed-out red gum in Springton where German pioneer Friedrich Herbig lived with his wife and young family in the 1850s. Dual Adelaide Crows premiership captain and 2021 Melbourne premiership coach Simon Goodwin is a direct descendant of Friedrich Herbig.",
+    "source_url": "https://www.germanaustralia.com/e/herbig.htm",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.6961,139.0936"
   },
   {
-    "id": "heritage-eden-valley",
-    "name": "Eden Valley Oval (Barossa & Light)",
-    "suburb": "Eden Valley",
-    "category": "Country Roots",
-    "coords": "-34.6542,139.0967",
-    "address": "Oval Road, Eden Valley SA 5235",
-    "title": "Simon Goodwin & Barossa Country Roots",
-    "description": "Heartland of the Goodwin family football lineage. Melbourne premiership coach and Adelaide Crows dual-premiership hero Simon Goodwin traces proud country roots through the Barossa and Eden Valley region, where local clubrooms preserve generations of country footy grit.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.6542,139.0967"
-  },
-  {
-    "id": "heritage-alberton-oval",
-    "name": "Alberton Oval",
-    "suburb": "Alberton",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.8683,138.5133",
-    "address": "Brougham Place & Queen Street, Alberton SA 5014",
-    "title": "Port Adelaide's Spiritual Home Since 1880",
-    "description": "Port Adelaide's beating heart for over 145 years. Features the bronze statue of patriarch Fos Williams, the Robert B. Quinn Grandstand, Allan Scott Headquarters, and the Port Adelaide Football Club Museum holding 36 SANFL flags and the 2004 AFL premiership cup.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8683,138.5133"
-  },
-  {
-    "id": "heritage-unley-oval",
-    "name": "Unley Oval",
-    "suburb": "Unley",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.9511,138.6083",
-    "address": "Trimmer Terrace & Oxford Terrace, Unley SA 5061",
-    "title": "Sturt Double Blues & Jack Oatey Legacy",
-    "description": "The cathedral of the Sturt Football Club. Immortal coach Jack Oatey revolutionized Australian rules football here during the 1960s with team-first handball chains and precision checkside kicking, leading Sturt to 5 straight flags (1966\u20131970).",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9511,138.6083"
-  },
-  {
-    "id": "heritage-prospect-oval",
-    "name": "Prospect Oval",
-    "suburb": "Prospect",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.8872,138.5978",
-    "address": "Menzies Crescent, Prospect SA 5082",
-    "title": "Home of the Roosters & Barrie Robran",
-    "description": "Home ground of North Adelaide since 1922. Sacred turf where Barrie Robran (triple Magarey Medalist and AFL Hall of Fame Legend) played his career, and Ken Farmer kicked a world-record 1,472 career goals.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.8872,138.5978"
-  },
-  {
-    "id": "heritage-glenelg-oval",
-    "name": "Glenelg Oval (ACH Group Stadium)",
-    "suburb": "Glenelg",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.9861,138.5222",
-    "address": "Brighton Road & Rugless Terrace, Glenelg SA 5045",
-    "title": "The Bay Sheiks & Peter Carey Fortress",
-    "description": "The seaside fortress of the Glenelg Tigers since 1921. Celebrated for Peter Carey's record 448 senior games, Graham Cornes' iconic high-flying marks, and the deafening roar of the Brighton Road outer hill.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9861,138.5222"
-  },
-  {
-    "id": "heritage-norwood-oval",
-    "name": "Norwood Oval (Coopers Stadium)",
-    "suburb": "Norwood",
-    "category": "Historic Club Spiritual Home & Gather Round Venue",
-    "coords": "-34.9213,138.6347",
-    "address": "The Parade & Woods Street, Norwood SA 5067",
-    "title": "Redlegs Historic Home Since 1901",
-    "description": "Heart of The Parade and 31-time SANFL premier Norwood FC. Renowned for its intimate red-brick grandstands, Michael Taylor Stand, and electric Gather Round suburban match-day atmosphere.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9213,138.6347"
-  },
-  {
-    "id": "heritage-richmond-oval",
-    "name": "Richmond Oval (Hisense Stadium)",
-    "suburb": "Richmond",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.9358,138.5636",
-    "address": "57 Milner Road, Richmond SA 5033",
-    "title": "West Adelaide & Neil Kerley's 'Blood 'n' Tars'",
-    "description": "Home ground of West Adelaide since 1958. Immortalized by Neil Kerley's fiery leadership, Tony Modra's breathtaking early screamers, and the 2008 Brownlow Medalist Adam Cooney's junior days.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9358,138.5636"
-  },
-  {
-    "id": "heritage-elizabeth-oval",
-    "name": "Elizabeth Oval (X Convenience Oval)",
-    "suburb": "Elizabeth",
-    "category": "Historic Club Spiritual Home",
-    "coords": "-34.7175,138.6758",
-    "address": "Goodman Road, Elizabeth SA 5112",
-    "title": "Central District Bulldogs Dynasty Fortress",
-    "description": "Fortress of the Central District Bulldogs in Adelaide's northern manufacturing heartland. Site of the modern era's most dominant dynasty: 9 SANFL flags in 11 years (2000\u20132010), home of John Platten and the Gowans twins.",
-    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.7175,138.6758"
+    "id": "heritage-ramsgate-hotel-rumble",
+    "name": "The Ramsgate Hotel",
+    "suburb": "Henley Beach",
+    "category": "Showdown Folklore",
+    "coords": "-34.9203,138.4945",
+    "address": "328 Seaview Road, Henley Beach SA 5022",
+    "title": "The 2002 Ramsgate Rumble",
+    "description": "Ground zero for Showdown folklore. The Sunday night after Showdown XI in April 2002—an eight-point Port Adelaide win—banter between Port's Josh Carr and Crows players (including Kane Johnson and captain Mark Ricciuto) spilled outside onto Seaview Road, ending with Ricciuto throwing Carr over the bonnet of a parked car before players scattered at the sound of approaching sirens.",
+    "source_url": "https://www.foxsports.com.au/en-AU/news/australian-rules-football/the-ballsy-crows-play-that-sparked-famous-pub-fight-and-it-didnt-stop-a-star-from-partying-on/ekh3b65vzyxfeyhfc1ogo6ewo",
+    "directions_url": "https://www.google.com/maps/dir/?api=1&destination=-34.9203,138.4945"
   }
 ]

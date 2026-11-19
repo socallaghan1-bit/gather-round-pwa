@@ -68,9 +68,9 @@ test('Defunct grounds and heritage sites include key historic venues', () => {
     assert.ok(defunctGrounds.some((g) => g.id.includes('kensington')));
     assert.ok(defunctGrounds.some((g) => g.id.includes('jubilee')));
 
-    assert.ok(heritageSites.some((h) => h.id.includes('christies-beach')), 'Should feature Craig McRae junior roots');
-    assert.ok(heritageSites.some((h) => h.id.includes('alberton')), 'Should feature Alberton Oval');
-    assert.ok(heritageSites.some((h) => h.id.includes('unley')), 'Should feature Unley Oval');
+    assert.equal(heritageSites.length, 2, 'Footy Roots should only contain the 2 verified folklore entries');
+    assert.ok(heritageSites.some((h) => h.title === 'The Goodwin Tree (Herbig Family Tree)'), 'Should feature The Goodwin Tree (Herbig Family Tree)');
+    assert.ok(heritageSites.some((h) => h.title === 'The 2002 Ramsgate Rumble'), 'Should feature The 2002 Ramsgate Rumble');
 });
 
 test('Date filters in index.html match Gather Round 2027 dates', () => {

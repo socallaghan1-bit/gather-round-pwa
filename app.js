@@ -27,6 +27,7 @@ let scheduleMarkersLayer = null;
 let stadiumsLayer = null;
 let sanflCurrentLayer = null;
 let sanfl1990Layer = null;
+let sanflGroundsLayer = null;
 let defunctGroundsLayer = null;
 let heritageLayer = null;
 let toiletsLayer = null;
@@ -39,6 +40,7 @@ let activeMapLayers = {
     stadiums: false,
     'sanfl-current': false,
     'sanfl-1990': false,
+    'sanfl-grounds': false,
     defunct: false,
     heritage: false,
     toilets: false,
@@ -133,6 +135,104 @@ const STADIUMS_AND_HUBS = [
         details: "Saturday post-match Food & Wine Village (4pm–10pm). Regional bus connections and local tasting pavilions.",
         icon: "fa-bus",
         color: "#0A192F"
+    }
+];
+
+// Active SANFL Club Home Grounds (all 9 current SANFL venues)
+const SANFL_GROUNDS = [
+    {
+        id: "sanfl-ground-glenelg",
+        name: "Glenelg Oval",
+        venue_alias: "Stratarama Stadium",
+        club: "Glenelg Tigers",
+        coords: [-34.9834, 138.5216],
+        address: "Brighton Road & Williams Avenue, Glenelg East SA 5045",
+        details: "Seaside fortress of the Glenelg Football Club since 1921, celebrated for its Brighton Road outer hill, heritage grandstands, and Tigers clubrooms.",
+        color: "#FFB81C",
+        textColor: "#0A192F",
+        iconColor: "#0A192F"
+    },
+    {
+        id: "sanfl-ground-norwood",
+        name: "Norwood Oval",
+        venue_alias: "Coopers Stadium",
+        club: "Norwood Redlegs",
+        coords: [-34.9198, 138.6305],
+        address: "4 Woods Street (off The Parade), Norwood SA 5067",
+        details: "Home of the 31-time SANFL premier Norwood Redlegs since 1901 and intimate AFL Gather Round suburban match venue in the heart of The Parade.",
+        color: "#4A0E2E"
+    },
+    {
+        id: "sanfl-ground-prospect",
+        name: "Prospect Oval",
+        venue_alias: "Prospect Oval",
+        club: "North Adelaide Roosters",
+        coords: [-34.8856, 138.6009],
+        address: "Menzies Crescent, Prospect SA 5082",
+        details: "Suburban home of the North Adelaide Roosters since 1922, where Barrie Robran starred and Ken Farmer kicked a record 1,417 SANFL career goals.",
+        color: "#FF2A2A"
+    },
+    {
+        id: "sanfl-ground-unley",
+        name: "Unley Oval",
+        venue_alias: "Thomas Farms Oval",
+        club: "Sturt Double Blues",
+        coords: [-34.9502, 138.6120],
+        address: "Trimmer Terrace & Langham Terrace, Unley SA 5061",
+        details: "Tree-lined spiritual home of the Sturt Double Blues since 1901, where coach Jack Oatey forged five consecutive SANFL premierships (1966–1970).",
+        color: "#38BDF8",
+        textColor: "#002B5C",
+        iconColor: "#002B5C"
+    },
+    {
+        id: "sanfl-ground-richmond",
+        name: "Richmond Oval",
+        venue_alias: "Hisense Stadium",
+        club: "West Adelaide Bloods",
+        coords: [-34.9377, 138.5683],
+        address: "57 Milner Road, Richmond SA 5033",
+        details: "Inner-west headquarters of the West Adelaide Bloods since 1958, renowned for its classic suburban terraces and Neil Kerley's premiership sides.",
+        color: "#800000"
+    },
+    {
+        id: "sanfl-ground-woodville",
+        name: "Woodville Oval",
+        venue_alias: "Maughan Thiem Kia Oval",
+        club: "Woodville-West Torrens Eagles",
+        coords: [-34.8881, 138.5383],
+        address: "Oval Avenue, Woodville South SA 5011",
+        details: "Primary home ground of the merged Woodville-West Torrens Eagles since 1991 (and home of the standalone Woodville Warriors from 1964 to 1990).",
+        color: "#005A36"
+    },
+    {
+        id: "sanfl-ground-alberton",
+        name: "Alberton Oval",
+        venue_alias: "Alberton Oval",
+        club: "Port Adelaide Magpies",
+        coords: [-34.8644, 138.5195],
+        address: "Queen Street & Brougham Place, Alberton SA 5014",
+        details: "Port Adelaide's spiritual home since 1880, featuring the Fos Williams bronze statue, historic Bob Quinn Grandstand, and club museum.",
+        color: "#0A192F"
+    },
+    {
+        id: "sanfl-ground-elizabeth",
+        name: "Elizabeth Oval",
+        venue_alias: "X Convenience Oval",
+        club: "Central District Bulldogs",
+        coords: [-34.7241, 138.6627],
+        address: "10 Goodman Road, Elizabeth SA 5112",
+        details: "Northern suburbs fortress of the Central District Bulldogs since 1964, powerhouse home to nine SANFL premierships between 2000 and 2010.",
+        color: "#0047AB"
+    },
+    {
+        id: "sanfl-ground-noarlunga",
+        name: "Noarlunga Oval",
+        venue_alias: "Magain Stadium (Flinders University Stadium)",
+        club: "South Adelaide Panthers",
+        coords: [-35.1454, 138.4929],
+        address: "1 Lovelock Drive, Noarlunga Downs SA 5168",
+        details: "Southern suburbs home ground of the foundation South Adelaide Panthers since 1995, overlooking the Onkaparinga hills and southern coast.",
+        color: "#0B132B"
     }
 ];
 
@@ -1503,10 +1603,11 @@ async function applyMapOverlayLayers() {
                 }
                 sanflCurrentLayer = window.L.geoJSON(cachedSanflCurrent, {
                     style: (feature) => ({
-                        fillColor: feature.properties.fillColor || '#0A192F',
-                        color: feature.properties.strokeColor || '#FFB81C',
-                        weight: feature.properties.strokeWeight || 2.5,
-                        fillOpacity: feature.properties.fillOpacity || 0.42
+                        fillColor: feature.properties.fillColor,
+                        color: feature.properties.strokeColor,
+                        weight: 2.5,
+                        opacity: 1,
+                        fillOpacity: 0.45
                     }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
@@ -1554,10 +1655,11 @@ async function applyMapOverlayLayers() {
                 }
                 sanfl1990Layer = window.L.geoJSON(cachedSanfl1990, {
                     style: (feature) => ({
-                        fillColor: feature.properties.fillColor || '#0A192F',
-                        color: feature.properties.strokeColor || '#FFB81C',
-                        weight: feature.properties.strokeWeight || 2.5,
-                        fillOpacity: feature.properties.fillOpacity || 0.42
+                        fillColor: feature.properties.fillColor,
+                        color: feature.properties.strokeColor,
+                        weight: 2.5,
+                        opacity: 1,
+                        fillOpacity: 0.45
                     }),
                     onEachFeature: (feature, layer) => {
                         const p = feature.properties;
@@ -1643,6 +1745,46 @@ async function applyMapOverlayLayers() {
         scheduleMap.removeLayer(defunctGroundsLayer);
     }
 
+    // 4b. Active SANFL Grounds Layer (Default OFF)
+    if (activeMapLayers['sanfl-grounds']) {
+        if (!sanflGroundsLayer) {
+            sanflGroundsLayer = window.L.layerGroup();
+            SANFL_GROUNDS.forEach((ground) => {
+                const iconColorStyle = ground.iconColor ? `color: ${ground.iconColor};` : '';
+                const customIcon = window.L.divIcon({
+                    className: 'custom-map-marker',
+                    html: `<div class="marker-pin" style="background-color: ${ground.color};"><i class="fas fa-football" style="${iconColorStyle}"></i></div>`,
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 30],
+                    popupAnchor: [0, -28]
+                });
+                const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${ground.coords[0]},${ground.coords[1]}`;
+                const popup = `
+                    <div class="map-popup-card sanfl-ground-popup-card">
+                        <div class="popup-tag" style="background:${ground.color}; color:${ground.textColor || '#fff'};">SANFL HOME GROUND</div>
+                        <h4 class="popup-title">${escapeHTML(ground.name)}</h4>
+                        <div class="popup-meta">
+                            <span><i class="fas fa-shield-halved"></i> Club: <strong>${escapeHTML(ground.club)}</strong></span>
+                            ${ground.venue_alias && ground.venue_alias !== ground.name ? `<span><i class="fas fa-landmark"></i> Also known as: ${escapeHTML(ground.venue_alias)}</span>` : ''}
+                            <span><i class="fas fa-location-dot"></i> ${escapeHTML(ground.address)}</span>
+                        </div>
+                        <p style="font-size:0.78rem; line-height:1.4; color:#334155; margin:6px 0;">${escapeHTML(ground.details)}</p>
+                        <a href="${dirUrl}" target="_blank" rel="noopener" class="popup-btn popup-btn-nav" style="display:inline-flex; margin-top:6px;">
+                            <i class="fas fa-location-arrow"></i> 1-Tap Directions
+                        </a>
+                    </div>
+                `;
+                const marker = window.L.marker(ground.coords, { icon: customIcon }).bindPopup(popup);
+                sanflGroundsLayer.addLayer(marker);
+            });
+        }
+        if (!scheduleMap.hasLayer(sanflGroundsLayer)) {
+            sanflGroundsLayer.addTo(scheduleMap);
+        }
+    } else if (sanflGroundsLayer && scheduleMap.hasLayer(sanflGroundsLayer)) {
+        scheduleMap.removeLayer(sanflGroundsLayer);
+    }
+
     // 5. Footy Heritage & Roots Layer
     if (activeMapLayers.heritage) {
         if (!heritageLayer) {
@@ -1671,9 +1813,16 @@ async function applyMapOverlayLayers() {
                                 <span><i class="fas fa-location-dot"></i> ${escapeHTML(site.address)}</span>
                             </div>
                             <p style="font-size:0.78rem; margin:6px 0; color:#334155;">${escapeHTML(site.description)}</p>
-                            <a href="${site.directions_url}" target="_blank" rel="noopener" class="popup-btn popup-btn-nav" style="display:inline-flex; margin-top:6px;">
-                                <i class="fas fa-location-arrow"></i> 1-Tap Directions
-                            </a>
+                            <div class="popup-actions-row">
+                                ${site.source_url ? `
+                                    <a href="${escapeHTML(site.source_url)}" target="_blank" rel="noopener" class="popup-btn popup-btn-copy">
+                                        <i class="fas fa-arrow-up-right-from-square"></i> Source
+                                    </a>
+                                ` : ''}
+                                <a href="${site.directions_url}" target="_blank" rel="noopener" class="popup-btn popup-btn-nav">
+                                    <i class="fas fa-location-arrow"></i> 1-Tap Directions
+                                </a>
+                            </div>
                         </div>
                     `;
                     const marker = window.L.marker([coords.lat, coords.lng], { icon: customIcon }).bindPopup(popup);

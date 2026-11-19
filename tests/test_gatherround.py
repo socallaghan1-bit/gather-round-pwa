@@ -78,19 +78,18 @@ def run_tests():
         assert "years_active" in g, f"{g['id']} missing years_active"
     print("  [PASS] Defunct grounds and former homes verified")
 
-    # 5. Footy Heritage & Roots
+    # 5. Footy Heritage & Roots (verified SA footy folklore entries only)
     heritage = load_json("heritage.json")
     print(f"Loaded {len(heritage)} footy heritage sites")
-    assert any("christies-beach" in h["id"] for h in heritage), "Missing Christies Beach Craig McRae roots"
-    assert any("eden-valley" in h["id"] for h in heritage), "Missing Eden Valley Simon Goodwin roots"
-    assert any("alberton" in h["id"] for h in heritage), "Missing Alberton Oval"
-    assert any("unley" in h["id"] for h in heritage), "Missing Unley Oval"
-    assert any("prospect" in h["id"] for h in heritage), "Missing Prospect Oval"
-    assert any("glenelg" in h["id"] for h in heritage), "Missing Glenelg Oval"
-    assert any("norwood" in h["id"] for h in heritage), "Missing Norwood Oval"
-    assert any("richmond" in h["id"] for h in heritage), "Missing Richmond Oval"
-    assert any("elizabeth" in h["id"] for h in heritage), "Missing Elizabeth Oval"
-    print("  [PASS] Footy roots and SANFL suburban shrines verified")
+    assert len(heritage) == 2, f"Expected exactly 2 verified Footy Roots entries, got {len(heritage)}"
+    by_title = {h["title"]: h for h in heritage}
+    assert "The Goodwin Tree (Herbig Family Tree)" in by_title, "Missing Herbig Family Tree entry"
+    assert "The 2002 Ramsgate Rumble" in by_title, "Missing 2002 Ramsgate Rumble entry"
+    assert by_title["The Goodwin Tree (Herbig Family Tree)"]["coords"] == "-34.6961,139.0936"
+    assert by_title["The Goodwin Tree (Herbig Family Tree)"]["source_url"] == "https://www.germanaustralia.com/e/herbig.htm"
+    assert by_title["The 2002 Ramsgate Rumble"]["coords"] == "-34.9203,138.4945"
+    assert "foxsports.com.au" in by_title["The 2002 Ramsgate Rumble"]["source_url"]
+    print("  [PASS] Footy roots verified (Herbig Family Tree & 2002 Ramsgate Rumble)")
 
     # 6. Facilities
     facilities = load_json("facilities.json")
@@ -109,6 +108,35 @@ def run_tests():
     assert any("wwt-eagles" in f["properties"]["id"] for f in sanfl_curr["features"]), "Missing WWT Eagles current zone"
     assert any("woodville" in f["properties"]["id"] for f in sanfl_1990["features"]), "Missing Woodville 1990 zone"
     assert any("west-torrens" in f["properties"]["id"] for f in sanfl_1990["features"]), "Missing West Torrens 1990 zone"
+
+    expected_zone_colors = {
+        "west-adelaide": ("#800000", "#000000"),
+        "north-adelaide": ("#FF2A2A", "#FFFFFF"),
+        "norwood": ("#4A0E2E", "#002B5C"),
+        "central-district": ("#0047AB", "#E31837"),
+        "sturt": ("#38BDF8", "#002B5C"),
+        "south-adelaide": ("#0B132B", "#FFFFFF"),
+    }
+    for label, geojson_doc in (("current", sanfl_curr), ("1990", sanfl_1990)):
+        by_id = {f["properties"]["id"]: f["properties"] for f in geojson_doc["features"]}
+        assert by_id["west-adelaide"]["nickname"] == "Bloods", f"West Adelaide ({label}) nickname should be 'Bloods'"
+        assert "tars" not in by_id["west-adelaide"]["nickname"].lower()
+        assert "Peter Darley" in by_id["south-adelaide"]["famous_players"], f"South Adelaide ({label}) should include Peter Darley"
+        assert "Rick Davies" not in by_id["south-adelaide"]["famous_players"], f"South Adelaide ({label}) should not include Rick Davies"
+        for club_id, (fill_col, stroke_col) in expected_zone_colors.items():
+            assert by_id[club_id]["fillColor"] == fill_col, f"{club_id} ({label}) fillColor mismatch"
+            assert by_id[club_id]["strokeColor"] == stroke_col, f"{club_id} ({label}) strokeColor mismatch"
+
+    assert len(sanfl_1990["features"]) == 10, f"Expected 10 pre-1991 SANFL clubs, got {len(sanfl_1990['features'])}"
+    required_props = {"id", "name", "nickname", "era", "home_oval", "description", "famous_players", "trivia", "fillColor", "strokeColor"}
+    feats_1990 = {f["properties"]["id"]: f for f in sanfl_1990["features"]}
+    for cid, feat in feats_1990.items():
+        missing_props = required_props - set(feat["properties"].keys())
+        assert not missing_props, f"1990 club {cid} missing properties: {missing_props}"
+        polys = feat["geometry"]["coordinates"] if feat["geometry"]["type"] == "MultiPolygon" else [feat["geometry"]["coordinates"]]
+        total_pts = sum(len(poly[0]) for poly in polys)
+        assert total_pts >= 200, f"1990 club {cid} appears to be a low-vertex placeholder ({total_pts} pts)"
+    assert feats_1990["woodville"]["geometry"] != feats_1990["west-torrens"]["geometry"], "Woodville and West Torrens must have distinct 1990 zones"
     print("  [PASS] Both SANFL Current and 1990 Pre-Crows GeoJSON files verified")
 
     # 8. Branding & Domain
@@ -133,11 +161,19 @@ def run_tests():
     assert "callas1894@gmail.com?subject=MyGatherRound" in html
     assert "🥧 Buy Me a Pie Floater" in html
     assert 'class="layer-pill active" id="layer-toggle-stadiums"' not in html, "Stadiums & Hubs pill should default to inactive"
+    assert 'id="layer-toggle-sanfl-grounds"' in html and "SANFL Grounds" in html, "Missing SANFL Grounds layer pill in index.html"
+    assert 'class="layer-pill active" id="layer-toggle-sanfl-grounds"' not in html, "SANFL Grounds pill should default to inactive"
     for empty_cat in ("Kids & Clinics", "Supporter Pubs", "The Outer", "Parade"):
         assert f'data-category="{empty_cat}" hidden' in html, f"Empty category pill '{empty_cat}' should be hidden by default"
 
     app_js = open(os.path.join(root, "app.js"), "r", encoding="utf-8").read()
     assert "stadiums: false" in app_js, "activeMapLayers.stadiums should default to false"
+    assert "'sanfl-grounds': false" in app_js, "activeMapLayers['sanfl-grounds'] should default to false"
+    for ground_name in (
+        "Glenelg Oval", "Norwood Oval", "Prospect Oval", "Unley Oval",
+        "Richmond Oval", "Woodville Oval", "Alberton Oval", "Elizabeth Oval", "Noarlunga Oval"
+    ):
+        assert f'name: "{ground_name}"' in app_js, f"Missing active SANFL ground '{ground_name}' in app.js"
     assert "syncCategoryFilterPills" in app_js, "app.js should dynamically sync empty category pills"
     assert "hasActiveEventMapFilter" in app_js, "app.js should gate default event markers until filter or Show on Map"
 
