@@ -18,11 +18,6 @@
             scripts: [{ path: 'leaflet/1.9.4/leaflet.js', integrity: 'sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==' }],
             resolve: () => window.L || null
         },
-        antPath: {
-            deps: ['leaflet'],
-            scripts: [{ path: 'leaflet-ant-path/1.3.0/leaflet-ant-path.js', integrity: 'sha512-/gkNQn+veOU6nWpevQbYDMuqu+DimUbAF8PBMun6ZOZW3PYEuQSfHcMiuE3rnxdKQ024veQv5ilZiwaLzGyrqw==' }],
-            resolve: () => (window.L && window.L.polyline && typeof window.L.polyline.antPath === 'function' ? window.L.polyline.antPath : null)
-        },
         lottie: {
             scripts: [{ path: 'lottie-web/5.12.2/lottie_light.min.js', integrity: 'sha512-Pe5arL9TnWlLgXT1VY0d50tfo6J9bh0qM7irYJuACQcGz7mbIahBXZmNeav+46mTQBtPY170Vi89KDa4kd4QVg==' }],
             resolve: () => window.lottie || window.bodymovin || null
@@ -37,10 +32,6 @@
                 window.gsap.registerPlugin(window.ScrollTrigger);
                 return window.gsap;
             }
-        },
-        chart: {
-            scripts: [{ path: 'Chart.js/4.4.1/chart.umd.js', integrity: 'sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==' }],
-            resolve: () => window.Chart || null
         }
     };
 
@@ -258,19 +249,19 @@
         });
     }
 
-    window.TDUCdn = {
+    window.GatherCdn = {
         load: loadCdnLib,
         prefersReducedMotion,
         prefersSavedData
     };
-    window.TDUHaptics = {
+    window.GatherHaptics = {
         navigation: () => triggerHaptic('navigation'),
         success: () => triggerHaptic('success')
     };
-    window.TDUCelebrate = {
+    window.GatherCelebrate = {
         success: celebrateSuccess,
         calendarConfetti: fireCalendarConfetti,
         lottieSuccess: playLottieSuccess
     };
-    window.TDUMotion = { revealCards };
+    window.GatherMotion = { revealCards };
 }());

@@ -1,9 +1,11 @@
-const CACHE_NAME = 'gatherround-cache-v11';
+const CACHE_NAME = 'gatherround-cache-v12';
 // CDNJS assets are version-pinned in their URLs, so they live in their own cache that survives app updates.
 const CDN_CACHE_NAME = 'gatherround-cdnjs-v1';
 const CDN_CACHE_MAX_ENTRIES = 60;
+const MAP_TILES_CACHE_NAME = 'gatherround-map-tiles-v1';
+const MAP_TILES_MAX_ENTRIES = 150;
 const CDNJS_ORIGIN = 'https://cdnjs.cloudflare.com';
-const KEEP_CACHES = [CACHE_NAME, CDN_CACHE_NAME];
+const KEEP_CACHES = [CACHE_NAME, CDN_CACHE_NAME, MAP_TILES_CACHE_NAME];
 const ASSETS = [
     './',
     './index.html',
@@ -20,6 +22,8 @@ const ASSETS = [
     './data/sanfl-zones-1990.geojson',
     './data/footy-vault.json',
     './manifest.json',
+    './icons/apple-touch-icon.png',
+    './icons/grounds/port-adelaide.png',
     './icons/grounds/sturt.png',
     './icons/grounds/norwood.png',
     './icons/grounds/central-district.jpg',
@@ -83,11 +87,33 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
+    // Bounded runtime cache for OSM map tiles
+    if (requestUrl.hostname.endsWith('tile.openstreetmap.org')) {
+        event.respondWith(
+            caches.open(MAP_TILES_CACHE_NAME).then(async (cache) => {
+                const cached = await cache.match(event.request);
+                if (cached) return cached;
+                try {
+                    const response = await fetch(event.request);
+                    if (response.ok && response.type !== 'opaque') {
+                        const copy = response.clone();
+                        cache.put(event.request, copy).then(() => trimCache(MAP_TILES_CACHE_NAME, MAP_TILES_MAX_ENTRIES)).catch(() => {});
+                    }
+                    return response;
+                } catch (err) {
+                    return new Response('', { status: 503, statusText: 'Offline' });
+                }
+            })
+        );
+        return;
+    }
+
     // Network-first with cache fallback for dynamic fixture and heritage datasets
     const isDataFile = requestUrl.pathname.endsWith('/events.json') ||
                        requestUrl.pathname.endsWith('/defunct-grounds.json') ||
                        requestUrl.pathname.endsWith('/heritage.json') ||
                        requestUrl.pathname.endsWith('/facilities.json') ||
+                       requestUrl.pathname.endsWith('/footy-vault.json') ||
                        requestUrl.pathname.endsWith('.geojson');
 
     if (isDataFile) {
@@ -113,7 +139,7 @@ self.addEventListener('fetch', (event) => {
 
 // ---- Web Push ----
 
-const NOTIFICATION_ICON = new URL('icons/tdu-badge.png', self.registration.scope).href;
+const NOTIFICATION_ICON = new URL('icons/apple-touch-icon.png', self.registration.scope).href;
 const DEFAULT_NOTIFICATION_TITLE = 'MyGatherRound 2027';
 // Deep links must stay on this app or sanctioned AFL/SA sport sites
 const ALLOWED_LINK_HOSTS = ['mygatherround.app', 'afl.com.au', 'adelaideoval.com.au', 'sanfl.com.au'];
@@ -155,8 +181,8 @@ function parsePushPayload(event) {
 self.addEventListener('push', (event) => {
     const data = parsePushPayload(event);
     
-    // Fallback variables matching both old and new payload structures
-    const eventId = cleanText(data.eventId || data.stageId, 64).replace(/[^A-Za-z0-9_-]/g, '');
+    // Fallback variables matching payload structure
+    const eventId = cleanText(data.eventId, 64).replace(/[^A-Za-z0-9_-]/g, '');
     const appUrl = getAppEventUrl(eventId);
     
     // Check both targetUrl (from admin.html) and url (from original spec)

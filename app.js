@@ -15,7 +15,7 @@ const WEATHER_CACHE_KEY = 'gatherWeatherSummaryV1';
 const AUDIO_FEEDBACK_KEY = 'gatherAudioFeedback';
 const PASSPORT_STORAGE_KEY = 'gatherPassportCheckinsV1';
 const SAVED_EVENTS_KEY = 'gather_saved_events';
-const SAVED_EVENTS_COMPAT_KEY = 'savedTDU';
+const SAVED_EVENTS_COMPAT_KEY = 'savedTDU'; // Legacy key — migrated on first load
 let audioFeedbackContext = null;
 const STANDALONE_LAUNCH_SESSION_KEY = 'gatherStandaloneLaunchTracked';
 const WEATHER_PLACEHOLDER = 'Today in Adelaide: Checking weather…';
@@ -452,8 +452,14 @@ function getSavedEvents() {
     try {
         const primary = JSON.parse(localStorage.getItem(SAVED_EVENTS_KEY) || 'null');
         if (Array.isArray(primary)) return primary.map(String);
-        const compat = JSON.parse(localStorage.getItem(SAVED_EVENTS_COMPAT_KEY) || '[]');
-        if (Array.isArray(compat)) return compat.map(String);
+        // One-time migration from legacy 'savedTDU' key
+        const compat = JSON.parse(localStorage.getItem(SAVED_EVENTS_COMPAT_KEY) || 'null');
+        if (Array.isArray(compat) && compat.length > 0) {
+            const migrated = compat.map(String);
+            localStorage.setItem(SAVED_EVENTS_KEY, JSON.stringify(migrated));
+            localStorage.removeItem(SAVED_EVENTS_COMPAT_KEY);
+            return migrated;
+        }
         return [];
     } catch (e) {
         return [];
@@ -464,7 +470,6 @@ function saveSavedEvents(eventsArray) {
     try {
         const clean = Array.from(new Set(eventsArray.map(String)));
         localStorage.setItem(SAVED_EVENTS_KEY, JSON.stringify(clean));
-        localStorage.setItem(SAVED_EVENTS_COMPAT_KEY, JSON.stringify(clean));
     } catch (e) {}
 }
 
@@ -567,11 +572,23 @@ async function updateWeatherWidget() {
             const desc = WEATHER_CODES[current.weathercode] || 'Fair';
             const temp = Math.round(current.temperature);
             const wind = Math.round(current.windspeed);
-            renderWeatherWidget(`Today in Adelaide: ${temp}°C, ${desc} • Wind ${wind} km/h`);
+            const message = `Today in Adelaide: ${temp}°C, ${desc} • Wind ${wind} km/h`;
+            renderWeatherWidget(message);
+            try {
+                localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({ message, timestamp: Date.now() }));
+            } catch (_) {}
             return;
         }
         renderWeatherWidget(WEATHER_UNAVAILABLE);
     } catch (err) {
+        // Fall back to cached forecast when offline
+        try {
+            const cached = JSON.parse(localStorage.getItem(WEATHER_CACHE_KEY) || 'null');
+            if (cached && cached.message) {
+                renderWeatherWidget(cached.message + ' (cached)');
+                return;
+            }
+        } catch (_) {}
         renderWeatherWidget('Adelaide: Mild autumn footy weather expected');
     }
 }
@@ -669,11 +686,12 @@ window.exportSavedEvents = async function() {
     const exported = await exportEventsToCalendar(savedEventsList, 'my_gather_round_2027_itinerary.ics');
     if (exported) {
         trackAnalyticsEvent('export_itinerary_calendar', { event_count: savedEventsList.length });
+        if (window.GatherCelebrate) window.GatherCelebrate.calendarConfetti();
     }
     return exported;
 };
 
-window.exportStageToCalendar = async function(eventId) {
+window.exportEventToCalendar = async function(eventId) {
     const event = allEvents.find((e) => String(e.id) === String(eventId));
     if (!event) return;
     await exportEventsToCalendar([event], `gather_round_${event.id}.ics`);
@@ -751,7 +769,7 @@ window.handleEventCheckIn = function(eventId, btnEl) {
             btnEl.innerHTML = '<i class="fas fa-map-pin" aria-hidden="true"></i> Check In';
         }
         playAudioCue('unsave');
-        renderRiderPassportWidget();
+        renderFanPassportWidget();
         return;
     }
 
@@ -1194,7 +1212,7 @@ function createEventCardHTML(event, eventId, isSaved) {
                     <a href="${navLink}" target="_blank" rel="noopener" class="btn btn-secondary-action">
                         <i class="fas fa-location-arrow" aria-hidden="true"></i> 1-Tap Directions
                     </a>
-                    <button type="button" class="btn btn-secondary-action" onclick="exportStageToCalendar('${escapeHTML(eventId)}')">
+                    <button type="button" class="btn btn-secondary-action" onclick="exportEventToCalendar('${escapeHTML(eventId)}')">
                         <i class="far fa-calendar-plus" aria-hidden="true"></i> Add to Calendar
                     </button>
                 </div>

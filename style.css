@@ -11,7 +11,6 @@
     --text-dark: #0F172A;
     --text-light: #64748B;
     --border: #E2E8F0;
-    --hero-bg: url('https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=1000&q=80');
 }
 
 * {
@@ -746,12 +745,6 @@ header {
 .dot-clinic { background: #0D9488; }
 .dot-pub { background: var(--crimson); }
 .dot-outer { background: #1E3A8A; }
-.dot-race { background: #C8102E; }
-.dot-ride { background: #0D9488; }
-.dot-coffee { background: #FFB81C; }
-.dot-social { background: #C8102E; }
-.dot-popup { background: #FFB81C; }
-.dot-family { background: #0D9488; }
 
 /* Real-Time Schedule Search Bar */
 .search-box-wrapper {
@@ -909,18 +902,6 @@ header {
 .marker-pin.pin-finish {
     background-color: #111827 !important;
     border-color: #f9fafb !important;
-}
-
-.marker-pin.pin-kom {
-    background-color: #dc2626 !important;
-}
-
-.marker-pin.pin-sprint {
-    background-color: #16a34a !important;
-}
-
-.marker-pin.pin-feed {
-    background-color: #f59e0b !important;
 }
 
 .marker-pin.pin-checkpoint {
@@ -1636,42 +1617,6 @@ header {
     margin-top: 12px;
 }
 
-.btn-gpx,
-.btn-brouter {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-gpx {
-    background: var(--navy);
-    border: 1px solid var(--navy);
-    color: var(--gold);
-}
-
-.btn-gpx:hover,
-.btn-gpx:focus-visible {
-    background: #172A45;
-    border-color: #172A45;
-}
-
-.btn-brouter {
-    background: transparent;
-    border: 1px solid var(--navy);
-    color: var(--navy);
-}
-
-.btn-brouter:hover,
-.btn-brouter:focus-visible {
-    background: rgba(10, 25, 47, 0.08);
-}
-
 @media (min-width: 768px) {
     .drawer-overlay {
         align-items: stretch;
@@ -1882,48 +1827,6 @@ header {
     flex-shrink: 0;
 }
 
-.stage-map {
-    width: 100%;
-    height: 45vh;
-    max-height: 360px;
-    min-height: 240px;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: #eef1f5;
-    overflow: hidden;
-}
-
-.stage-map-status {
-    margin: 8px 0 0 0;
-    font-size: 0.82rem;
-    color: var(--text-light);
-}
-
-.stage-map-status:empty {
-    display: none;
-}
-
-.stage-elevation {
-    margin-top: 12px;
-}
-
-.stage-elevation-title {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--text-light);
-    margin-bottom: 6px;
-}
-
-.stage-elevation-chart {
-    position: relative;
-    height: 160px;
-}
-
-#stage-map-modal .modal-card {
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
 @media (max-width: 420px) {
     .saved-heading {
         align-items: flex-start;
@@ -1980,9 +1883,9 @@ header {
 
 
 /* ==========================================================================
-   Buy Me a Bidon Card (Task 2)
+   Buy Me a Pie Floater Card
    ========================================================================== */
-.support-bidon-card {
+.support-pie-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1996,14 +1899,14 @@ header {
 }
 
 @media (min-width: 480px) {
-    .support-bidon-card {
+    .support-pie-card {
         flex-direction: row;
         text-align: left;
         align-items: center;
     }
 }
 
-.bidon-icon-wrap {
+.pie-icon-wrap {
     width: 46px;
     height: 46px;
     border-radius: 50%;
@@ -2016,26 +1919,26 @@ header {
     flex-shrink: 0;
 }
 
-.bidon-text {
+.pie-text {
     flex: 1;
     min-width: 0;
 }
 
-.bidon-text h4 {
+.pie-text h4 {
     margin: 0 0 4px 0;
     font-size: 1rem;
     font-weight: 800;
     color: #1f2937;
 }
 
-.bidon-text p {
+.pie-text p {
     margin: 0;
     font-size: 0.82rem;
     color: #6b7280;
     line-height: 1.4;
 }
 
-.btn-bidon, .btn-pie-btn {
+.btn-pie, .btn-pie-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2055,12 +1958,12 @@ header {
     flex-shrink: 0;
 }
 
-.btn-bidon:hover, .btn-pie-btn:hover {
+.btn-pie:hover, .btn-pie-btn:hover {
     background-color: #A00D24;
     box-shadow: 0 4px 12px rgba(200, 16, 46, 0.4);
 }
 
-.btn-bidon:active, .btn-pie-btn:active {
+.btn-pie:active, .btn-pie-btn:active {
     background-color: #7D091B;
     transform: scale(0.96);
     box-shadow: 0 1px 4px rgba(200, 16, 46, 0.3);
