@@ -147,7 +147,7 @@ def run_tests():
     assert manifest["theme_color"] == "#0A192F"
 
     sw = open(os.path.join(root, "service-worker.js"), "r", encoding="utf-8").read()
-    assert "gatherround-cache-v11" in sw, "service-worker CACHE_NAME should be gatherround-cache-v11"
+    assert "gatherround-cache-v12" in sw, "service-worker CACHE_NAME should be gatherround-cache-v12"
     assert "defunct-grounds.json" in sw
     assert "heritage.json" in sw
     assert "facilities.json" in sw
