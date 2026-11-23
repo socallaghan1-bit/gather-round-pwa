@@ -189,19 +189,24 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, #fff7e8 0%, #fff 100%);
-    border: 1px solid #f4d8b6;
-    border-radius: 14px;
-    padding: 12px 14px;
+    background: #0A192F;
+    border: 1px solid rgba(255, 184, 28, 0.35);
+    border-radius: 9999px;
+    padding: 10px 18px;
     margin: 0 0 18px 0;
-    color: var(--text-dark);
-    font-size: 0.9rem;
-    font-weight: 700;
+    color: #FFFFFF;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.12);
 }
 
 .weather-widget i {
-    color: var(--primary);
-    font-size: 1.2rem;
+    color: #FFB81C;
+    font-size: 1.15rem;
+}
+
+.weather-widget span {
+    color: #FFFFFF;
 }
 
 .section-title {
@@ -964,10 +969,29 @@ header {
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.06);
+    border: 1px solid #E2E8F0;
+    border-left: 4px solid #C8102E; /* Default AFL Match accent bar */
     position: relative;
     transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.event-card[data-category="AFL Match"],
+.event-card.category-afl-match {
+    border-left: 4px solid #C8102E;
+}
+
+.event-card[data-category*="Parade"],
+.event-card[data-category*="Festival"],
+.event-card.category-festival-parade {
+    border-left: 4px solid #FFB81C;
+}
+
+.event-card[data-category*="Pub"],
+.event-card[data-category*="Outer"],
+.event-card.category-supporter-pub,
+.event-card.category-the-outer {
+    border-left: 4px solid #0A192F;
 }
 
 .event-card.highlighted {
@@ -2271,18 +2295,102 @@ header {
     margin-bottom: 8px;
 }
 
+/* SANFL Zone Map Popup Card */
+.sanfl-popup-card {
+    min-width: 240px;
+    max-width: 320px;
+    padding: 2px 0 0 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sanfl-popup-card .popup-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.sanfl-popup-card .popup-title {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+    color: #0A192F;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.sanfl-popup-card .popup-meta {
+    font-size: 0.8rem;
+    color: #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+    background: #F8FAFC;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+}
+
+.sanfl-popup-card .popup-meta span {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.35;
+}
+
+.sanfl-popup-card .popup-meta i {
+    color: var(--crimson, #C8102E);
+    margin-top: 2px;
+    font-size: 0.78rem;
+    width: 14px;
+    text-align: center;
+}
+
+.sanfl-popup-card p {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #475569;
+    margin: 6px 0 0;
+    padding-top: 6px;
+    border-top: 1px dashed #CBD5E1;
+}
+
 /* ======================================================================
    FOOTY VAULT — Shake-to-Reveal Classic SA Player Bios
    ====================================================================== */
 .vault-card {
     grid-column: span 2;
-    background: linear-gradient(135deg, #0A192F 0%, #1a2d4a 100%);
-    color: #FFB81C;
-    border: 2px solid #FFB81C;
+    background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
+    border: 1px solid #1E293B;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.08);
 }
-.vault-card i { color: #FFB81C; }
-.vault-card h3 { color: #FFB81C; }
-.vault-card p { color: rgba(255,255,255,0.8); }
+.vault-card i {
+    font-size: 2.2rem;
+    color: #FFB81C !important;
+    margin: 0;
+}
+.vault-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: #FFB81C;
+}
+.vault-card p {
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+    font-size: 0.82rem;
+}
 
 #view-vault .vault-subtitle {
     font-size: 0.95rem;
