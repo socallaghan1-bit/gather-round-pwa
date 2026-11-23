@@ -1045,8 +1045,8 @@ header {
 
 .tag {
     display: inline-block;
-    background: #ffe8dd;
-    color: var(--primary);
+    background: #FEE2E2;
+    color: var(--crimson);
     font-size: 0.72rem;
     padding: 3px 10px;
     border-radius: 12px;
@@ -1674,7 +1674,7 @@ header {
     background: white;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0 22px 0;
+    padding: 8px 0 calc(10px + env(safe-area-inset-bottom, 0px)) 0;
     border-top: 1px solid var(--border);
     z-index: 100;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.04);

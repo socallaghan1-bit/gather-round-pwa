@@ -14,8 +14,8 @@
             }
         },
         leaflet: {
-            styles: [{ path: 'leaflet/1.9.4/leaflet.css', integrity: 'sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w==' }],
-            scripts: [{ path: 'leaflet/1.9.4/leaflet.js', integrity: 'sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg==' }],
+            styles: [{ path: 'leaflet/1.9.4/leaflet.css', fallbackUrl: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css' }],
+            scripts: [{ path: 'leaflet/1.9.4/leaflet.js', fallbackUrl: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' }],
             resolve: () => window.L || null
         },
         lottie: {
@@ -37,32 +37,42 @@
 
     const libPromises = {};
 
-    function appendStyle({ path, integrity }) {
+    function appendStyle({ path, integrity, fallbackUrl }) {
         return new Promise((resolve, reject) => {
-            const href = CDNJS_BASE + path;
-            if (document.querySelector(`link[href="${href}"]`)) {
+            const primaryHref = CDNJS_BASE + path;
+            if (document.querySelector(`link[href="${primaryHref}"]`) || (fallbackUrl && document.querySelector(`link[href="${fallbackUrl}"]`))) {
                 resolve();
                 return;
             }
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = href;
-            link.integrity = integrity;
-            link.crossOrigin = 'anonymous';
-            link.referrerPolicy = 'no-referrer';
-            link.onload = () => resolve();
-            link.onerror = () => {
-                link.remove();
-                reject(new Error(`Failed to load ${href}`));
+
+            const tryLoad = (href, isFallback) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                if (!isFallback && integrity) {
+                    link.integrity = integrity;
+                    link.crossOrigin = 'anonymous';
+                }
+                link.referrerPolicy = 'no-referrer';
+                link.onload = () => resolve();
+                link.onerror = () => {
+                    link.remove();
+                    if (!isFallback && fallbackUrl) {
+                        tryLoad(fallbackUrl, true);
+                    } else {
+                        reject(new Error(`Failed to load ${href}`));
+                    }
+                };
+                document.head.appendChild(link);
             };
-            document.head.appendChild(link);
+
+            tryLoad(primaryHref, false);
         });
     }
 
-    function appendScript({ path, integrity, commonJs }) {
+    function appendScript({ path, integrity, commonJs, fallbackUrl }) {
         return new Promise((resolve, reject) => {
-            const src = CDNJS_BASE + path;
-            const script = document.createElement('script');
+            const primarySrc = CDNJS_BASE + path;
             const hadModule = Object.prototype.hasOwnProperty.call(window, 'module');
             const previousModule = window.module;
             const shim = { exports: {} };
@@ -78,21 +88,32 @@
 
             if (commonJs) window.module = shim;
 
-            script.src = src;
-            script.async = false;
-            script.integrity = integrity;
-            script.crossOrigin = 'anonymous';
-            script.referrerPolicy = 'no-referrer';
-            script.onload = () => {
-                restoreModule();
-                resolve(commonJs ? shim.exports : undefined);
+            const tryLoad = (src, isFallback) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = false;
+                if (!isFallback && integrity) {
+                    script.integrity = integrity;
+                    script.crossOrigin = 'anonymous';
+                }
+                script.referrerPolicy = 'no-referrer';
+                script.onload = () => {
+                    restoreModule();
+                    resolve(commonJs ? shim.exports : undefined);
+                };
+                script.onerror = () => {
+                    script.remove();
+                    if (!isFallback && fallbackUrl) {
+                        tryLoad(fallbackUrl, true);
+                    } else {
+                        restoreModule();
+                        reject(new Error(`Failed to load ${src}`));
+                    }
+                };
+                document.head.appendChild(script);
             };
-            script.onerror = () => {
-                restoreModule();
-                script.remove();
-                reject(new Error(`Failed to load ${src}`));
-            };
-            document.head.appendChild(script);
+
+            tryLoad(primarySrc, false);
         });
     }
 
