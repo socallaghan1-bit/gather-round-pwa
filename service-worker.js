@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gatherround-cache-v7.1';
+const CACHE_NAME = 'gatherround-cache-v10';
 // CDNJS assets are version-pinned in their URLs, so they live in their own cache that survives app updates.
 const CDN_CACHE_NAME = 'gatherround-cdnjs-v1';
 const CDN_CACHE_MAX_ENTRIES = 60;
