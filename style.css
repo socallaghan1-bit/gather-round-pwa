@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--bg-color);
     margin: 0;
     padding: 0;
@@ -166,6 +166,9 @@ header {
 }
 
 .hero h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
     font-size: 1.8rem;
     font-weight: 800;
     margin: 0 0 10px 0;
@@ -189,12 +192,14 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #0A192F;
-    border: 1px solid rgba(255, 184, 28, 0.35);
-    border-radius: 9999px;
-    padding: 10px 18px;
+    background: #FFFFFF;
+    color: #0A192F;
+    border: 1px solid #E2E8F0;
+    border-left: 4px solid #FFB81C;
+    border-radius: 12px;
+    padding: 10px 14px;
     margin: 0 0 18px 0;
-    color: #FFFFFF;
+    color: #0A192F;
     font-size: 0.88rem;
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(10, 25, 47, 0.12);
@@ -206,10 +211,13 @@ header {
 }
 
 .weather-widget span {
-    color: #FFFFFF;
+    color: #0A192F;
 }
 
 .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     font-size: 1.05rem;
     font-weight: 700;
     margin: 15px 0 12px 0;
@@ -526,7 +534,10 @@ header {
 }
 
 .primary-card h3 {
-    font-size: 1.1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 1.28rem;
     margin-bottom: 4px;
 }
 
@@ -967,7 +978,7 @@ header {
 .event-card {
     background: var(--card-bg);
     border-radius: 12px;
-    padding: 16px;
+    padding: 12px 14px;
     margin-bottom: 14px;
     box-shadow: 0 4px 12px rgba(10, 25, 47, 0.06);
     border: 1px solid #E2E8F0;
@@ -1007,9 +1018,12 @@ header {
 }
 
 .event-card h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.08rem;
-    padding-right: 35px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin: 4px 0 6px 0;
+    font-size: 1.28rem;
+    padding-right: 0;
     line-height: 1.35;
     font-weight: 800;
 }
@@ -1017,15 +1031,21 @@ header {
 .event-meta {
     font-size: 0.82rem;
     color: var(--text-light);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 3px;
 }
 
 .event-meta i {
     width: 16px;
     color: var(--primary);
+}
+
+.event-meta strong,
+.event-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
 }
 
 .event-weather {
@@ -1043,14 +1063,44 @@ header {
     color: #444;
 }
 
+.event-transit {
+    background: #F1F5F9;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin: 8px 0;
+    border-left: 3px solid var(--navy);
+}
+
+.event-transit i {
+    color: var(--crimson);
+    margin-right: 4px;
+}
+
 .tag {
     display: inline-block;
-    background: #FEE2E2;
-    color: var(--crimson);
+    background: #C8102E;
+    color: #FFFFFF;
+    border-radius: 4px;
+    margin: 0;
+    padding: 4px 8px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+}
+
+.event-badges .tag:not(.secondary-tag) {
+    background: #C8102E;
+    color: #FFFFFF;
+}
+
+.tag.secondary-tag {
+    background: #EEF2F7;
+    color: #334155;
+    border: 1px solid #CBD5E1;
+}
+
+.tag {
     font-size: 0.72rem;
-    padding: 3px 10px;
-    border-radius: 12px;
-    margin-bottom: 8px;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -1068,9 +1118,12 @@ header {
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    background: transparent !important;
-    border: none !important;
-    padding: 4px;
+    gap: 5px;
+    min-height: 30px;
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 7px;
+    padding: 5px 8px;
     cursor: pointer;
     color: #9ca3af;
     box-shadow: none !important;
@@ -1078,7 +1131,7 @@ header {
 }
 
 .fav-btn i {
-    font-size: 1.15rem;
+    font-size: 0.82rem;
     transition: color 0.2s ease;
 }
 
@@ -1089,7 +1142,21 @@ header {
 .fav-btn.saved,
 .fav-btn.saved i,
 .fav-btn i.saved {
-    color: #ff69b4 !important;
+    background: #FEF3C7;
+    color: #92400E;
+    border-color: #F59E0B;
+}
+
+.fav-btn.saved {
+    background: #FEF3C7 !important;
+    color: #92400E !important;
+    border-color: #F59E0B !important;
+}
+
+.star-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
 }
 
 .fav-btn:focus-visible {
@@ -1100,6 +1167,61 @@ header {
 .secondary-tag {
     background: #eef5ff;
     color: #1f5ea8;
+}
+
+.passport-badge-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+}
+
+.passport-badge-card {
+    flex: 0 0 132px;
+    min-height: 132px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    opacity: 0.72;
+    text-align: center;
+    scroll-snap-align: start;
+}
+
+.passport-badge-card.unlocked {
+    opacity: 1;
+    border-color: #F59E0B;
+    background: #FFFDF5;
+}
+
+.passport-badge-medallion {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 7px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFB81C;
+    background: #0A192F;
+    border: 3px solid #FFB81C;
+    box-shadow: 0 0 0 2px #0A192F;
+}
+
+.passport-badge-card strong {
+    display: block;
+    color: var(--navy);
+    font-size: 0.78rem;
+}
+
+.passport-badge-card > span {
+    display: block;
+    margin-top: 3px;
+    color: var(--text-light);
+    font-size: 0.68rem;
+    line-height: 1.25;
 }
 
 /* Event Lifecycle Badges */
@@ -1149,10 +1271,10 @@ header {
 
 .card-primary-actions .btn {
     flex: 1 1 calc(50% - 4px);
-    padding: 9px 12px;
-    font-size: 0.84rem;
+    padding: 8px 10px;
+    font-size: 0.82rem;
     font-weight: 700;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 /* Collapsible Card Details */
@@ -1450,6 +1572,9 @@ header {
 }
 
 .saved-heading h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     margin: 0;
     font-size: 1.3rem;
 }
@@ -2021,561 +2146,3 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    padding: 6px 10px;
-    font-size: 0.76rem;
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: all 0.15s ease;
-    flex: 1 1 50%;
-    min-height: 32px;
-    line-height: 1.2;
-    box-sizing: border-box;
-}
-
-.popup-btn:active {
-    transform: scale(0.96);
-}
-
-.popup-btn-nav {
-    background-color: var(--navy);
-    color: #ffffff !important;
-    border-color: var(--navy);
-}
-
-.popup-btn-nav:hover {
-    background-color: var(--crimson);
-    border-color: var(--crimson);
-}
-
-.popup-btn-copy {
-    background-color: #f3f4f6;
-    color: #1f2937;
-    border-color: #d1d5db;
-}
-
-.popup-btn-copy:hover {
-    background-color: #e5e7eb;
-    border-color: #9ca3af;
-}
-
-.popup-cp-address {
-    display: inline-block;
-    font-size: 0.74rem;
-    color: #4b5563;
-    margin-top: 2px;
-}
-
-/* ==========================================================================
-   Sponsor Spotlight Showcase & Sponsored Events (Task 3)
-   ========================================================================== */
-.sponsor-showcase-card {
-    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-    border: 1.5px dashed var(--crimson) !important;
-    border-radius: 12px;
-    padding: 18px 16px;
-    margin-bottom: 14px;
-    position: relative;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-}
-
-.sponsor-showcase-card .event-title {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #111827;
-}
-
-.sponsor-showcase-card .event-desc {
-    font-size: 0.86rem;
-    color: #4b5563;
-    line-height: 1.45;
-    margin-bottom: 14px;
-}
-
-.sponsor-showcase-card .card-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.sponsored-card {
-    border: 2px solid var(--gold) !important;
-    background: linear-gradient(135deg, #FFFBEB 0%, #ffffff 100%) !important;
-    box-shadow: 0 4px 14px rgba(255, 184, 28, 0.15) !important;
-}
-
-.sponsor-tag {
-    background: #FEE2E2 !important;
-    color: var(--crimson) !important;
-    border: 1px solid #FECACA;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.btn-outline-primary {
-    background-color: transparent;
-    color: var(--crimson);
-    border: 1.5px solid var(--crimson);
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
-}
-
-.btn-outline-primary:hover {
-    background-color: var(--crimson);
-    color: #ffffff !important;
-    border-color: var(--crimson);
-}
-
-.btn-outline-primary:active {
-    background-color: #A00D24;
-    transform: scale(0.97);
-}
-
-/* ==========================================================================
-   18-Club Filter Bar & Map Layer Toggles & Star Toggle
-   ========================================================================== */
-
-.club-filter-bar {
-    display: flex;
-    overflow-x: auto;
-    padding: 4px 15px 10px 15px;
-    gap: 6px;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
-}
-
-.club-pill {
-    background: #FFFFFF;
-    border: 1px solid #CBD5E1;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--navy);
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-
-.club-pill:hover {
-    background: #F1F5F9;
-    border-color: #94A3B8;
-}
-
-.club-pill.active {
-    background: var(--navy);
-    color: var(--gold);
-    border-color: var(--navy);
-    font-weight: 700;
-    box-shadow: 0 2px 6px rgba(10, 25, 47, 0.25);
-}
-
-.map-layer-toggles {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 6px;
-    padding: 8px 12px;
-    background: #FFFFFF;
-    border-bottom: 1px solid var(--border);
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-
-.map-layer-toggles::-webkit-scrollbar {
-    display: none;
-}
-
-.layer-pill {
-    flex-shrink: 0;
-    background: #F8FAFC;
-    border: 1px solid #CBD5E1;
-    border-radius: 6px;
-    padding: 5px 9px;
-    font-size: 0.74rem;
-    font-weight: 600;
-    color: #334155;
-    cursor: pointer;
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: all 0.15s ease;
-}
-
-.layer-pill:hover {
-    background: #E2E8F0;
-}
-
-.layer-pill.active {
-    background: var(--navy);
-    color: var(--gold);
-    border-color: var(--navy);
-    font-weight: 700;
-    box-shadow: 0 1px 4px rgba(10, 25, 47, 0.2);
-}
-
-/* Star Toggle on Event Cards */
-.fav-btn.star-toggle-btn {
-    color: #64748B;
-    border: 1px solid #CBD5E1;
-    border-radius: 6px;
-    padding: 4px 8px;
-    background: #FFFFFF;
-    font-size: 0.78rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.fav-btn.star-toggle-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-}
-
-.fav-btn.star-toggle-btn.saved {
-    color: var(--navy);
-    background: #FEF3C7;
-    border-color: var(--gold);
-    font-weight: 700;
-}
-
-.fav-btn.star-toggle-btn.saved i {
-    color: #B45309;
-}
-
-/* Pie icon wrap */
-.pie-icon-wrap {
-    background: #FEF3C7 !important;
-    font-size: 1.6rem !important;
-}
-
-/* Map Popups */
-.map-popup-card {
-    min-width: 210px;
-    max-width: 280px;
-}
-.map-popup-card .popup-tag {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-.map-popup-card .popup-title {
-    margin: 0 0 6px 0;
-    font-size: 0.95rem;
-    color: var(--navy);
-    font-weight: 700;
-}
-.map-popup-card .popup-meta {
-    font-size: 0.76rem;
-    color: var(--text-light);
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-bottom: 8px;
-}
-
-/* SANFL Zone Map Popup Card */
-.sanfl-popup-card {
-    min-width: 240px;
-    max-width: 320px;
-    padding: 2px 0 0 0;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.sanfl-popup-card .popup-tag {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-.sanfl-popup-card .popup-title {
-    margin: 0 0 8px 0;
-    font-size: 1.05rem;
-    color: #0A192F;
-    font-weight: 800;
-    line-height: 1.3;
-}
-
-.sanfl-popup-card .popup-meta {
-    font-size: 0.8rem;
-    color: #334155;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 10px;
-    background: #F8FAFC;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid #E2E8F0;
-}
-
-.sanfl-popup-card .popup-meta span {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    line-height: 1.35;
-}
-
-.sanfl-popup-card .popup-meta i {
-    color: var(--crimson, #C8102E);
-    margin-top: 2px;
-    font-size: 0.78rem;
-    width: 14px;
-    text-align: center;
-}
-
-.sanfl-popup-card p {
-    font-size: 0.8rem;
-    line-height: 1.45;
-    color: #475569;
-    margin: 6px 0 0;
-    padding-top: 6px;
-    border-top: 1px dashed #CBD5E1;
-}
-
-/* ======================================================================
-   FOOTY VAULT — Shake-to-Reveal Classic SA Player Bios
-   ====================================================================== */
-.vault-card {
-    grid-column: span 2;
-    background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
-    border: 1px solid #1E293B;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.08);
-}
-.vault-card i {
-    font-size: 2.2rem;
-    color: #FFB81C !important;
-    margin: 0;
-}
-.vault-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
-    color: #FFB81C;
-}
-.vault-card p {
-    color: rgba(255,255,255,0.85);
-    margin: 0;
-    font-size: 0.82rem;
-}
-
-#view-vault .vault-subtitle {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.vault-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.vault-unlock-btn {
-    font-size: 1rem;
-    padding: 12px 24px;
-    border-radius: 12px;
-    background: var(--crimson);
-    color: #fff;
-    font-weight: 700;
-}
-.vault-unlock-btn:hover {
-    filter: brightness(1.1);
-}
-
-.vault-sensor-badge {
-    font-size: 0.85rem;
-    color: var(--text-dark);
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 16px;
-    text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    transition: all 0.2s ease;
-}
-
-.vault-sensor-badge.sensor-active {
-    background: #DCFCE7;
-    color: #166534;
-    border-color: #86EFAC;
-    font-weight: 700;
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-}
-
-.vault-tap-btn {
-    font-size: 0.95rem;
-    padding: 10px 20px;
-    border-radius: 10px;
-    animation: vaultPulse 2s ease-in-out infinite;
-}
-@keyframes vaultPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-.vault-card-container {
-    min-height: 100px;
-}
-
-/* Vintage SA Footy Card (light blue #ADD8E6 background) */
-.vault-player-card {
-    background-color: #ADD8E6;
-    border: 3px solid #8ab4c7;
-    border-radius: 16px;
-    padding: 24px 20px;
-    max-width: 420px;
-    margin: 0 auto 24px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.5);
-    position: relative;
-    animation: vaultCardFlip 0.4s ease-out;
-    color: #1a1a1a;
-}
-@keyframes vaultCardFlip {
-    0% { transform: rotateY(90deg) scale(0.8); opacity: 0; }
-    100% { transform: rotateY(0deg) scale(1); opacity: 1; }
-}
-
-.vault-card-number {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #4a7a8c;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Courier New', monospace;
-}
-
-.vault-card-initials {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0A192F, #1a3a5c);
-    color: #FFB81C;
-    font-size: 1.6rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
-    border: 3px solid #FFB81C;
-    letter-spacing: 2px;
-}
-
-.vault-card-name {
-    text-align: center;
-    font-size: 1.35rem;
-    font-weight: 800;
-    margin: 0 0 2px;
-    color: #0A192F;
-}
-
-.vault-card-nickname {
-    text-align: center;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: #3a5a6c;
-    margin-bottom: 4px;
-}
-
-.vault-card-position {
-    text-align: center;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #4a7a8c;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.vault-card-stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.vault-stat-block {
-    background: rgba(255,255,255,0.55);
-    border-radius: 8px;
-    padding: 8px 10px;
-    text-align: center;
-}
-
-.vault-stat-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #4a7a8c;
-    margin-bottom: 3px;
-}
-
-.vault-stat-value {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    line-height: 1.35;
-}
-
-.vault-card-bio {
-    font-size: 0.85rem;
-    line-height: 1.55;
-    color: #2a3a4a;
-    margin: 0 0 12px;
-    text-align: left;
-}
-
-.vault-card-trivia {
-    font-size: 0.82rem;
-    line-height: 1.5;
-    color: #3a4a5a;
-    background: rgba(255,255,255,0.45);
-    border-radius: 8px;
-    padding: 10px 12px;
-    border-left: 3px solid #FFB81C;
-}
-
-.vault-back-row {
-    text-align: center;
-    margin-top: 16px;
-    padding-bottom: 24px;
-}
