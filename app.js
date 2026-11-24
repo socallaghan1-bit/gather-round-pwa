@@ -1179,10 +1179,6 @@ function createEventCardHTML(event, eventId, isSaved) {
                 <button type="button" class="fav-btn star-toggle-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave('${escapeHTML(eventId)}', this)" aria-label="Toggle My Weekend" aria-pressed="${isSaved ? 'true' : 'false'}" title="${isSaved ? 'In My Weekend Itinerary' : 'Add to My Weekend'}">
                     <i class="${isSaved ? 'fas' : 'far'} fa-star" aria-hidden="true"></i>
                     <span class="star-label">${isSaved ? 'Saved' : 'Save'}</span>
-                </button>
-                    <i class="${isSaved ? 'fas' : 'far'} fa-star" aria-hidden="true"></i>
-                    <span class="star-label">${isSaved ? '⭐ In Weekend' : '☆ Add'}</span>
-                </button>
             </div>
 
             <h3 class="event-title">${escapeHTML(title)}</h3>
@@ -2400,7 +2396,6 @@ async function revealRandomPlayer() {
     if (!container) return;
 
     container.innerHTML = `
-        container.innerHTML = `
         <div class="vault-player-card">
             <div class="vault-card-inner" style="background-color: ${escapeHTML(player.bg_color || '#ADD8E6')};">
                 <div class="vault-card-sash">SANFL LEGEND</div>
