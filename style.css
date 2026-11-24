@@ -2146,7 +2146,18 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-/* === v10.1 Patch: Footy Vault Scanlens Card, Home Banner & Desktop Shell === */
+    gap: 5px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #0A192F;
+    text-decoration: none;
+    cursor: pointer;
+    flex: 1;
+}
 #view-vault {
   padding-top: 24px;
 }
