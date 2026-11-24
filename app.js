@@ -1491,7 +1491,7 @@ async function initScheduleMap() {
     let L;
     try {
         if (statusEl) statusEl.textContent = 'Loading map…';
-        L = await window.TDUCdn.load('leaflet');
+        L = await window.GatherCdn.load('leaflet');
     } catch (err) {
         if (statusEl) statusEl.textContent = 'Map unavailable offline.';
         return;
