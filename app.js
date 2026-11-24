@@ -1178,6 +1178,9 @@ function createEventCardHTML(event, eventId, isSaved) {
                 ${event.round_info ? `<span class="tag secondary-tag">${escapeHTML(event.round_info)}</span>` : ''}
                 <button type="button" class="fav-btn star-toggle-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave('${escapeHTML(eventId)}', this)" aria-label="Toggle My Weekend" aria-pressed="${isSaved ? 'true' : 'false'}" title="${isSaved ? 'In My Weekend Itinerary' : 'Add to My Weekend'}">
                     <i class="${isSaved ? 'fas' : 'far'} fa-star" aria-hidden="true"></i>
+                    <span class="star-label">${isSaved ? 'Saved' : 'Save'}</span>
+                </button>
+                    <i class="${isSaved ? 'fas' : 'far'} fa-star" aria-hidden="true"></i>
                     <span class="star-label">${isSaved ? '⭐ In Weekend' : '☆ Add'}</span>
                 </button>
             </div>
@@ -1313,7 +1316,7 @@ window.toggleSave = function(id, btnElement) {
         savedEvents = savedEvents.filter((eventId) => eventId !== strId);
         if (btnElement) {
             btnElement.classList.remove('saved');
-            btnElement.innerHTML = '<i class="far fa-star" aria-hidden="true"></i> <span class="star-label">☆ Add</span>';
+            btnElement.innerHTML = '<i class="far fa-star" aria-hidden="true"></i> <span class="star-label">Save</span>';
         }
         playAudioCue('unsave');
         trackAnalyticsEvent('remove_saved_event', { event_id: strId });
@@ -1321,7 +1324,7 @@ window.toggleSave = function(id, btnElement) {
         savedEvents.push(strId);
         if (btnElement) {
             btnElement.classList.add('saved');
-            btnElement.innerHTML = '<i class="fas fa-star" aria-hidden="true"></i> <span class="star-label">⭐ In Weekend</span>';
+            btnElement.innerHTML = '<i class="fas fa-star" aria-hidden="true"></i> <span class="star-label">Saved</span>';
         }
         playAudioCue('save');
         trackAnalyticsEvent('save_event', { event_id: strId });
