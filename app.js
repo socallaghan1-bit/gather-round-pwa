@@ -2400,33 +2400,37 @@ async function revealRandomPlayer() {
     if (!container) return;
 
     container.innerHTML = `
-        <div class="vault-player-card" style="background-color: ${escapeHTML(player.bg_color || '#ADD8E6')};">
-            <div class="vault-card-number">${escapeHTML(player.card_number || '')}</div>
-            <div class="vault-card-initials">${getInitials(player.name)}</div>
-            <h3 class="vault-card-name">${escapeHTML(player.name)}</h3>
-            <div class="vault-card-nickname">"${escapeHTML(player.nickname)}"</div>
-            <div class="vault-card-position">${escapeHTML(player.position)} · ${escapeHTML(player.era)}</div>
-            <div class="vault-card-stats-grid">
-                <div class="vault-stat-block">
-                    <div class="vault-stat-label">SANFL Club</div>
-                    <div class="vault-stat-value">${escapeHTML(player.sanfl_club)}</div>
+        container.innerHTML = `
+        <div class="vault-player-card">
+            <div class="vault-card-inner" style="background-color: ${escapeHTML(player.bg_color || '#ADD8E6')};">
+                <div class="vault-card-sash">SANFL LEGEND</div>
+                <div class="vault-card-number">${escapeHTML(player.card_number || '')}</div>
+                <div class="vault-card-initials">${getInitials(player.name)}</div>
+                <h3 class="vault-card-name">${escapeHTML(player.name)}</h3>
+                <div class="vault-card-nickname">"${escapeHTML(player.nickname)}"</div>
+                <div class="vault-card-position">${escapeHTML(player.position)} · ${escapeHTML(player.era)}</div>
+                <div class="vault-card-stats-grid">
+                    <div class="vault-stat-block">
+                        <div class="vault-stat-label">SANFL Club</div>
+                        <div class="vault-stat-value">${escapeHTML(player.sanfl_club)}</div>
+                    </div>
+                    <div class="vault-stat-block">
+                        <div class="vault-stat-label">SANFL Record</div>
+                        <div class="vault-stat-value">${escapeHTML(player.sanfl_stats)}</div>
+                    </div>
+                    <div class="vault-stat-block">
+                        <div class="vault-stat-label">Crossover Club</div>
+                        <div class="vault-stat-value">${escapeHTML(player.crossover_club)}</div>
+                    </div>
+                    <div class="vault-stat-block">
+                        <div class="vault-stat-label">Interstate Stats</div>
+                        <div class="vault-stat-value">${escapeHTML(player.crossover_stats)}</div>
+                    </div>
                 </div>
-                <div class="vault-stat-block">
-                    <div class="vault-stat-label">SANFL Record</div>
-                    <div class="vault-stat-value">${escapeHTML(player.sanfl_stats)}</div>
+                <p class="vault-card-bio">${escapeHTML(player.bio)}</p>
+                <div class="vault-card-trivia">
+                    <strong>Trivia:</strong> ${escapeHTML(player.trivia)}
                 </div>
-                <div class="vault-stat-block">
-                    <div class="vault-stat-label">Crossover Club</div>
-                    <div class="vault-stat-value">${escapeHTML(player.crossover_club)}</div>
-                </div>
-                <div class="vault-stat-block">
-                    <div class="vault-stat-label">Interstate Stats</div>
-                    <div class="vault-stat-value">${escapeHTML(player.crossover_stats)}</div>
-                </div>
-            </div>
-            <p class="vault-card-bio">${escapeHTML(player.bio)}</p>
-            <div class="vault-card-trivia">
-                <strong>🏛️ Trivia:</strong> ${escapeHTML(player.trivia)}
             </div>
         </div>
     `;
