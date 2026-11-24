@@ -78,3 +78,10 @@ test('Date filters in index.html match Gather Round 2027 dates', () => {
     assert.ok(html.includes('MyGatherRound.app'), 'index.html should feature mygatherround.app');
     assert.ok(html.includes('buymeacoffee.com/mytdu'), 'Support link should point to mytdu');
 });
+
+test('Schedule map uses the CDN helper registered by cdn-libs.js', () => {
+    const appSource = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
+    const cdnSource = fs.readFileSync(path.join(root, 'cdn-libs.js'), 'utf8');
+    assert.ok(appSource.includes("window.GatherCdn.load('leaflet')"), 'Map should load Leaflet through GatherCdn');
+    assert.ok(cdnSource.includes('window.GatherCdn = gatherCdn'), 'GatherCdn should be registered globally');
+});

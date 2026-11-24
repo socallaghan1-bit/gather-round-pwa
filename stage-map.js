@@ -42,14 +42,14 @@
 
     async function drawPath(L, latlngs, token) {
         try {
-            const antPath = await window.TDUCdn.load('antPath');
+            const antPath = await window.GatherCdn.load('antPath');
             if (!isCurrent(token) || !map) return;
             antPath(latlngs, {
                 ...PATH_STYLE,
                 delay: 800,
                 dashArray: [10, 20],
                 pulseColor: '#FFFFFF',
-                paused: window.TDUCdn.prefersReducedMotion(),
+                paused: window.GatherCdn.prefersReducedMotion(),
                 hardwareAccelerated: true
             }).addTo(map);
         } catch (error) {
@@ -64,7 +64,7 @@
 
         let L;
         try {
-            L = await window.TDUCdn.load('leaflet');
+            L = await window.GatherCdn.load('leaflet');
         } catch (error) {
             if (isCurrent(token)) setStatus('Map unavailable right now. Check your connection and try again.');
             return;
@@ -161,7 +161,7 @@
         let elevations;
         try {
             [Chart, elevations] = await Promise.all([
-                window.TDUCdn.load('chart'),
+                window.GatherCdn.load('chart'),
                 getCheckpointElevations(checkpoints)
             ]);
         } catch (error) {
@@ -191,7 +191,7 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                animation: window.TDUCdn.prefersReducedMotion() ? false : { duration: 400 },
+                animation: window.GatherCdn.prefersReducedMotion() ? false : { duration: 400 },
                 plugins: {
                     legend: { display: false },
                     tooltip: {

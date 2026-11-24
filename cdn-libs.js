@@ -270,11 +270,13 @@
         });
     }
 
-    window.GatherCdn = {
+    const gatherCdn = {
         load: loadCdnLib,
         prefersReducedMotion,
         prefersSavedData
     };
+    window.GatherCdn = gatherCdn;
+    window.TDUCdn = gatherCdn;
     window.GatherHaptics = {
         navigation: () => triggerHaptic('navigation'),
         success: () => triggerHaptic('success')
