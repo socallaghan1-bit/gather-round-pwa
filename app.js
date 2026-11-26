@@ -1718,7 +1718,7 @@ async function applyMapOverlayLayers() {
                     style: (feature) => ({
                         fillColor: feature.properties.fillColor,
                         color: feature.properties.strokeColor,
-                        weight: 2.5,
+                        weight: 2,
                         opacity: 1,
                         fillOpacity: 0.45
                     }),
