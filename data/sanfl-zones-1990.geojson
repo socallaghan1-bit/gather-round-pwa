@@ -35870,8 +35870,8 @@
         "description": "Lefevre Peninsula & Alberton (Port Adelaide, Semaphore, Largs Bay) plus Eyre Peninsula, Far West & Whyalla.",
         "famous_players": "Russell Ebert, Greg Phillips, Tim Ginever, Stephen Williams",
         "trivia": "John Cahill led Port Adelaide to premierships in 1988, 1989, and 1990 immediately prior to the birth of the Adelaide Crows.",
-        "fillColor": "#0A192F",
-        "strokeColor": "#008AAB",
+        "fillColor": "#111827",
+        "strokeColor": "#FFFFFF",
         "strokeWeight": 2.5,
         "fillOpacity": 0.45
       },

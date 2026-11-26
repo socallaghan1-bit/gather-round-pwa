@@ -618,6 +618,40 @@ header {
     font-weight: 800;
 }
 
+/* AFL 18-Club Filter Pills */
+#club-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 15px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.club-pill {
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #0A192F;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.club-pill:hover {
+    border-color: #0A192F;
+    background: #F8FAFC;
+}
+
+.club-pill.active {
+    background: #0A192F;
+    color: #FFFFFF;
+    border-color: #0A192F;
+}
+
 .filter-btn {
     background: var(--bg-color);
     border: 1px solid var(--border);
